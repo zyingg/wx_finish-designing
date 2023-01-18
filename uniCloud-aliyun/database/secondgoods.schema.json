@@ -1,0 +1,173 @@
+{
+	"bsonType": "object",
+	"required": [
+		// "goods_sn",
+		"name"
+		// "remain_count",
+		// "month_sell_count",
+		// "total_sell_count",
+		// "comment_count",
+		// "is_real",
+		// "is_on_sale",
+		// "is_alone_sale",
+		// "is_best",
+		// "is_new",
+		// "is_hot"
+	],
+	"permission": {
+		// "read": "doc.is_on_sale == true",
+		"read": true,
+		// "read": "doc.user_id == auth.uid && doc.article_status == 0 || doc.article_status == 1",
+		"create": "auth.uid != null",
+		"update": "doc.user_id == auth.uid || 'webadmin'in auth.role", //本人及管理员可修改
+		"delete": "doc.user_id == auth.uid"
+	},
+	"properties": {
+		"_id": {
+			"description": "存储文档 ID（商品 ID），系统自动生成"
+		},
+		"category_id": {
+			"bsonType": "string",
+			"description": "分类 id，参考`opendb-mall-categories`表",
+			"foreignKey": "secondgoods-categories._id",
+			"enum": {
+				"collection": "secondgoods-categories",
+				"field": "_id as value, classname as text"
+			}
+		},
+		"goods_sn": {
+			"bsonType": "string",
+			"description": "商品的唯一货号",
+			"title": "货号",
+			"trim": "both"
+		},
+		"name": {
+			"bsonType": "string",
+			"description": "商品名称",
+			"title": "名称",
+			"trim": "both"
+		},
+		"keywords": {
+			"bsonType": "string",
+			"description": "商品关键字，为搜索引擎收录使用",
+			"title": "关键字",
+			"trim": "both"
+		},
+		"price": {
+			"title": "价格",
+			"trim": "both",
+			"bsonType": "string",
+			"description": "如：2208元/套"
+		},
+		"goods_desc": {
+			"bsonType": "string",
+			"description": "商品详细描述",
+			"title": "详细描述",
+			"trim": "right"
+		},
+		"picurl": {
+			"title": "商品图",
+			"bsonType": "file"
+			// "bsonType": "string"
+		},
+		// "goods_thumb": {
+		// 	"bsonType": "string",
+		// 	"description": "商品缩略图，用于在列表或搜索结果中预览显示",
+		// 	"title": "缩略图地址",
+		// 	"pattern": "^(http://|https://|/|./|@/)\\S",
+		// 	"trim": "both"
+		// },
+		// "goods_banner_imgs": {
+		// 	"bsonType": "array",
+		// 	"description": "商品详情页的banner图地址"
+		// },
+		"remain_count": {
+			"bsonType": "int",
+			"description": "库存数量",
+			"title": "库存数量"
+		},
+		"contact": {
+			"bsonType": "string",
+			"description": "联系方式",
+			"title": "联系方式",
+			"trim": "both"
+		},
+		// "month_sell_count": {
+		// 	"bsonType": "int",
+		// 	"description": "月销量"
+		// },
+		// "total_sell_count": {
+		// 	"bsonType": "int",
+		// 	"description": "总销量"
+		// },
+		// "comment_count": {
+		// 	"bsonType": "int",
+		// 	"description": "累计评论数"
+		// },
+		// "is_real": {
+		// 	"bsonType": "bool",
+		// 	"description": "是否实物",
+		// 	"title": "是否为实物"
+		// },
+		// "is_on_sale": {
+		// 	"bsonType": "bool",
+		// 	"description": "是否上架销售",
+		// 	"title": "是否上架"
+		// },
+		// "is_alone_sale": {
+		// 	"bsonType": "bool",
+		// 	"description": "是否能单独销售；如果不能单独销售，则只能作为某商品的配件或者赠品销售"
+		// },
+		// "is_best": {
+		// 	"bsonType": "bool",
+		// 	"description": "是否精品"
+		// },
+		// "is_new": {
+		// 	"bsonType": "bool",
+		// 	"description": "是否新品",
+		// 	"title": "是否新品"
+		// },
+		// "is_hot": {
+		// 	"bsonType": "bool",
+		// 	"description": "是否热销"
+		// },
+		"checked":{
+					"title": "状态",
+					"bsonType": "bool",
+					"defaultValue":true,
+					"description": "显示状态 默认true展示 false不展示",
+					"enum":[
+						{
+							"value":true,
+							"text":"显示"
+						},{
+							"value":false,
+							"text":"隐藏"
+						}
+					]
+				},
+		"add_date": {
+			"bsonType": "timestamp",
+			"description": "上架时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		},
+		"last_modify_date": {
+			"bsonType": "timestamp",
+			"description": "最后修改时间",
+			"defaultValue": {
+				"$env": "now"
+			}
+		},
+		"seller_note": {
+			"bsonType": "string",
+			"description": "商家备注，仅商家可见",
+			"trim": "both",
+			"permission": {
+				"read": false
+			}
+		}
+	},
+	"version": "0.0.1"
+}

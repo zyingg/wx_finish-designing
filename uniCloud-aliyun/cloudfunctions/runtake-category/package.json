@@ -1,0 +1,7 @@
+{
+  "name": "runtake-category",
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  }
+}

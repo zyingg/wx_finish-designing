@@ -1,0 +1,397 @@
+{
+  "easycom": {
+    "^tn-(.*)": "@/tuniao-ui/components/tn-$1/tn-$1.vue"
+  },
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+
+			}
+		},
+		{
+			"path": "pages/edit/edit",
+			"style": {
+				"navigationBarTitleText": "发布长文",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/self/self",
+			"style": {
+				"navigationBarTitleText": "个人中心",
+				"enablePullDownRefresh": false
+			}
+
+
+
+		}, {
+			"path": "uni_modules/uni-id-pages/pages/userinfo/deactivate/deactivate",
+			"style": {
+				"navigationBarTitleText": "注销账号"
+			}
+		}, {
+			"path": "uni_modules/uni-id-pages/pages/userinfo/userinfo",
+			"style": {
+				"navigationBarTitleText": "个人资料"
+			}
+		}, {
+			"path": "uni_modules/uni-id-pages/pages/userinfo/bind-mobile/bind-mobile",
+			"style": {
+				"navigationBarTitleText": "绑定手机号码"
+			}
+		}, {
+			"path": "uni_modules/uni-id-pages/pages/userinfo/cropImage/cropImage",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		}, {
+			"path": "uni_modules/uni-id-pages/pages/login/login-withoutpwd",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		}, {
+			"path": "uni_modules/uni-id-pages/pages/login/login-withpwd",
+			"style": {
+				"navigationBarTitleText": "密码登录"
+			}
+		}, {
+			"path": "uni_modules/uni-id-pages/pages/login/login-smscode",
+			"style": {
+				"navigationBarTitleText": "手机验证码登录"
+			}
+		}, {
+			"path": "uni_modules/uni-id-pages/pages/register/register",
+			"style": {
+				"navigationBarTitleText": "注册"
+			}
+		}, {
+			"path": "uni_modules/uni-id-pages/pages/register/register-by-email",
+			"style": {
+				"navigationBarTitleText": "邮箱验证码注册"
+			}
+		}, {
+			"path": "uni_modules/uni-id-pages/pages/retrieve/retrieve",
+			"style": {
+				"navigationBarTitleText": "重置密码"
+			}
+		}, {
+			"path": "uni_modules/uni-id-pages/pages/retrieve/retrieve-by-email",
+			"style": {
+				"navigationBarTitleText": "通过邮箱重置密码"
+			}
+		}, {
+			"path": "uni_modules/uni-id-pages/pages/common/webview/webview",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": ""
+			}
+		}, {
+			"path": "uni_modules/uni-id-pages/pages/userinfo/change_pwd/change_pwd",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "修改密码"
+			}
+		}, {
+			"path": "uni_modules/uni-id-pages/pages/register/register-admin",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "注册管理员账号"
+			}
+		}, {
+			"path": "uni_modules/uni-id-pages/pages/userinfo/set-pwd/set-pwd",
+			"style": {
+				"enablePullDownRefresh": false,
+				"navigationBarTitleText": "设置密码"
+			}
+		}, {
+			"path": "pages/detail/detail",
+			"style": {
+				"navigationBarTitleText": "详情页",
+				"enablePullDownRefresh": false
+			}
+
+		}
+		    ,{
+		    "path": "pages/schoolnews/add",
+		    "style": {
+		        "navigationBarTitleText": "新增校园动态"
+		    }
+		}
+		,{
+		    "path": "pages/schoolnews/edit",
+		    "style": {
+		        "navigationBarTitleText": "校园动态编辑"
+		    }
+		}
+		, {
+			"path": "pages/schoolnews/list",
+			"style": {
+				"navigationBarTitleText": "校园动态"
+			}
+		}
+		,{
+		    "path": "pages/schoolnews/detail",
+		    "style": {
+		        "navigationBarTitleText": "校园动态详情"
+		    }
+		}
+		// ,{
+		//     "path": "pages/quanzi_like/add",
+		//     "style": {
+		//         "navigationBarTitleText": "新增"
+		//     }
+		// }
+		// ,{
+		//     "path": "pages/quanzi_like/edit",
+		//     "style": {
+		//         "navigationBarTitleText": "编辑"
+		//     }
+		// }
+		, {
+			"path": "pages/quanzi_like/list",
+			"style": {
+				"navigationBarTitleText": "列表"
+			}
+		}
+		// ,{
+		//     "path": "pages/quanzi_like/detail",
+		//     "style": {
+		//         "navigationBarTitleText": "详情"
+		//     }
+		// }
+		  
+		  , {
+		  	"path": "pages/index/edit",
+		  	"style": {
+		  		"navigationBarTitleText": "发布校园动态"
+		  	}
+		  }
+		  , {
+		  	"path": "pages/index/detail",
+		  	"style": {
+		  		"navigationBarTitleText": "校园动态详情"
+		  	}
+		  }
+		, {
+			"path": "uni_modules/uni-feedback/pages/opendb-feedback/opendb-feedback",
+			"style": {
+				"navigationBarTitleText": "新增反馈"
+			}
+		}, {
+			"path": "uni_modules/uni-feedback/pages/opendb-feedback/edit",
+			"style": {
+				"navigationBarTitleText": "编辑反馈"
+			}
+		}, {
+			"path": "uni_modules/uni-feedback/pages/opendb-feedback/list",
+			"style": {
+				"navigationBarTitleText": "反馈列表"
+			}
+		}, {
+			"path": "uni_modules/uni-feedback/pages/opendb-feedback/detail",
+			"style": {
+				"navigationBarTitleText": "反馈详情"
+			}
+		}
+
+		, {
+			"path": "pages/reply/reply",
+			"style": {
+				"navigationBarTitleText": "评论",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/heart/list",
+			"style": {
+				"navigationBarTitleText": "表白墙",
+				"enablePullDownRefresh": false
+			}
+
+		},
+		 {
+			"path": "pages/heart/add",
+			"style": {
+				"navigationBarTitleText": "发布表白墙",
+				"enablePullDownRefresh": false
+			}
+		
+		}
+	    ,{
+            "path" : "pages/secondhand/secondhand",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "二手闲置",
+                "enablePullDownRefresh": false
+            }
+            
+        },
+		
+		 {
+			"path": "pages/secondhand/edit",
+			"style": {
+				"navigationBarTitleText": "发布二手闲置",
+				"enablePullDownRefresh": false
+			}
+		
+		}
+    ,{
+    "path": "pages/secondgoods/add",
+    "style": {
+        "navigationBarTitleText": "新增二手商品"
+    }
+}
+,{
+    "path": "pages/secondgoods/edit",
+    "style": {
+        "navigationBarTitleText": "编辑二手商品"
+    }
+}
+,{
+    "path": "pages/secondgoods/list",
+    "style": {
+        "navigationBarTitleText": "二手商品列表"
+    }
+}
+,{
+    "path": "pages/secondgoods/detail",
+    "style": {
+        "navigationBarTitleText": "二手商品详情"
+    }
+}
+
+ 
+,{
+    "path": "pages/secondgoods/search",
+    "style": {
+        "navigationBarTitleText": "搜索二手商品"
+    }
+}
+
+    ,{
+            "path" : "pages/good/good",
+            "style" : {
+                "enablePullDownRefresh": true,
+                "navigationBarTitleText": "商品列表"
+            }
+            
+        }
+    ,{
+    "path": "pages/runtake/add",
+    "style": {
+        "navigationBarTitleText": "新增跑腿"
+    }
+}
+,{
+    "path": "pages/runtake/edit",
+    "style": {
+        "navigationBarTitleText": "编辑跑腿"
+    }
+}
+,{
+    "path": "pages/runtake/list",
+    "style": {
+        "navigationBarTitleText": "跑腿列表"
+    }
+}
+,{
+    "path": "pages/runtake/detail",
+    "style": {
+        "navigationBarTitleText": "跑腿详情"
+    }
+}
+
+ 
+,{
+    "path": "pages/runtake/search",
+    "style": {
+        "navigationBarTitleText": "搜索跑腿"
+    }
+}
+
+,{
+    "path": "pages/quanzi_article/add",
+    "style": {
+        "navigationBarTitleText": "新增"
+    }
+}
+,{
+    "path": "pages/quanzi_article/edit",
+    "style": {
+        "navigationBarTitleText": "编辑"
+    }
+}
+,{
+    "path": "pages/quanzi_article/list",
+    "style": {
+        "navigationBarTitleText": "列表"
+    }
+}
+,{
+    "path": "pages/quanzi_article/detail",
+    "style": {
+        "navigationBarTitleText": "详情"
+    }
+},
+  {
+		"path": "pages/search/search",
+		"style": {
+			"navigationBarTitleText": "搜索"
+		}
+	}
+,{
+    "path": "pages/lost/add",
+    "style": {
+        "navigationBarTitleText": "新增"
+    }
+}
+,{
+    "path": "pages/lost/edit",
+    "style": {
+        "navigationBarTitleText": "编辑"
+    }
+}
+,{
+    "path": "pages/lost/list",
+    "style": {
+        "navigationBarTitleText": "列表"
+    }
+}
+,{
+    "path": "pages/lost/detail",
+    "style": {
+        "navigationBarTitleText": "详情"
+    }
+}
+],
+	"tabBar": {
+		"color": "#888",
+		"selectedColor": "",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"text": "圈子",
+			"iconPath": "static/faxian-unsel.png",
+			"selectedIconPath": "static/faxian-select.png"
+		}, {
+			"pagePath": "pages/self/self",
+			"text": "我的",
+			"iconPath": "static/person.png",
+			"selectedIconPath": "static/person-select.png"
+		}]
+	},
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "yy的圈子",
+		"navigationBarBackgroundColor": "#baf380",
+		"backgroundColor": "#baf380"
+	},
+	"uniIdRouter": {
+		"loginPage": "uni_modules/uni-id-pages/pages/login/login-withpwd",
+		"needLogin": [
+			"pages/edit/edit",
+			"uni_modules/uni-id-pages/pages/userinfo/userinfo"
+		],
+		"resToLogin": true
+	}
+}
