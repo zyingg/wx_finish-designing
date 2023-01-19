@@ -13,9 +13,7 @@
 			@ready="onEditReady"
 			@focus="onFocus"
 			@statuschange="onStatuschange"
-			>
-			<u-parse :content="detailObj.content" :tagStyle="tagStyle"></u-parse>
-			</editor>
+			></editor>
 		</view>
 		<view class="btnGroup">
 			<u-button @click="onSubmit" type="primary" text="确认发表" :disabled="!artObj.title.length"></u-button>
@@ -81,7 +79,7 @@
 			},
 			
 			addData(){
-				db.collection("xiaoyuan_article").add({
+				db.collection("quanzi_article").add({
 					...this.artObj
 				}).then(res=>{					
 					uni.hideLoading();

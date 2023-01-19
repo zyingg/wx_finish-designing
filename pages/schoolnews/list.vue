@@ -29,7 +29,7 @@
 					:like_count.sync="item.like_count"></blog-item>
 			</view>
 		</view>
-
+    <u-back-top :scroll-top="scrollTop" icon="arrow-up" text="返回"></u-back-top>
 		<view>
 			<uni-load-more :status="uniLoad"></uni-load-more>
 		</view>
@@ -57,6 +57,12 @@
 		data() {
 
 			return {
+				scrollTop: 0,
+							mode: 'square',
+							iconStyle: {
+								fontSize: '32rpx',
+								color: '#2979ff'
+							},
 				uniLoad: "more",
 				noMore: false,
 				navlist: [{
@@ -76,6 +82,9 @@
 				loadState: true
 			}
 		},
+		onPageScroll(e) {
+				this.scrollTop = e.scrollTop;
+			},
 		onLoad() {
 			this.getData();
 		},

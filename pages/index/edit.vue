@@ -13,7 +13,11 @@
 			@ready="onEditReady"
 			@focus="onFocus"
 			@statuschange="onStatuschange"
-			></editor>
+			>
+			 
+			
+			
+			</editor>
 		</view>
 		<view class="btnGroup">
 			<u-button @click="onSubmit" type="primary" text="确认发表" :disabled="!artObj.title.length"></u-button>

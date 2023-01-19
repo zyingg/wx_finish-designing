@@ -21,6 +21,7 @@
 
 			<view v-else>
 				<view class="title">{{detailObj.title}}</view>
+					<view class="uci" style="float:right" @click="show = true"><u-icon name="more-circle" color="#c5e791" size="25"></u-icon> </view>
 				<view class="userinfo">
 					<view class="avatar">
 						<!-- 头像 -->
@@ -41,9 +42,13 @@
 							</uni-dateformat>
 
 							发布于{{detailObj.province}}
+						
 						</view>
+							
 					</view>
+				
 				</view>
+				
 				<view class="content">
 					<!-- 使用uview的富文本组件 parse富文本解析器 -->
 					<u-parse :content="detailObj.content" :tagStyle="tagStyle"></u-parse>
@@ -93,7 +98,8 @@
 
 
 		<comment-frame :commentObj="commentObj" @commentEnv="PcommentEnv"></comment-frame>
-
+<u-action-sheet :actions="selectlist" cancelText="取消" :show="show" :closeOnClickOverlay="true"
+			:closeOnClickAction="true"  @select="selectClick"  @close="onClose"></u-action-sheet>
 	</view>
 </template>
 
@@ -117,6 +123,15 @@
 	export default {
 		data() {
 			return {
+				show:false,
+				selectlist: [
+							{
+								name: "修改",
+							},
+							{
+								name: "删除",
+							}
+						],
 				artid: "",
 				loadState: true,
 				tagStyle: {
@@ -154,6 +169,49 @@
 		methods: {
 			giveName,
 			giveAvatar,
+			
+			
+			
+			selectClick(index){
+						console.log(index);
+						if(index.name== "修改"){
+							this.handleUpdate();
+						}
+						if(index.name== "删除"){
+							this.handleDelete();
+						}
+					},
+					//取消弹窗
+					onClose() {
+						this.show = false
+					},
+			handleUpdate() {
+				// 打开修改页面
+				uni.navigateTo({
+					url: '/pages/quanzi_article/edit?id=' + this.artid,
+					events: {
+						// 监听修改页面成功修改数据后, 刷新当前页面数据
+						refreshData: () => {
+							this.$refs.udb.loadData({
+								clear: true
+							})
+						}
+					}
+				})
+			},
+			handleDelete() {
+				this.$refs.udb.remove(this._id, {
+					success: (res) => {
+						// 删除数据成功后跳转到list页面
+						uni.navigateTo({
+							url: '/pages/index/list'
+							// url: './list'
+						})
+					}
+				})
+			},
+			
+			
 			//评论成功后的回调
 			PcommentEnv(e) {
 				console.log(e);
@@ -378,7 +436,17 @@
 					.small {
 						font-size: 20rpx;
 						color: #999;
+						justify-content: space-between;
 					}
+				}
+				 
+			}
+			.more {
+				padding: 5rpx;
+			
+				.iconfont {
+					font-size: 50rpx;
+					color: #888;
 				}
 			}
 

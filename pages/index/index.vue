@@ -244,7 +244,15 @@
 			</view>
 			
 		 -->
-			 
+			 <view class="tn-flex tn-flex-row-between">
+			   <view class="justify-content-item tn-margin tn-text-bold tn-text-xxl">
+			   校园动态
+			   </view>
+			   <view class="justify-content-item tn-margin tn-text-lg tn-color-grey">
+			     <text class="tn-padding-xs"  @click="tn('/pages/schoolnews/list')">全部</text>
+			     <text class="tn-icon-topics"></text>
+			   </view>
+			 </view>
 		<view class="topnav">
 			<u-tabs :list="navlist" :activeStyle="{
 				color: '#333',
@@ -266,7 +274,7 @@
 
 		<!-- "P_delEvent"父级里面定义的方法 -->
 		<view class="content">
-			<view class="item" v-for="item in dataList">
+			<view class="item" v-for="(item,index) in dataList.slice(0,3)"   :key='index'>
 
 				<blog-item @delEvent="P_delEvent" :item="item" :isLike.sync="item.isLike"
 					:like_count.sync="item.like_count"></blog-item>
@@ -427,6 +435,12 @@
 		  }
 		},
 		methods: {
+			// 跳转
+			tn(e) {
+				uni.navigateTo({
+					url: e,
+				});
+			},
 			change(id) {
 				// console.log(e)
 				// let {
@@ -462,7 +476,7 @@
 				};
 				if (id == 5) {
 					uni.navigateTo({
-						url: "/pages/heart/list"
+						url: "/pages/quanzi_article/list"
 					})
 				};
 				if (id == 6) {

@@ -1,72 +1,198 @@
 <template>
-  <view class="container">
-    <unicloud-db ref="udb" v-slot:default="{data, pagination, loading, hasMore, error}" :collection="collectionList" field="user_id,title,description,province,content,excerpt,article_status,state,delState,view_count,like_count,comment_count,last_comment_user_id,picurls,publish_date,publish_ip,last_modify_date,last_modify_ip">
-      <view v-if="error">{{error.message}}</view>
-      <view v-else-if="data">
-        <uni-list>
-          <uni-list-item v-for="(item, index) in data" :key="index" showArrow :clickable="true" @click="handleItemClick(item._id)">
-            <template v-slot:body>
-              <text>
-                <!-- 此处默认显示为_id，请根据需要自行修改为其他字段 -->
-                <!-- 如果使用了联表查询，请参考生成的 admin 项目中 list.vue 页面 -->
-                {{item._id}}
-              </text>
-            </template>
-          </uni-list-item>
-        </uni-list>
-      </view>
-      <uni-load-more :status="loading?'loading':(hasMore ? 'more' : 'noMore')"></uni-load-more>
-    </unicloud-db>
-    <uni-fab ref="fab" horizontal="right" vertical="bottom" :pop-menu="false" @fabClick="fabClick" />
+  <view class="home">
+  	 <view class="topnav">
+  	 	<u-tabs :list="navlist" :activeStyle="{
+  	 		color: '#333',
+  	 		fontWeight: 'bold',
+  	 		transform: 'scale(1.08)'
+  	 	}" :inactiveStyle="{
+  	 		color: '#888',
+  	 		transform: 'scale(1)'
+  	 	}" @click="clickNav"></u-tabs>
+  	 	
+  	 </view>
+  
+  	 
+  	<view class="loadingState" v-show="loadState">
+  		<u-skeleton rows="4" title loading></u-skeleton>
+  	</view>
+  
+  
+  
+  	<!-- "P_delEvent"父级里面定义的方法 -->
+  	<view class="content">
+  		<view class="item" v-for="item in dataList">
+  
+  			<blog-item @delEvent="P_delEvent" :item="item" :isLike.sync="item.isLike"
+  				:like_count.sync="item.like_count"></blog-item>
+  		</view>
+  	</view>
+  
+  	<view>
+  		<uni-load-more :status="uniLoad"></uni-load-more>
+  	</view>
+  
+  	<view class="add" @click="goAdd">
+  		<text class="iconfont icon-a-21-xiugai"></text>
+  	</view>
   </view>
 </template>
 
 <script>
-  const db = uniCloud.database()
+	import {
+		store,
+		mutations
+	} from '@/uni_modules/uni-id-pages/common/store.js'
+  const db = uniCloud.database();
+  const dbCmd = db.command;
   export default {
     data() {
       return {
-        collectionList: "quanzi_article",
-        loadMore: {
-          contentdown: '',
-          contentrefresh: '',
-          contentnomore: ''
-        }
+        uniLoad: "more",
+        noMore: false,
+        navlist: [{
+        		name: "最新",
+        		type: "publish_date"
+        	},
+        	{
+        		name: "热门",
+        		type: "view_count"
+        	}
+        	 
+        ],
+        dataList: [],
+        navAction: 0,
+        
+        
+        loadState: true
       }
     },
-    onPullDownRefresh() {
-      this.$refs.udb.loadData({
-        clear: true
-      }, () => {
-        uni.stopPullDownRefresh()
-      })
-    },
-    onReachBottom() {
-      this.$refs.udb.loadMore()
-    },
+	onLoad() {
+		this.getData();
+	},
+	//触底加载更多
+	onReachBottom() {
+		this.uniLoad = 'loading'
+		if (this.noMore) return this.uniLoad = "noMore";
+		this.getData();
+	},
+ 
     methods: {
+		P_delEvent() {
+			this.dataList = []; //清空数据
+			this.getData();
+		},
       handleItemClick(id) {
         uni.navigateTo({
           url: './detail?id=' + id
         })
       },
-      fabClick() {
-        // 打开新增页面
-        uni.navigateTo({
-          url: './add',
-          events: {
-            // 监听新增数据成功后, 刷新当前页面数据
-            refreshData: () => {
-              this.$refs.udb.loadData({
-                clear: true
-              })
-            }
-          }
-        })
-      }
+     //获取网络列表
+     async getData() {
+     	// type=this.current;
+     	// .where(`delState != true` && `state== 0`)
+     	let artTemp = db.collection("quanzi_article").where(`delState != true`  ).field(
+     			"title,user_id,description,picurls,comment_count,like_count,view_count,publish_date,state")
+     		.getTemp();
+     	console.log(artTemp)
+     	let userTemp = db.collection("uni-id-users").field("_id,username,nickname,avatar_file").getTemp();
+     
+     	db.collection(artTemp, userTemp).orderBy(this.navlist[this.navAction].type, "desc").skip(this.dataList
+     			.length).limit(5).get()
+     		.then(async res => {
+     			let idArr = []
+     			let oldArr = this.dataList;
+     			if (res.result.data.length == 0) {
+     				this.noMore = true
+     			}
+     			console.log(res.result.data)
+     			let resDataArr = [...this.dataList, ...res.result.data]
+     
+     
+     			if (store.hasLogin) {
+     				resDataArr.forEach(item => {
+     					idArr.push(item._id);
+     				})
+     
+     				let likeRes = await db.collection("quanzi_like").where({
+     					article_id: dbCmd.in(idArr),
+     					user_id: uniCloud.getCurrentUserInfo().uid
+     				}).get()
+     
+     				likeRes.result.data.forEach(item => {
+     					let findIndex = resDataArr.findIndex(find => {
+     						return item.article_id == find._id
+     					})
+     					resDataArr[findIndex].isLike = true
+     				})
+     			}
+     
+     
+     			this.dataList = resDataArr
+     			this.loadState = false
+     		})
+     },
+     
+     clickNav(e) {
+     	this.loadState = true;
+     	this.dataList = [];
+     	this.uniLoad = "more"
+     	this.navAction = e.index;
+     	this.noMore = false
+     	this.getData();
+     },
+     
+     //跳转至新增页面
+     goAdd() {
+     	uni.navigateTo({
+     		url: "/pages/quanzi_article/add"
+     	})
+     }
     }
   }
 </script>
 
-<style>
+<style lang="scss" scoped>
+	.home {
+		 
+ 
+		.topnav {
+			margin-bottom: 30rpx;
+		}
+
+		.loadingState {
+			padding: 30rpx;
+		}
+
+		.content {
+			.item {
+				padding: 30rpx;
+				border-bottom: #F7F7F7 15rpx solid
+			}
+		}
+
+		.add {
+			width: 120rpx;
+			height: 120rpx;
+			background: #0199FE;
+			border-radius: 50%;
+			color: #fff;
+			position: fixed;
+			z-index: 100;
+			bottom: 150rpx;
+			right: 50rpx;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			box-shadow: 0 0 20rpx rgba(1, 153, 254, 0.8);
+
+			.iconfont {
+				font-size: 50rpx;
+			}
+		}
+
+		.box.active {
+			color: #9199FE
+		}
+	}
 </style>

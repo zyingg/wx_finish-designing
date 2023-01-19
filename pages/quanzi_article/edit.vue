@@ -1,60 +1,25 @@
 <template>
   <view class="uni-container">
     <uni-forms ref="form" :model="formData" validate-trigger="submit" err-show-type="toast">
-      <uni-forms-item name="user_id" label="" required>
-        <uni-easyinput placeholder="文章作者ID， 参考`uni-id-users` 表" v-model="formData.user_id"></uni-easyinput>
-      </uni-forms-item>
-      <uni-forms-item name="title" label="标题" required>
-        <uni-easyinput placeholder="标题" v-model="formData.title" trim="both"></uni-easyinput>
-      </uni-forms-item>
-      <uni-forms-item name="description" label="文章摘要">
-        <uni-easyinput placeholder="文章摘要" v-model="formData.description" trim="both"></uni-easyinput>
-      </uni-forms-item>
-      <uni-forms-item name="province" label="发布省份">
-        <uni-easyinput placeholder="发布省份" v-model="formData.province" trim="both"></uni-easyinput>
-      </uni-forms-item>
-      <uni-forms-item name="content" label="文章内容">
-        <uni-easyinput placeholder="文章内容" v-model="formData.content" trim="right"></uni-easyinput>
-      </uni-forms-item>
-      <uni-forms-item name="excerpt" label="文章摘录">
+ 
+	  <view class="title">
+	  	<input type="text" v-model="formData.title"   placeholder-class="placeholderClass">
+	  </view>
+ 
+     
+       <div id="div1">
+       			  <div v-html="formData.content"></div>
+       </div>
+		<!-- <uni-easyinput placeholder="文章内容" v-model="formData.content" trim="right"></uni-easyinput>
+ -->     
+	  
+     <!-- <uni-forms-item name="excerpt" label="文章摘录">
         <uni-easyinput placeholder="文章摘录" v-model="formData.excerpt" trim="both"></uni-easyinput>
-      </uni-forms-item>
+      </uni-forms-item> -->
       <uni-forms-item name="article_status" label="文章状态">
         <uni-data-checkbox v-model="formData.article_status" :localdata="formOptions.article_status_localdata"></uni-data-checkbox>
       </uni-forms-item>
-      <uni-forms-item name="state" label="文章类型">
-        <uni-easyinput placeholder="文章类型" type="number" v-model="formData.state"></uni-easyinput>
-      </uni-forms-item>
-      <uni-forms-item name="delState" label="是否已被删除">
-        <switch @change="binddata('delState', $event.detail.value)" :checked="formData.delState"></switch>
-      </uni-forms-item>
-      <uni-forms-item name="view_count" label="阅读数量">
-        <uni-easyinput placeholder="阅读数量" type="number" v-model="formData.view_count"></uni-easyinput>
-      </uni-forms-item>
-      <uni-forms-item name="like_count" label="">
-        <uni-easyinput placeholder="喜欢数、点赞数" type="number" v-model="formData.like_count"></uni-easyinput>
-      </uni-forms-item>
-      <uni-forms-item name="comment_count" label="">
-        <uni-easyinput placeholder="评论数量" type="number" v-model="formData.comment_count"></uni-easyinput>
-      </uni-forms-item>
-      <uni-forms-item name="last_comment_user_id" label="">
-        <uni-easyinput placeholder="最后回复用户 id，参考`uni-id-users` 表" v-model="formData.last_comment_user_id"></uni-easyinput>
-      </uni-forms-item>
-      <uni-forms-item name="picurls" label="封面大图">
-        <uni-data-checkbox :multiple="true" v-model="formData.picurls"></uni-data-checkbox>
-      </uni-forms-item>
-      <uni-forms-item name="publish_date" label="发表时间">
-        <uni-datetime-picker return-type="timestamp" v-model="formData.publish_date"></uni-datetime-picker>
-      </uni-forms-item>
-      <uni-forms-item name="publish_ip" label="发布文章时IP地址">
-        <uni-easyinput placeholder="发表时 IP 地址" v-model="formData.publish_ip"></uni-easyinput>
-      </uni-forms-item>
-      <uni-forms-item name="last_modify_date" label="最后修改时间">
-        <uni-datetime-picker return-type="timestamp" v-model="formData.last_modify_date"></uni-datetime-picker>
-      </uni-forms-item>
-      <uni-forms-item name="last_modify_ip" label="">
-        <uni-easyinput placeholder="最后修改时 IP 地址" v-model="formData.last_modify_ip"></uni-easyinput>
-      </uni-forms-item>
+      
       <view class="uni-button-group">
         <button type="primary" class="uni-button" @click="submit">提交</button>
       </view>
@@ -64,10 +29,10 @@
 
 <script>
   import { validator } from '../../js_sdk/validator/quanzi_article.js';
-
+import E from 'wangeditor'
   const db = uniCloud.database();
   const dbCollectionName = 'quanzi_article';
-
+let editor = null;
   function getValidator(fields) {
     let result = {}
     for (let key in validator) {
@@ -90,8 +55,8 @@
         "content": "",
         "excerpt": "",
         "article_status": 0,
-        "state": null,
         "delState": null,
+        "state": null,
         "view_count": null,
         "like_count": null,
         "comment_count": null,
@@ -130,13 +95,38 @@
     },
     onReady() {
       this.$refs.form.setRules(this.rules)
-    },
-    methods: {
+    this.onWangEdit()},
+       methods: {
+   	  //初始化wangedit
+   	  onWangEdit(){
+   		  editor = new E('#div1');
+   		  editor.config.zIndex = 0
+		  editor.config.height = 500
+   		  editor.config.onblur = (newHtml) => {		    
+   			  this.formData.content = newHtml
+   		  }
+   		  
+   		  editor.config.customUploadImg = function (resultFiles, insertImgFn) {		      
+   			  resultFiles.forEach(item=>{				  
+   				  let path = URL.createObjectURL(item);
+   				  let name = item.name;
+   				  uniCloud.uploadFile({
+   				  	filePath:path,
+   					cloudPath:name
+   				  }).then(res=>{					  
+   					  insertImgFn(res.fileID)
+   				  })
+   			  })
+   		  }
+   		  
+   		  editor.create()
+   	  },
       
       /**
        * 验证表单并提交
        */
       submit() {
+		  
         uni.showLoading({
           mask: true
         })
@@ -152,10 +142,11 @@
        * 提交表单
        */
       submitForm(value) {
+		 value.content = editor.txt.html();
+		  //   console.log('1')
         // 使用 clientDB 提交数据
         return db.collection(dbCollectionName).doc(this.formDataId).update(value).then((res) => {
           uni.showToast({
-            icon: 'none',
             title: '修改成功'
           })
           this.getOpenerEventChannel().emit('refreshData')
@@ -176,7 +167,7 @@
         uni.showLoading({
           mask: true
         })
-        db.collection(dbCollectionName).doc(id).field("user_id,title,description,province,content,excerpt,article_status,state,delState,view_count,like_count,comment_count,last_comment_user_id,picurls,publish_date,publish_ip,last_modify_date,last_modify_ip").get().then((res) => {
+        db.collection(dbCollectionName).doc(id).field("user_id,title,description,province,content,excerpt,article_status,delState,state,view_count,like_count,comment_count,last_comment_user_id,picurls,publish_date,publish_ip,last_modify_date,last_modify_ip").get().then((res) => {
           const data = res.result.data[0]
           if (data) {
             this.formData = data
@@ -196,6 +187,18 @@
 </script>
 
 <style>
+	/deep/.title{
+		input{
+			height: 120rpx;
+			font-size: 46rpx;
+			border-bottom:1px solid #e4e4e4;
+			margin-bottom:30rpx;
+			color:#000;
+			font-weight:400;
+		}
+		.placeholderClass{
+			color:#e0e0e0;
+		}}
   .uni-container {
     padding: 15px;
   }

@@ -75,6 +75,7 @@
       }
     },
     onLoad(e) {
+		console.log(e)
       this._id = e.id
     },
     onReady() {

@@ -159,9 +159,19 @@
                 if(type == 'del')
 				{
 					this.delFun();
+				} 
+				if(type == 'edit')
+				{
+					this.editFun();
 				}
 			},
-			//
+			//修改
+			editFun(){
+				uni.navigateTo({
+				  url: '/pages/quanzi_article/edit?id=' + this.item._id})
+			},
+			
+			//删除
 			delFun() {
 				uni.showLoading({
 					title: "加载中..."
