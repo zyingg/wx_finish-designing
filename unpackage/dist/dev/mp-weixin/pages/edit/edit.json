@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "发布长文",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "u-parse": "/uni_modules/uview-ui_2.0.34/components/u-parse/u-parse",
+    "u-button": "/uni_modules/uview-ui_2.0.34/components/u-button/u-button"
+  }
+}

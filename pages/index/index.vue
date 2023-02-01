@@ -221,29 +221,8 @@
 		</view>
 		
 		
-		<!-- 
-		<view class="grid">
-			<uni-section>
-				<uni-grid :column="5" :show-border="false" :square="false" :highlight="false" @change="change">
-					<uni-grid-item v-for="(item, index) in Glist" :index="index" :key="index">
-						<view class="grid-item-box">
-							<image :src="item.img" class="image" mode="aspectFill" />
-							<text class="text">{{ item.title }}</text>
-						</view>
-					</uni-grid-item>
-				</uni-grid>
-			</uni-section>
-
-		</view> -->
-
-		<!-- 	<view class="Grid">
-				<view class="Grid-Item"  v-for="item in List" :key="item.id">
-					<view class="GSimg"><image class="Image" :src="item.img"></image></view>
-				    <view class="GStitle">{{ item.title }}</view>
-				</view>
-			</view>
-			
-		 -->
+	 
+			 <view class="wrap"><tn-notice-bar :list="list" mode="vertical" :speed="140" backgroundColor="#fffee6" fontColor="#000000"></tn-notice-bar></view>
 			 <view class="tn-flex tn-flex-row-between">
 			   <view class="justify-content-item tn-margin tn-text-bold tn-text-xxl">
 			   校园动态
@@ -285,7 +264,7 @@
 			<uni-load-more :status="uniLoad"></uni-load-more>
 		</view>
 
-		<view v-if="uniIDHasRole('webadmin') || uniIDHasRole('admin')" class="edit" @click="goEdit">
+		<view v-if="uniIDHasRole('webadmin') || uniIDHasRole('admin')" class="add" @click="goAdd">
 			<text class="iconfont icon-a-21-xiugai"></text>
 		</view>
 	</view>
@@ -308,6 +287,13 @@
 		data() {
 
 			return {
+				Swiperlists:[],
+				list: [
+									'关于组织申报2023年度青年科技人才培育计划的通知',
+									'关于2023年度国家自然科学基金项目申请与结题等有关事项的通知',
+									'关于2023年寒假餐厅供餐调整的通知',
+									'停水通知'
+								],
 				current: 0,
 				 isAndroid: true,
 				 col: 3,
@@ -418,6 +404,7 @@
 			}
 		},
 		onLoad() {
+			this.getSwiper();
 			this.getData();
 		},
 		//触底加载更多
@@ -476,7 +463,7 @@
 				};
 				if (id == 5) {
 					uni.navigateTo({
-						url: "/pages/quanzi_article/list"
+						url: "/pages/question/question"
 					})
 				};
 				if (id == 6) {
@@ -568,6 +555,38 @@
 			// 			this.loadState = false
 			// 		})
 			// },
+			
+			async getSwiper() {
+				let res = await uniCloud.database().collection("opendb-banner").where({
+					 
+					status: true
+				}).get();
+				 
+				let data = res.result.data;
+				 // console.log(data)
+				let list = [];
+				data.forEach((item, index) => {
+					list.push({
+						image: item.bannerfile.url,
+						 
+						 title: item.title
+					})
+				})
+				this.Swiperlists = list
+				console.log(1)
+				console.log(this.Swiperlists)
+				this.getData();
+				console.log(2)
+				 },
+			
+			
+			
+			
+			
+			
+			
+			
+			
 			//获取网络列表
 			async getData() {
 				// type=this.current;
@@ -624,9 +643,9 @@
 			},
 
 			//跳转至编辑页面
-			goEdit() {
+			goAdd() {
 				uni.navigateTo({
-					url: "/pages/index/edit"
+					url: "/pages/schoolnews/add"
 				})
 			}
 
@@ -635,6 +654,10 @@
 </script>
 
 <style lang="scss" scoped>
+	.wrap {
+		 margin-top: 20px;
+		// ......
+	}
 	// .swiperbox{
 	// 	.swiper {
 	// 	    height: 120rpx;
@@ -918,6 +941,15 @@
 		// 			}
 		// 		}
 		// 	}
+.u-notice-bar {
+	width: 100%;
+	 
+	align-items: center;
+	justify-content: center;
+	flex-wrap: nowrap;
+	padding: 18rpx 24rpx;
+	overflow: hidden;
+}
 
 		.topnav {
 			margin-top: 10rpx;
@@ -937,7 +969,7 @@
 			}
 		}
 
-		.edit {
+		.add {
 			width: 120rpx;
 			height: 120rpx;
 			background: #0199FE;

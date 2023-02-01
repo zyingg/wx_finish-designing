@@ -1,240 +1,157 @@
 <template>
-	<view class="edit">
-		<view class="title">
-			<input type="text" v-model="artObj.title" placeholder="请输入完整的标题" placeholder-class="placeholderClass">
-		</view>
-		<view class="content">
-			<editor			
-			class="myEdit"
-			placeholder="写点什么吧~~"
-			show-img-size
-			show-img-toolbar
-			show-img-resize
-			@ready="onEditReady"
-			@focus="onFocus"
-			@statuschange="onStatuschange"
-			></editor>
-		</view>
-		<view class="btnGroup">
-			<u-button @click="onSubmit" type="primary" text="确认发表" :disabled="!artObj.title.length"></u-button>
-		</view>
-		<view class="tools"v-if="toolShow">
-			<view class="item" @click="clickHead">
-				<text class="iconfont icon-zitibiaoti" :class="headShow ? 'active' : ''"></text> 
-			</view>
-			<view class="item" @click="clickBold">
-				<text class="iconfont icon-zitijiacu" :class="boldShow ? 'active': ''"></text> 
-			</view>
-			<view class="item" @click="clickItalic">
-				<text class="iconfont icon-zitixieti" :class="italicShow ? 'active' : ''"></text> 
-			</view>
-			<view class="item" @click="clickDivider"><text class="iconfont icon-fengexian"></text> </view>
-			<view class="item" @click="clickInsertImage"><text class="iconfont icon-charutupian"></text> </view>
-			<view class="item" @click="editOk"><text class="iconfont icon-duigou_kuai"></text> </view>
-		</view>
-	</view>
+  <view class="uni-container">
+    <uni-forms ref="form" :model="formData" validate-trigger="submit" err-show-type="toast">
+      <uni-forms-item name="category_id" label="需求类别">
+        <uni-data-picker v-model="formData.category_id" collection="lost-categories" field="_id as value, name as text"></uni-data-picker>
+      </uni-forms-item>
+      <uni-forms-item name="name" label="需求" required>
+        <uni-easyinput placeholder="简单标题" v-model="formData.name" trim="both"></uni-easyinput>
+      </uni-forms-item>
+      <uni-forms-item name="keywords" label="关键字">
+        <uni-easyinput placeholder="关键字，为搜索引擎收录使用" v-model="formData.keywords" trim="both"></uni-easyinput>
+      </uni-forms-item>
+      <uni-forms-item name="lost_desc" label="详细描述">
+        <uni-easyinput type="textarea" autoHeight placeholder="详细描述" v-model="formData.lost_desc" trim="right"></uni-easyinput>
+      </uni-forms-item>
+      <uni-forms-item name="lost_place" label="拾/失物地址">
+        <uni-easyinput placeholder="拾/失物地址" v-model="formData.lost_place" trim="both"></uni-easyinput>
+      </uni-forms-item>
+      <uni-forms-item name="contact" label="联系方式">
+        <uni-easyinput placeholder="联系方式" v-model="formData.contact" trim="both"></uni-easyinput>
+      </uni-forms-item>
+      <uni-forms-item name="lost_thumb" label="商品封面图">
+        <uni-file-picker return-type="object"  v-model="formData.lost_thumb"></uni-file-picker>
+      </uni-forms-item>
+      <!-- <uni-forms-item name="add_date" label=""> return-type="object" 
+        <uni-datetime-picker return-type="timestamp" v-model="formData.add_date"></uni-datetime-picker>
+      </uni-forms-item>
+      <uni-forms-item name="last_modify_date" label="">
+        <uni-datetime-picker return-type="timestamp" v-model="formData.last_modify_date"></uni-datetime-picker>
+      </uni-forms-item> -->
+      <view class="uni-button-group">
+        <button type="primary" class="uni-button" @click="submit">提交</button>
+      </view>
+    </uni-forms>
+  </view>
 </template>
 
 <script>
-	import {getImgSrc,getProvince} from "@/utils/tools.js"	
-	const db=uniCloud.database()
-	export default {		
-		data() {
-			return {
-				
-				toolShow:false,
-				headShow:false,
-				boldShow:false,
-				italicShow:false,
-				artObj:{
-					state:8,//校园动态类型文章
-					title:"",
-					content:"",
-					description:"",
-					picurls:"",
-					province:""
-				}
-			};
-		},		
-		
-		onLoad(){
-			getProvince().then(res=>{				
-				this.artObj.province=res
-			})
-		},
-		
-		methods:{
-			//点击提交按钮
-			onSubmit(){
-				this.editorCtx.getContents({
-					success:res=>{
-						this.artObj.description=res.text.slice(0,80);
-						this.artObj.content=res.html;
-						this.artObj.picurls=getImgSrc(res.html)
-						uni.showLoading({
-							title:"发布中..."
-						})						
-						this.addData();
-					}
-				})
-			},
-			
-			addData(){
-				db.collection("xiaoyuan_article").add({
-					...this.artObj
-				}).then(res=>{					
-					uni.hideLoading();
-					uni.showToast({
-						title:"发布成功"
-					})
-					setTimeout(()=>{
-						uni.reLaunch({
-							url:"/pages/scholnews/scholnews"
-						})
-					},800)
-				})
-			},
-			
-			
-			
-			//初始化
-			onEditReady(){
-				uni.createSelectorQuery().in(this).select('.myEdit').fields({
-					size:true,
-					context:true
-				},res=>{					
-					this.editorCtx=res.context
-				}).exec()
-			},
-			
-			
-			checkStatus(name, detail, obj) {
-				if (detail.hasOwnProperty(name)) {
-					this[obj] = true;					
-				} else {
-					this[obj] = false;
-				}
-			},
-			
-			
-			// 当样式发生改变的时候
-			onStatuschange(e){
-				let detail=e.detail
-				this.checkStatus("header",detail,"headShow");
-				this.checkStatus("bold",detail,"boldShow");
-				this.checkStatus("italic",detail,"italicShow");				
-			},
-			
-			
-			//添加图像
-			clickInsertImage(){
-				uni.chooseImage({					
-					success:async res=>{
-						
-						uni.showLoading({
-							title:"上传中请稍后",
-							mask:true
-						})
-						for (let item of res.tempFiles) {
-							let suffix = item.path.substring(item.path.lastIndexOf("."));
-							let randomName=Date.now() + "" + String( Math.random() ).substr(3,6)+suffix
-							
-							let res= await uniCloud.uploadFile({
-								filePath:item.path,
-								cloudPath:item.name || randomName
-							})
-							this.editorCtx.insertImage({
-								src:res.fileID
-							})							
-						}
-						uni.hideLoading()
-					}
-				})
-			},
-			
-			
-			//点击工具条的确认
-			editOk(){
-				this.toolShow=	false;
-			},
-			
-			//加粗
-			clickBold(){
-				this.boldShow=!this.boldShow
-				this.editorCtx.format("bold")
-			},
-			
-			//设置倾斜
-			clickItalic(){
-				this.italicShow=!this.italicShow;
-				this.editorCtx.format("italic")
-			},
-			
-			//添加大标题
-			clickHead(){
-				this.headShow=!this.headShow
-				this.editorCtx.format("header",this.headShow ? 'H2':false)
-			},
-			
-			//添加分割线
-			clickDivider(){
-				this.editorCtx.insertDivider();
-			},
-			
-			
-			//离开焦点
-			onFocus(){
-				this.toolShow=true
-			}
-		}
-	}
+  import { validator } from '../../js_sdk/validator/lost.js';
+
+  const db = uniCloud.database();
+  const dbCollectionName = 'lost';
+
+  function getValidator(fields) {
+    let result = {}
+    for (let key in validator) {
+      if (fields.indexOf(key) > -1) {
+        result[key] = validator[key]
+      }
+    }
+    return result
+  }
+
+  
+
+  export default {
+    data() {
+      let formData = {
+        "category_id": "",
+        "name": "",
+        "keywords": "",
+        "lost_desc": "",
+        "lost_place": "",
+        "contact": "",
+        "lost_thumb": null,
+        "add_date": null,
+        "last_modify_date": null
+      }
+      return {
+        formData,
+        formOptions: {},
+        rules: {
+          ...getValidator(Object.keys(formData))
+        }
+      }
+    },
+    onReady() {
+      this.$refs.form.setRules(this.rules)
+    },
+    methods: {
+      
+      /**
+       * 验证表单并提交
+       */
+      submit() {
+        uni.showLoading({
+          mask: true
+        })
+        this.$refs.form.validate().then((res) => {
+          return this.submitForm(res)
+        }).catch(() => {
+        }).finally(() => {
+          uni.hideLoading()
+        })
+      },
+
+      /**
+       * 提交表单
+       */
+      submitForm(value) {
+        // 使用 clientDB 提交数据
+        return db.collection(dbCollectionName).add(value).then((res) => {
+          uni.showToast({
+            icon: 'none',
+            title: '新增成功'
+          })
+          this.getOpenerEventChannel().emit('refreshData')
+          setTimeout(() => uni.navigateBack( "/pages/lost/list" ), 500)
+        }).catch((err) => {
+          uni.showModal({
+            content: err.message || '请求服务失败',
+            showCancel: false
+          })
+        })
+      }
+    }
+  }
 </script>
 
-<style lang="scss">
-/deep/ .ql-blank::before{
-	font-style: normal;
-	color:#e0e0e0;
-}
-	
-.edit{
-	padding:30rpx;
-	.title{
-		input{
-			height: 120rpx;
-			font-size: 46rpx;
-			border-bottom:1px solid #e4e4e4;
-			margin-bottom:30rpx;
-			color:#000;
-		}
-		.placeholderClass{
-			color:#e0e0e0;
-		}
-	}
-	.content{
-		.myEdit{
-			height: calc(100vh - 500rpx);
-			margin-bottom:30rpx;
-		}		
-	}
-	.tools{
-		width: 100%;
-		height: 80rpx;
-		background: #fff;
-		border-top:1rpx solid #f4f4f4;
-		position: fixed;
-		left:0;
-		bottom:0;
-		display: flex;
-		justify-content: space-around;
-		align-items: center;
-		.iconfont{
-			font-size: 36rpx;
-			color:#333;
-			&.active{
-				color:#0199FE
-			}
-		}
-	}
-}
+<style>
+  .uni-container {
+    padding: 15px;
+  }
 
+  .uni-input-border,
+  .uni-textarea-border {
+    width: 100%;
+    font-size: 14px;
+    color: #666;
+    border: 1px #e5e5e5 solid;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+
+  .uni-input-border {
+    padding: 0 10px;
+    height: 35px;
+
+  }
+
+  .uni-textarea-border {
+    padding: 10px;
+    height: 80px;
+  }
+
+  .uni-button-group {
+    margin-top: 50px;
+    /* #ifndef APP-NVUE */
+    display: flex;
+    /* #endif */
+    justify-content: center;
+  }
+
+  .uni-button {
+    width: 184px;
+  }
 </style>

@@ -26,14 +26,15 @@
     <uni-easyinput placeholder="联系方式" v-model="formData.contact" trim="both"></uni-easyinput>
   </uni-forms-item>
   <uni-forms-item name="goods_desc" label="详细描述">
-  		  <div id="div1">
+  		  <!-- <div id="div1">
 			  <div v-html="formData.goods_desc"></div>
-		  </div>
-   <!-- <uni-easyinput placeholder="商品详细描述" v-model="formData.goods_desc" trim="both"></uni-easyinput> -->
+		  </div> -->
+		 
+   <uni-easyinput placeholder="商品详细描述" v-model="formData.goods_desc" trim="both"></uni-easyinput>
   </uni-forms-item>
-   <!--   <uni-forms-item name="checked" label="状态">
+     <uni-forms-item name="checked" label="状态">
         <uni-data-checkbox v-model="formData.checked" :localdata="formOptions.checked_localdata"></uni-data-checkbox>
-      </uni-forms-item> -->
+      </uni-forms-item>
      <!-- <uni-forms-item name="add_date" label="">
         <uni-datetime-picker return-type="timestamp" v-model="formData.add_date"></uni-datetime-picker>
       </uni-forms-item>
@@ -46,16 +47,17 @@
       <view class="uni-button-group">
         <button type="primary" class="uni-button" @click="submit">提交</button>
       </view>
+	   
     </uni-forms>
   </view>
 </template>
 
 <script>
   import { validator } from '../../js_sdk/validator/secondgoods.js';
-import E from 'wangeditor'
+ 
   const db = uniCloud.database();
   const dbCollectionName = 'secondgoods';
-let editor = null;
+ 
   function getValidator(fields) {
     let result = {}
     for (let key in validator) {
@@ -81,12 +83,13 @@ let editor = null;
         "picurl": null,
         "remain_count": null,
         "contact": "",
-        // "checked": true,
+        "checked": true,
         "add_date": null,
         "last_modify_date": null,
         "seller_note": ""
       }
       return {
+		  
         formData,
         formOptions: {
           "checked_localdata": [
@@ -114,33 +117,10 @@ let editor = null;
     },
     onReady() {
       this.$refs.form.setRules(this.rules)
-    this.onWangEdit()},
+   
+	},
        methods: {
-      //初始化wangedit
-      onWangEdit(){
-    	  editor = new E('#div1');
-    	  editor.config.zIndex = 0
-    	  editor.config.onchange = (newHtml) => {		    
-    		  this.formData.goods_desc = newHtml
-			   
-    	  }
-    	  
-    	  editor.config.customUploadImg = function (resultFiles, insertImgFn) {		      
-    		  resultFiles.forEach(item=>{				  
-    			  let path = URL.createObjectURL(item);
-    			  let name = item.name;
-    			  uniCloud.uploadFile({
-    			  	filePath:path,
-    				cloudPath:name
-    			  }).then(res=>{					  
-    				  insertImgFn(res.fileID)
-    			  })
-    		  })
-    	  }
-    	 
-    	  editor.create()
-      },
-      
+ 
       
       /**
        * 验证表单并提交

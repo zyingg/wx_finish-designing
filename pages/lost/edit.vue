@@ -1,9 +1,9 @@
 <template>
   <view class="uni-container">
     <uni-forms ref="form" :model="formData" validate-trigger="submit" err-show-type="toast">
-      <uni-forms-item name="category_id" label="">
-        <uni-easyinput placeholder="需求分类 id，参考`opendb-mall-categories`表" v-model="formData.category_id"></uni-easyinput>
-      </uni-forms-item>
+    <uni-forms-item name="category_id" label="需求类别">
+      <uni-data-picker v-model="formData.category_id" collection="lost-categories" field="_id as value, name as text"></uni-data-picker>
+    </uni-forms-item>
       <uni-forms-item name="name" label="需求" required>
         <uni-easyinput placeholder="简单标题" v-model="formData.name" trim="both"></uni-easyinput>
       </uni-forms-item>
@@ -22,12 +22,7 @@
       <uni-forms-item name="lost_thumb" label="商品封面图">
         <uni-file-picker return-type="object" v-model="formData.lost_thumb"></uni-file-picker>
       </uni-forms-item>
-      <uni-forms-item name="add_date" label="">
-        <uni-datetime-picker return-type="timestamp" v-model="formData.add_date"></uni-datetime-picker>
-      </uni-forms-item>
-      <uni-forms-item name="last_modify_date" label="">
-        <uni-datetime-picker return-type="timestamp" v-model="formData.last_modify_date"></uni-datetime-picker>
-      </uni-forms-item>
+      
       <view class="uni-button-group">
         <button type="primary" class="uni-button" @click="submit">提交</button>
       </view>

@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "跑腿列表",
+  "usingComponents": {
+    "uni-list": "/uni_modules/uni-list/components/uni-list/uni-list",
+    "uni-list-item": "/uni_modules/uni-list/components/uni-list-item/uni-list-item",
+    "u-loading-page": "/uni_modules/uview-ui_2.0.34/components/u-loading-page/u-loading-page",
+    "uni-fab": "/uni_modules/uni-fab/components/uni-fab/uni-fab"
+  }
+}

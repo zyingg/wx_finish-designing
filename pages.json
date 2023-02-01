@@ -10,7 +10,7 @@
 			}
 		},
 		{
-			"path": "pages/edit/edit",
+			"path": "pages/add/add",
 			"style": {
 				"navigationBarTitleText": "发布长文",
 				"enablePullDownRefresh": false
@@ -218,24 +218,24 @@
 			}
 		
 		}
-	    ,{
-            "path" : "pages/secondhand/secondhand",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "二手闲置",
-                "enablePullDownRefresh": false
-            }
+	 //    ,{
+  //           "path" : "pages/secondhand/secondhand",
+  //           "style" :                                                                                    
+  //           {
+  //               "navigationBarTitleText": "二手闲置",
+  //               "enablePullDownRefresh": false
+  //           }
             
-        },
+  //       },
 		
-		 {
-			"path": "pages/secondhand/edit",
-			"style": {
-				"navigationBarTitleText": "发布二手闲置",
-				"enablePullDownRefresh": false
-			}
+		//  {
+		// 	"path": "pages/secondhand/edit",
+		// 	"style": {
+		// 		"navigationBarTitleText": "发布二手闲置",
+		// 		"enablePullDownRefresh": false
+		// 	}
 		
-		}
+		// }
     ,{
     "path": "pages/secondgoods/add",
     "style": {
@@ -292,6 +292,7 @@
 ,{
     "path": "pages/runtake/list",
     "style": {
+		// "enablePullDownRefresh": true,
         "navigationBarTitleText": "跑腿列表"
     }
 }
@@ -364,7 +365,47 @@
         "navigationBarTitleText": "详情"
     }
 }
-],
+,{
+    "path": "pages/quanzi_comment/add",
+    "style": {
+        "navigationBarTitleText": "新增"
+    }
+}
+,{
+    "path": "pages/quanzi_comment/edit",
+    "style": {
+        "navigationBarTitleText": "编辑"
+    }
+}
+,{
+    "path": "pages/quanzi_comment/list",
+    "style": {
+        "navigationBarTitleText": "列表"
+    }
+}
+,{
+    "path": "pages/quanzi_comment/detail",
+    "style": {
+        "navigationBarTitleText": "详情"
+    }
+}
+,{
+    "path": "pages/question/add",
+    "style": {
+        "navigationBarTitleText": "新增你问我答"
+    }
+}
+    ,{
+            "path" : "pages/question/question",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "你问我答"
+                // "enablePullDownRefresh": false
+            }
+   
+        }
+		
+    ],
 	"tabBar": {
 		"color": "#888",
 		"selectedColor": "",

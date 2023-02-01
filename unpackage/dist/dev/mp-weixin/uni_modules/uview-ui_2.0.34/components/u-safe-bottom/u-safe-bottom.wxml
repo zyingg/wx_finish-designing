@@ -1,0 +1,1 @@
+<view class="{{['u-safe-bottom','data-v-5e5ad9bf',!isNvue&&'u-safe-area-inset-bottom']}}" style="{{$root.s0}}"></view>

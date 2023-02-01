@@ -12,10 +12,9 @@
 			<!-- 页面分类标题 -->
 			<uni-section style="margin:0;" :title="listTitle" type="line"><button class="button-box"
 					@click="select">切换视图</button></uni-section>
-			<unicloud-db ref="udb" v-slot:default="{data, pagination, error, options}" :options="options" page-data="replace"
-				:collection="collectionList":where="where" @load="load" 
-				 :getcount="true"
-				 :page-size="options.pageSize" :page-current="options.pageCurrent">
+			<unicloud-db ref="udb" v-slot:default="{data, pagination, error, options}" :options="options"
+				page-data="replace" :collection="collectionList" :where="where" @load="load" :getcount="true"
+				:page-size="options.pageSize" :page-current="options.pageCurrent">
 				<!-- field="category_id,goods_sn,good_name,keywords,price,goods_desc,picurl,remain_count,contact,checked,add_date,last_modify_date,seller_note"
 				:where="where" @load="load"> -->
 				<text v-if="error" class="list-info">{{error.message}}</text>
@@ -23,12 +22,15 @@
 				<uni-list :class="{ 'uni-list--waterfall': options.formData.waterfall }">
 					<!-- 通过 uni-list--waterfall 类决定页面布局方向 -->
 					<!-- to 属性携带参数跳转详情页面，当前只为参考 -->
-					<uni-list-item :border="!options.formData.waterfall" class="uni-list-item--waterfall" title="自定义商品列表"
-						v-for="item in data" :key="item._id" :to="'/pages/secondgoods/detail?id='+item._id+'&title='+item.name">
+					<uni-list-item :border="!options.formData.waterfall" class="uni-list-item--waterfall"
+						title="自定义商品列表" v-for="item in data" :key="item._id"
+						:to="'/pages/secondgoods/detail?id='+item._id+'&title='+item.name">
 						<!-- 通过header插槽定义列表左侧图片 -->
 						<template #header>
-							<view class="uni-thumb shop-picture" :class="{ 'shop-picture-column': options.formData.waterfall }">
+							<view class="uni-thumb shop-picture"
+								:class="{ 'shop-picture-column': options.formData.waterfall }">
 								<image :src="item.picurl.url" mode="aspectFill"></image>
+							
 							</view>
 						</template>
 						<!-- 通过body插槽定义商品布局 -->
@@ -46,8 +48,8 @@
 								<view>
 									<view class="shop-price">
 										<text>¥</text>
-										<text class="shop-price-text">{{  item.price }}</text>
-										 
+										<text class="shop-price-text">{{ item.price }}</text>
+
 									</view>
 									<!-- <view class="uni-note">{{ item.comment_count }}条评论 月销量 {{ item.month_sell_count }}
 									</view>
@@ -61,9 +63,13 @@
 					</uni-list-item>
 				</uni-list>
 				<!-- 通过 loadMore 组件实现上拉加载效果，如需自定义显示内容，可参考：https://ext.dcloud.net.cn/plugin?id=29 -->
-			<!-- 	<uni-load-more v-if="!error && (loading || options.status === 'noMore') " :status="options.status" /> -->
+				<!-- 	<uni-load-more v-if="!error && (loading || options.status === 'noMore') " :status="options.status" /> -->
 				<view class="uni-pagination-box">
-				  <uni-pagination show-icon :page-size="pagination.size" v-model="pagination.current" :total="pagination.count" @change="onPageChanged" />
+					<uni-pagination show-icon :page-size="pagination.size" v-model="pagination.current"
+						:total="pagination.count" @change="onPageChanged" />
+				</view>
+				<view>
+					<uni-fab ref="fab" horizontal="right" vertical="bottom" :pop-menu="false" @fabClick="fabClick" />
 				</view>
 			</unicloud-db>
 		</view>
@@ -74,31 +80,34 @@
 	import uniSection from '@/components/uni-section/uni-section.vue';
 	const db = uniCloud.database()
 	// 分页配置
-	const pageSize = 2
+	const pageSize = 6
 	const pageCurrent = 1
-	
-	 
-		components: {uniSection};
+
+
+	components: {
+		uniSection
+	};
 	export default {
 		data() {
 			return {
 				collectionList: [
-					db.collection('secondgoods')
+					db.collection('secondgoods').where('checked == true')
 					.field(
 						'category_id,goods_sn,name,keywords,price,goods_desc,picurl,remain_count,contact,checked,add_date,last_modify_date,seller_note'
-						)
+					)
 					.getTemp(),
 					db.collection('secondgoods-categories').field('_id, classname as text').getTemp()
 				],
 				searchText: '',
 				selectedIndexs: [],
 				options: {
-				  pageSize,
-				  pageCurrent,
-				formData: {
-					waterfall: false, // 布局方向切换
-					// status: 'loading', // 加载状态
-				}},
+					pageSize,
+					pageCurrent,
+					formData: {
+						waterfall: false, // 布局方向切换
+						// status: 'loading', // 加载状态
+					}
+				},
 				where: '',
 				tipShow: false // 是否显示顶部提示框
 			};
@@ -107,12 +116,28 @@
 			this.searchText = getApp().globalData.searchText;
 		},
 		methods: {
+			fabClick() {
+				console.log(1)
+				uni.navigateTo({
+					url: "/pages/secondgoods/add",
+					events: {
+						// 监听新增数据成功后, 刷新当前页面数据
+						refreshData: () => {
+							this.$refs.udb.loadData({
+								clear: true
+							})
+						}
+					}
+				})
+
+
+			},
 			onPageChanged(e) {
-			  // this.selectedIndexs.length = 0
-			  // this.$refs.table.clearSelection()
-			  this.$refs.udb.loadData({
-			    current: e.current
-			  })
+				// this.selectedIndexs.length = 0
+				// this.$refs.table.clearSelection()
+				this.$refs.udb.loadData({
+			 	current: e.current
+			 })
 			},
 			/**
 			 * 切换商品列表布局方向
@@ -139,7 +164,8 @@
 			onReachBottom() {
 				this.$refs.udb.loadMore()
 			},
-			load(data, ended) {
+			load() {
+// load(data, ended) {
 				// if (ended) {
 				// 	this.formData.status = 'noMore'
 				// }
@@ -221,12 +247,13 @@
 
 	.shop-price {
 		margin-top: 5px;
-		font-size: 12px;
-		color: #ff5a5f;
+		font-size: 13px;
+		color: #ff3c3f;
 	}
 
 	.shop-price-text {
 		font-size: 16px;
+		margin-left: 3px;
 	}
 
 	.hot-tag {

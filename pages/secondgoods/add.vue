@@ -27,8 +27,8 @@
         <uni-easyinput placeholder="联系方式" v-model="formData.contact" trim="both"></uni-easyinput>
       </uni-forms-item>
 	  <uni-forms-item name="goods_desc" label="详细描述">
-		  <div id="div1"></div>
-	   <!-- <uni-easyinput placeholder="商品详细描述" v-model="formData.goods_desc" trim="both"></uni-easyinput> -->
+		 <!-- <div id="div1"></div> -->
+	   <uni-easyinput type="textarea" autoHeight placeholder="商品详细描述" v-model="formData.goods_desc" trim="both"></uni-easyinput>
 	  </uni-forms-item>
     <!--  <uni-forms-item name="checked" label="状态">
         <uni-data-checkbox v-model="formData.checked" :localdata="formOptions.checked_localdata"></uni-data-checkbox>
@@ -51,7 +51,7 @@
 
 <script>
   import { validator } from '../../js_sdk/validator/secondgoods.js';
-import E from 'wangeditor'
+
   const db = uniCloud.database();
   const dbCollectionName = 'secondgoods';
 let editor = null;
@@ -105,35 +105,10 @@ let editor = null;
     },
     onReady() {
       this.$refs.form.setRules(this.rules)
-    this.onWangEdit()
+    // this.onWangEdit()
     },
     methods: {
-    	//初始化wangedit
-    	onWangEdit() {
-    		const editor = new E('#div1');
-    		editor.config.zIndex = 0
-    		editor.config.onblur = (newHtml) => {
-    			console.log(newHtml) // 获取最新的 html 内容
-    			this.formData.goods_desc = newHtml
-    		}
-    		editor.config.customUploadImg = function(resultFiles, insertImgFn) {
-    		
-				resultFiles.forEach(item => {
-    				let path = URL.createObjectURL(item);
-    				let name = item.name;
-					console.log(item);
-					console.log(name);
-    				uniCloud.uploadFile({
-    					filePath: path,
-    					cloudPath: name
-    				}).then(res => {
-    					insertImgFn(res.fileID)
-    				})
-    			})
-    		}
-    
-    		editor.create()
-    	},
+    	 
     
       
       /**

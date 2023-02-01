@@ -9,5 +9,5 @@
 // 详细JQL语法，请参考：https://uniapp.dcloud.net.cn/uniCloud/jql.html
 
 // 下面示例查询uni-id-users表的所有数据
-const a =db.collection('runtake-categories').field('name,sort').get();
+const a =db.collection('uni-id-users').where('_id==$cloudEnv_uid').get()
 a

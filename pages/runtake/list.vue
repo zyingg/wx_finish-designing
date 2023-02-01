@@ -44,7 +44,8 @@
 			<image src="../../static/icon/nodata.png" mode="widthFix"></image>
 
 		</view>
-
+<u-back-top :scroll-top="scrollTop" icon="arrow-up" right="300" :iconStyle="iconStyle"></u-back-top>
+	
 		<view class="loading" v-if="newsArr.length">
 			<view v-if="loading==1">
 				数据加载中...
@@ -68,11 +69,16 @@
 				navArr: [],
 				newsArr: [],
 				currentPage: 1,
-				loading: 0 //0默认  1加载中  2没有更多了
+				loading: 0 ,//0默认  1加载中  2没有更多了
+				scrollTop: 0,
+				iconStyle: {
+					fontSize: '32rpx',
+					color: '#000000'
+				}
 			}
 		},
 		onLoad() {
-			uni.startPullDownRefresh()
+			// uni.startPullDownRefresh()
 			this.getNavData();
 			this.getFirstData();
 			this.getNewsData();
@@ -89,15 +95,14 @@
 		},
 
 		methods: {
+			onPageScroll(e) {
+					this.scrollTop = e.scrollTop;
+				},
 			//跳转至新增页面
 			goAdd() {
 				uni.navigateTo({
 					url: "/pages/runtake/add",
-					success: () => {
-						setTimeout(() => {
-							uni.navigateBack("/pages/runtake/list");
-						}, 2000)
-					}
+					
 				})
 			},
 			//点击导航切换
@@ -134,11 +139,12 @@
 					.get();
 				this.newsArr = res.result.data;
 				console.log(res)
-				if (res.result.data.length == 0) {
-					this.loading = 2
+				// if (res.result.data.length == 0) {
+				// 	this.loading = 2
 
-					this.newsArr = [...this.newsArr, ...res.result.data]
-				}
+				// 	this.newsArr = [...this.newsArr, ...res.result.data]
+				// }
+				this.loading = 2
 
 			},
 			//获取导航列表数据
@@ -176,11 +182,12 @@
 					.get();
 				this.newsArr = res.result.data;
 				console.log(res)
-				if (res.result.data.length == 0) {
-					this.loading = 2
+				this.loading = 2
+				// if (res.result.data.length == 0) {
+				// 	this.loading = 2
 
-					this.newsArr = [...this.newsArr, ...res.result.data]
-				}
+				// 	this.newsArr = [...this.newsArr, ...res.result.data]
+				// }
 				// let id = this.navArr[index]._id
 				// let res = await uniCloud.database().collection('runtake').where({
 				// 	category_id: id

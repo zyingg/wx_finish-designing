@@ -30,7 +30,7 @@
 									</view>
 									<view>
 										<view class="shop-price">
-											 <view class="uni-card__content">{{ $u.timeFormat(item.add_date)}} </view >
+											 <view class="uni-card__content">{{ $u.timeFormat(item.add_date)}} 发布</view >
 										</view>
 									</view>
 								</view>
@@ -172,21 +172,8 @@
 
 <style lang="scss" scoped>
 	// 默认加入 scoped ，所以外面加一层提升权重
-	 
-	// /deep/ 
-	// .uni-card{
-	// 	.uni-card__header{padding: 5px;}
-	// 	 // .uni-card__cover{height: 100px;
-	// 		//  .uni-card__cover-image{
-	// 		// 	 height: 100%;
-	// 		//  }
-	// 		//  .uni-image{ height: 100%;}
-	// 	 // }
-	// 	.uni-card--border{
-	// 	margin:0;	
-	// 	}
-	// }
-		
+
+		@import '@/common/uni-ui.scss';
 	 
 	.wrap {
 		padding: 40rpx;
@@ -203,54 +190,14 @@
 		padding: 20rpx 10rpx;
 	}
 
-	// .u-body-item image {
-	// 	width: 120rpx;
-	// 	flex: 0 0 120rpx;
-	// 	height: 120rpx;
-	// 	border-radius: 8rpx;
-	// 	margin-left: 12rpx;
-	// }
-
-	// .swiper-item {
-	// 	height: 100%;
-	// }
+	 
 	.swiper-box {
 		flex: 1;
 		height: 60vh;
 	}
-	.shop {
-		flex: 1;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-	}
+	 
 	
-	.shop-picture {
-		width: 110px;
-		height: 110px;
-	}
-	
-	.shop-picture-column {
-		width: 100%;
-		height: 170px;
-		margin-bottom: 10px;
-	}
-	
-	.shop-price {
-		margin-top: 5px;
-		font-size: 12px;
-		color: #ff5a5f;
-	}
-	
-	.shop-price-text {
-		font-size: 16px;
-	}
-	
-	.hot-tag {
-		background: #ff5a5f;
-		border: none;
-		color: #fff;
-	}
+	 
 	
 	.button-box {
 		height: 30px;
@@ -307,18 +254,14 @@
 	.shop-price {
 		margin-top: 5px;
 		font-size: 12px;
-		color: #ff5a5f;
+		color: #000000;
 	}
 	
 	.shop-price-text {
 		font-size: 16px;
 	}
 	
-	.hot-tag {
-		background: #ff5a5f;
-		border: none;
-		color: #fff;
-	}
+ 
 	
 	.button-box {
 		height: 30px;

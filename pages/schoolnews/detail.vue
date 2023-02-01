@@ -174,6 +174,9 @@
 			
 			selectClick(index){
 						console.log(index);
+						// let uid = uniCloud.getCurrentUserInfo().uid;
+						// console.log(uid);
+						// console.log(this.uniIDHasRole);
 						if(index.name== "修改"){
 							this.handleUpdate();
 						}

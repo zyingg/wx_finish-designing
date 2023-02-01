@@ -35,7 +35,7 @@
 						</view> -->
 
 						<view class="row">
-							<view class="leftxt">分类</view>
+							<view class="leftxt">用品分类</view>
 							<view class="content"><text>{{data.category_id[0].text}}</text></view>
 						</view>
 
@@ -52,9 +52,9 @@
 
 						<view class="row">
 							<view class="leftxt">状态</view>
-							<view class="content"> <text>{{options.checked_valuetotext[data.checked]}}</text> </view>
+							<view class="content"> <text>{{data.checked == true ? '✅' : '❌'}}</text> </view>
 						</view>
-
+<!-- options.checked_valuetotext[data.checked] -->
 						<view class="row">
 							<view class="leftxt">上架时间</view>
 							<view class="content">
@@ -69,27 +69,21 @@
 							</view>
 						</view>
 
-					 <view class="more" @click="show = true">
+					 <view class="more" @click="clickMore">
 					 	<text class="iconfont icon-ellipsis"></text>
 					 </view>
 
 					</view>
-
-
-					<!--  <view>
-			    <text>最后修改时间</text>
-			    <uni-dateformat :threshold="[0, 0]" :date="data.last_modify_date"></uni-dateformat>
-			  </view> -->
-
+					
 					<!-- 详情 -->
 					<view class="description">
 						<view class="title">———— 商品详情 ————</view>
 						<!-- <view class="content"><rich-text :nodes="data.goods_desc"></rich-text></view> -->
-						<div id="div1"><div v-html="data.goods_desc"></div></div>
-						<!-- {{data.goods_desc}} -->
+						 
+						{{data.goods_desc}}
 					</view>
 				</view>
-<u-action-sheet :actions="list" cancelText="取消" :show="show" :closeOnClickOverlay="true"
+<u-action-sheet :actions="selectlist" cancelText="取消" :show="show" :closeOnClickOverlay="true"
 			:closeOnClickAction="true"  @select="selectClick"  @close="onClose"></u-action-sheet>
 
 			</view>
@@ -104,25 +98,26 @@
 
 <script>
 	// 由schema2code生成，包含校验规则和enum静态数据
-	import E from 'wangeditor'
+ 
 	import {
 		enumConverter
 	} from '../../js_sdk/validator/secondgoods.js'
 	const db = uniCloud.database()
-let editor = null;
+ 
 	export default {
 		data() {
 			return {
-				
-					list: [
-								{
-									name: "修改",
-								},
-								{
-									name: "删除",
-								}
-							],
-							show: false,
+				show:false,
+				selectlist: [
+							{
+								name: "修改",
+								disabled: true
+							},
+							{
+								name: "删除",
+								disabled: true
+							}
+						],
 				queryWhere: '',
 				collectionList: [db.collection('secondgoods').field(
 					'category_id,goods_sn,name,keywords,price,goods_desc,picurl,remain_count,contact,checked,add_date,last_modify_date,seller_note'
@@ -142,7 +137,7 @@ let editor = null;
 			this._id = e.id
 			// var objecturl =  window.URL.createObjectURL(),
 			// img.src = window.URL.createObjectURL(file);
-			// console.log(img.src)
+			// console.log(options.checked_valuetotext[data.checked])
 		},
 		onReady() {
 			if (this._id) {
@@ -152,8 +147,24 @@ let editor = null;
 			}
 		},
 		methods: {
+			clickMore() {
+				let uid = uniCloud.getCurrentUserInfo().uid
+				console.log(uid);
+				console.log(this.$refs.udb.dataList);
+				
+				//权限校验，普通用户只能修改删除自己的，管理员可以操作全部
+				if (uid == this.$refs.udb.dataList.user_id || this.uniIDHasRole('admin') || this.uniIDHasRole('webadmin')) {
+					this.selectlist.forEach(item => {
+						item.disabled = false
+			
+					})
+				}
+				this.show = true
+			
+			},
 			selectClick(index){
 						console.log(index);
+						let uid = uniCloud.getCurrentUserInfo().uid;
 						if(index.name== "修改"){
 							this.handleUpdate();
 						}

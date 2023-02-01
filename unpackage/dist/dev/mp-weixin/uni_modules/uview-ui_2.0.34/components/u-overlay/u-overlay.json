@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "u-transition": "/uni_modules/uview-ui_2.0.34/components/u-transition/u-transition"
+  }
+}

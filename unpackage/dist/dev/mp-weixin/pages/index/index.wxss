@@ -1,0 +1,241 @@
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.uni-grid-wrap.data-v-aaae28a6 {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.uni-grid.data-v-aaae28a6 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.uni-grid--border.data-v-aaae28a6 {
+  position: relative;
+  z-index: 1;
+  border-left: 1px #D2D2D2 solid;
+}
+
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.uni-grid-item.data-v-7b4a3849 {
+  height: 100%;
+  display: flex;
+}
+.uni-grid-item__box.data-v-7b4a3849 {
+  display: flex;
+  width: 100%;
+  position: relative;
+  flex: 1;
+  flex-direction: column;
+}
+.uni-grid-item--border.data-v-7b4a3849 {
+  position: relative;
+  z-index: 0;
+  border-bottom: 1px #D2D2D2 solid;
+  border-right: 1px #D2D2D2 solid;
+}
+.uni-grid-item--border-top.data-v-7b4a3849 {
+  position: relative;
+  border-top: 1px #D2D2D2 solid;
+  z-index: 0;
+}
+.uni-highlight.data-v-7b4a3849:active {
+  background-color: #f1f1f1;
+}
+
+@charset "UTF-8";
+/**
+ * 这里是uni-app内置的常用样式变量
+ *
+ * uni-app 官方扩展插件及插件市场（https://ext.dcloud.net.cn）上很多三方插件均使用了这些样式变量
+ * 如果你是插件开发者，建议你使用scss预处理，并在插件代码中直接使用这些变量（无需 import 这个文件），方便用户通过搭积木的方式开发整体风格一致的App
+ *
+ */
+/**
+ * 如果你是App开发者（插件使用者），你可以通过修改这些变量来定制自己的插件主题，实现自定义主题功能
+ *
+ * 如果你的项目同样使用了scss预处理，你也可以直接在你的 scss 代码中使用如下变量，同时无需 import 这个文件
+ */
+/* 颜色变量 */
+/* 行为相关颜色 */
+/* 文字基本颜色 */
+/* 背景颜色 */
+/* 边框颜色 */
+/* 尺寸变量 */
+/* 文字尺寸 */
+/* 图片尺寸 */
+/* Border Radius */
+/* 水平间距 */
+/* 垂直间距 */
+/* 透明度 */
+/* 文章场景相关 */
+.wrap.data-v-57280228 {
+  margin-top: 20px;
+}
+.scroll.data-v-57280228 {
+  display: block;
+  height: 100px;
+}
+.scroll .scroll-list.data-v-57280228 {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.scroll .scroll-list__goods-item.data-v-57280228 {
+  margin-left: 20px;
+  display: block;
+}
+.scroll .scroll-list__goods-item__image.data-v-57280228 {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+}
+.scroll .scroll-list__goods-item__text.data-v-57280228 {
+  color: #000000;
+  text-align: center;
+  font-size: 12px;
+  margin-top: 5px;
+}
+.scroll .scroll-list__show-more.data-v-57280228 {
+  background-color: #fff0f0;
+  border-radius: 3px;
+  padding: 3px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.scroll .scroll-list__show-more__text.data-v-57280228 {
+  font-size: 12px;
+  width: 12px;
+  color: #000000;
+  line-height: 16px;
+}
+.scroll .indicator.data-v-57280228 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.scroll .indicator__dot.data-v-57280228 {
+  height: 6px;
+  width: 6px;
+  border-radius: 100px;
+  background-color: rgba(255, 255, 255, 0.35);
+  margin: 0 5px;
+  transition: background-color 0.3s;
+}
+.scroll .indicator__dot--active.data-v-57280228 {
+  background-color: #e5a414;
+}
+.scroll .indicator-num.data-v-57280228 {
+  padding: 2px 0;
+  background-color: rgba(0, 0, 0, 0.35);
+  border-radius: 100px;
+  width: 35px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.scroll .indicator-num__text.data-v-57280228 {
+  color: #FFFFFF;
+  font-size: 12px;
+}
+.home.data-v-57280228 {
+  /* 轮播视觉差 start */
+  /* 轮播指示点 start*/
+}
+.home .image.data-v-57280228 {
+  width: 25px;
+  height: 25px;
+}
+.home .u-notice-bar.data-v-57280228 {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  padding: 18rpx 24rpx;
+  overflow: hidden;
+}
+.home .topnav.data-v-57280228 {
+  margin-top: 10rpx;
+  margin-bottom: 20rpx;
+  height: 80rpx;
+}
+.home .loadingState.data-v-57280228 {
+  padding: 30rpx;
+}
+.home .content .item.data-v-57280228 {
+  padding: 30rpx;
+  border-bottom: #F7F7F7 15rpx solid;
+}
+.home .edit.data-v-57280228 {
+  width: 120rpx;
+  height: 120rpx;
+  background: #0199FE;
+  border-radius: 50%;
+  color: #fff;
+  position: fixed;
+  z-index: 100;
+  bottom: 150rpx;
+  right: 50rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 20rpx rgba(1, 153, 254, 0.8);
+}
+.home .edit .iconfont.data-v-57280228 {
+  font-size: 50rpx;
+}
+.home .box.active.data-v-57280228 {
+  color: #9199FE;
+}
+

@@ -21,7 +21,7 @@
 
 			<view v-else>
 				<view class="title">{{detailObj.title}}</view>
-					<view class="uci" style="float:right" @click="show = true"><u-icon name="more-circle" color="#c5e791" size="25"></u-icon> </view>
+					<view class="uci" style="float:right" @click="clickMore"><u-icon name="more-circle" color="#c5e791" size="25"></u-icon> </view>
 				<view class="userinfo">
 					<view class="avatar">
 						<!-- 头像 -->
@@ -126,10 +126,10 @@
 				show:false,
 				selectlist: [
 							{
-								name: "修改",
+								name: "修改",disabled: true
 							},
 							{
-								name: "删除",
+								name: "删除",disabled: true
 							}
 						],
 				artid: "",
@@ -169,7 +169,20 @@
 		methods: {
 			giveName,
 			giveAvatar,
+			clickMore() {
+				let uid = uniCloud.getCurrentUserInfo().uid
+				console.log(uid);
+				console.log(this.detailObj);
+				//权限校验，普通用户只能修改删除自己的文章，管理员可以操作全部
+				if (uid == this.detailObj.user_id[0]._id || this.uniIDHasRole('admin') || this.uniIDHasRole('webadmin')) {
+					this.selectlist.forEach(item => {
+						item.disabled = false
 			
+					})
+				}
+				this.show = true
+			
+			},
 			
 			
 			selectClick(index){

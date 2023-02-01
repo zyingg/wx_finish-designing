@@ -1,7 +1,7 @@
 <template>
 	<view class="home">
-	
-			 
+
+
 		<view class="topnav">
 			<u-tabs :list="navlist" :activeStyle="{
 				color: '#333',
@@ -11,9 +11,9 @@
 				color: '#888',
 				transform: 'scale(1)'
 			}" @click="clickNav"></u-tabs>
-			
+
 		</view>
-<!-- <u-tabs :list="listtab" :is-scroll="true" :current="currentTabIndex" @change="change"></u-tabs> 
+		<!-- <u-tabs :list="listtab" :is-scroll="true" :current="currentTabIndex" @change="change"></u-tabs> 
 
 		<view class="loadingState" v-show="loadState">
 			<u-skeleton rows="4" title loading></u-skeleton>
@@ -29,12 +29,12 @@
 					:like_count.sync="item.like_count"></blog-item>
 			</view>
 		</view>
-    <u-back-top :scroll-top="scrollTop" icon="arrow-up" text="返回"></u-back-top>
+		<u-back-top :scroll-top="scrollTop" icon="arrow-up" right="300" :iconStyle="iconStyle"></u-back-top>
 		<view>
 			<uni-load-more :status="uniLoad"></uni-load-more>
 		</view>
 
-		<view v-if="uniIDHasRole('webadmin') || uniIDHasRole('admin')" class="edit" @click="goEdit">
+		<view v-if="uniIDHasRole('webadmin') || uniIDHasRole('admin')" class="add" @click="goAdd">
 			<text class="iconfont icon-a-21-xiugai"></text>
 		</view>
 	</view>
@@ -58,11 +58,11 @@
 
 			return {
 				scrollTop: 0,
-							mode: 'square',
-							iconStyle: {
-								fontSize: '32rpx',
-								color: '#2979ff'
-							},
+
+				iconStyle: {
+					fontSize: '32rpx',
+					color: '#000000'
+				},
 				uniLoad: "more",
 				noMore: false,
 				navlist: [{
@@ -73,7 +73,7 @@
 						name: "热门",
 						type: "view_count"
 					}
-				
+
 				],
 				dataList: [],
 				navAction: 0,
@@ -83,8 +83,8 @@
 			}
 		},
 		onPageScroll(e) {
-				this.scrollTop = e.scrollTop;
-			},
+			this.scrollTop = e.scrollTop;
+		},
 		onLoad() {
 			this.getData();
 		},
@@ -95,26 +95,26 @@
 			this.getData();
 		},
 		created() {
-		  const systemInfo = uni.getSystemInfoSync()
-		  if (systemInfo.system.toLocaleLowerCase().includes('ios')) {
-		    this.isAndroid = false
-		  } else {
-		    this.isAndroid = true
-		  }
+			const systemInfo = uni.getSystemInfoSync()
+			if (systemInfo.system.toLocaleLowerCase().includes('ios')) {
+				this.isAndroid = false
+			} else {
+				this.isAndroid = true
+			}
 		},
 		methods: {
-			
+
 
 			P_delEvent() {
 				this.dataList = []; //清空数据
 				this.getData();
 			},
-		 
+
 			//获取网络列表
 			async getData() {
 				// type=this.current;
 				// .where(`delState != true` && `state== 1`)
-				let artTemp = db.collection("quanzi_article").where(`delState != true`&& `state== 8`).field(
+				let artTemp = db.collection("quanzi_article").where(`delState != true` && `state== 8`).field(
 						"title,user_id,description,picurls,comment_count,like_count,view_count,publish_date,state")
 					.getTemp();
 				console.log(artTemp)
@@ -166,9 +166,9 @@
 			},
 
 			//跳转至编辑页面
-			goEdit() {
+			goAdd() {
 				uni.navigateTo({
-					url: "/pages/index/edit"
+					url: "/pages/schoolnews/add"
 				})
 			}
 
@@ -177,41 +177,41 @@
 </script>
 
 <style lang="scss" scoped>
-	 .topnav {
-	 	margin-top: 10rpx;
-	 	margin-bottom: 20rpx;
-	 	height: 80rpx;
-	 	// background-color: #ffff7f;
-	 }
-	 
-	 .loadingState {
-	 	padding: 30rpx;
-	 }
-	 
-	 .content {
-	 	.item {
-	 		padding: 30rpx;
-	 		border-bottom: #F7F7F7 15rpx solid
-	 	}
-	 }
-	 
-	 .edit {
-	 	width: 120rpx;
-	 	height: 120rpx;
-	 	background: #0199FE;
-	 	border-radius: 50%;
-	 	color: #fff;
-	 	position: fixed;
-	 	z-index: 100;
-	 	bottom: 150rpx;
-	 	right: 50rpx;
-	 	display: flex;
-	 	justify-content: center;
-	 	align-items: center;
-	 	box-shadow: 0 0 20rpx rgba(1, 153, 254, 0.8);
-	 
-	 	.iconfont {
-	 		font-size: 50rpx;
-	 	}
-	 }
+	.topnav {
+		margin-top: 10rpx;
+		margin-bottom: 20rpx;
+		height: 80rpx;
+		// background-color: #ffff7f;
+	}
+
+	.loadingState {
+		padding: 30rpx;
+	}
+
+	.content {
+		.item {
+			padding: 30rpx;
+			border-bottom: #F7F7F7 15rpx solid
+		}
+	}
+
+	.add {
+		width: 120rpx;
+		height: 120rpx;
+		background: #0199FE;
+		border-radius: 50%;
+		color: #fff;
+		position: fixed;
+		z-index: 100;
+		bottom: 150rpx;
+		right: 50rpx;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		box-shadow: 0 0 20rpx rgba(1, 153, 254, 0.8);
+
+		.iconfont {
+			font-size: 50rpx;
+		}
+	}
 </style>

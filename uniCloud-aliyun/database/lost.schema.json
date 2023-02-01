@@ -5,14 +5,25 @@
 	],
 	"permission": {
 		"read": true,
+		"create": true,
+		"update": true, //本人及管理员可修改
+		"delete": true
 		// "read": "doc.user_id == auth.uid && doc.article_status == 0 || doc.article_status == 1",
-		"create": "auth.uid != null",
-		"update": "doc.user_id == auth.uid || 'webadmin'in auth.role", //本人及管理员可修改
-		"delete": "doc.user_id == auth.uid"
+		// "create": "auth.uid != null",
+		// "update": "doc.user_id == auth.uid || 'webadmin'in auth.role", //本人及管理员可修改
+		// "delete": "doc.user_id == auth.uid"
 	},
 	"properties": {
 		"_id": {
 			"description": "存储文档 ID（商品 ID），系统自动生成"
+		},
+		"user_id": {
+			"bsonType": "string",
+			"description": "文章作者ID， 参考`uni-id-users` 表",
+			"foreignKey": "uni-id-users._id",
+			"defaultValue": {
+				"$env": "uid"
+			}
 		},
 		"category_id": {
 			"bsonType": "string",

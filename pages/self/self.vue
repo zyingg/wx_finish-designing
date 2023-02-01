@@ -18,6 +18,7 @@
 						<view class="nickname">{{userInfo.nickname||userInfo.username||userInfo.mobile}}</view>
 						
 						<view class="year">
+							<!-- {{userInfo.register_date}} -->
 						<uni-dateformat :date="userInfo.register_date" :threshold="[3600,99*365*24*60*60*1000]">
 </uni-dateformat>
 							注册</view>
@@ -61,8 +62,12 @@
 						<view class="left"><text class="iconfont icon-a-106-xihuan"></text><text class="text">我的点赞</text></view>
 						<view class="right"><text class="iconfont icon-a-10-you"></text></view>
 					</view>
-					<view class="item">
+					<view class="item" @click="myComment">
 						<view class="left"><text class="iconfont icon-a-21-xiugai"></text><text class="text">评论过的</text></view>
+						<view class="right"><text class="iconfont icon-a-10-you"></text></view>
+					</view>
+					<view class="item" @click="mySecond">
+						<view class="left"><text class="iconfont icon-a-21-xiugai"></text><text class="text">我发布的商品</text></view>
 						<view class="right"><text class="iconfont icon-a-10-you"></text></view>
 					</view>
 				</view>
@@ -108,7 +113,9 @@
 		},
 		onLoad(){
 			this.getTotal();
-			// console.log(store.userInfo)
+			console.log(store.userInfo)
+			// console.log(userInfo.register_date)
+		 
 		},
 		computed:{
 			userInfo() {
@@ -122,18 +129,19 @@
 		methods:{
 			//完成个人中心页面的数据统计
 			async getTotal(){
-				if(!this.hasLogin) return;
-				let artCount=await db.collection("quanzi_article").where(`user_id == $cloudEnv_uid`).count();
-				this.totalObj.artNum=artCount.result.total;
-				
-				let likeCount=await db.collection("quanzi_article").where(`user_id == $cloudEnv_uid`)
-				.groupBy('user_id')
-				.groupField('sum(like_count) as totalScore').get()
-				this.totalObj.likeNum=likeCount.result.data[0].totalScore
-				
-				console.log(this.totalObj);
-				
-			},
+							if(!this.hasLogin) return;
+							let artCount=await db.collection("quanzi_article").where(`user_id == $cloudEnv_uid`).count();
+							console.log(artCount);
+							this.totalObj.artNum=artCount.result.total;
+							
+							let likeCount=await db.collection("quanzi_article").where(`user_id == $cloudEnv_uid`)
+							.groupBy('user_id')
+							.groupField('sum(like_count) as totalScore').get()
+							this.totalObj.likeNum=likeCount.result.data[0].totalScore
+							
+							console.log(this.totalObj);
+							
+						},
 			
 			
 			
@@ -158,6 +166,22 @@
 				if(this.goLoginPage()) return;	
 				uni.navigateTo({
 					url:"/pages/quanzi_article/list"
+				})
+			},
+			
+			
+			//跳转到我的评论
+			myComment(){
+				if(this.goLoginPage()) return;	
+				uni.navigateTo({
+					url:"/pages/quanzi_comment/list"
+				})
+			},
+			
+			mySecond(){
+				if(this.goLoginPage()) return;	
+				uni.navigateTo({
+					url:"/pages/secondgoods/list"
 				})
 			},
 			

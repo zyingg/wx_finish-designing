@@ -1,7 +1,7 @@
 <template>
 	<view class="home">
-		 <view class="topnav">
-		 	<u-tabs :list="navlist" :activeStyle="{
+		<view class="topnav">
+			<u-tabs :list="navlist" :activeStyle="{
 		 		color: '#333',
 		 		fontWeight: 'bold',
 		 		transform: 'scale(1.08)'
@@ -9,10 +9,10 @@
 		 		color: '#888',
 		 		transform: 'scale(1)'
 		 	}" @click="clickNav"></u-tabs>
-		 	
-		 </view>
 
-		 
+		</view>
+
+
 		<view class="loadingState" v-show="loadState">
 			<u-skeleton rows="4" title loading></u-skeleton>
 		</view>
@@ -27,7 +27,7 @@
 					:like_count.sync="item.like_count"></blog-item>
 			</view>
 		</view>
-
+		<u-back-top :scroll-top="scrollTop" icon="arrow-up" right="300" :iconStyle="iconStyle"></u-back-top>
 		<view>
 			<uni-load-more :status="uniLoad"></uni-load-more>
 		</view>
@@ -49,7 +49,12 @@
 		data() {
 
 			return {
-				 
+				scrollTop: 0,
+
+				iconStyle: {
+					fontSize: '32rpx',
+					color: '#000000'
+				},
 
 				uniLoad: "more",
 				noMore: false,
@@ -78,6 +83,9 @@
 				loadState: true
 			}
 		},
+		onPageScroll(e) {
+				this.scrollTop = e.scrollTop;
+			},
 		onLoad() {
 			this.getData();
 		},
@@ -228,8 +236,8 @@
 
 <style lang="scss" scoped>
 	.home {
-		 
- 
+
+
 		.topnav {
 			margin-bottom: 30rpx;
 		}
