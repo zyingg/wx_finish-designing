@@ -15,16 +15,16 @@
 					<image :src="data.picurl.url" mode="aspectFill"></image>
 				</view>
 				<view class="info-box goods-info">
-					
-				
+
+
 
 					<view class="info-box text-info">
 						<view class="price">￥{{data.price}}</view>
 						<view class="title">
 							{{data.name}}
 						</view>
-						
-					<!-- 	<view class="row">
+
+						<!-- 	<view class="row">
 							<view class="leftxt">服务</view>
 							<view class="content">{{data.contact}} </view>
 						</view>
@@ -50,11 +50,11 @@
 							<view class="content"> <text>{{data.contact}}</text> </view>
 						</view>
 
-						<view class="row">
+						<!-- <view class="row">
 							<view class="leftxt">状态</view>
 							<view class="content"> <text>{{data.checked == true ? '✅' : '❌'}}</text> </view>
-						</view>
-<!-- options.checked_valuetotext[data.checked] -->
+						</view> -->
+						<!-- options.checked_valuetotext[data.checked] -->
 						<view class="row">
 							<view class="leftxt">上架时间</view>
 							<view class="content">
@@ -65,59 +65,56 @@
 						<view class="row">
 							<view class="leftxt">卖家备注</view>
 							<view class="content">
-							<text>{{data.seller_note}}</text>
+								<text>{{data.seller_note}}</text>
 							</view>
 						</view>
 
-					 <view class="more" @click="clickMore">
-					 	<text class="iconfont icon-ellipsis"></text>
-					 </view>
+						<view class="more" @click="clickMore">
+					 	<uni-icons type="more-filled" size="30"></uni-icons>
+
+						</view>
 
 					</view>
-					
+
 					<!-- 详情 -->
 					<view class="description">
 						<view class="title">———— 商品详情 ————</view>
 						<!-- <view class="content"><rich-text :nodes="data.goods_desc"></rich-text></view> -->
-						 
+
 						{{data.goods_desc}}
 					</view>
 				</view>
-<u-action-sheet :actions="selectlist" cancelText="取消" :show="show" :closeOnClickOverlay="true"
-			:closeOnClickAction="true"  @select="selectClick"  @close="onClose"></u-action-sheet>
+				<u-action-sheet :actions="selectlist" cancelText="取消" :show="show" :closeOnClickOverlay="true"
+					:closeOnClickAction="true" @select="selectClick" @close="onClose"></u-action-sheet>
 
 			</view>
 		</unicloud-db>
-		
-		<!-- <view class="btns">
-			<button type="primary" @click="handleUpdate">修改</button>
-			<button type="warn" class="btn-delete" @click="handleDelete">删除</button>
-		</view> -->
+
+		 
 	</view>
 </template>
 
 <script>
-	// 由schema2code生成，包含校验规则和enum静态数据
  
+
 	import {
 		enumConverter
 	} from '../../js_sdk/validator/secondgoods.js'
 	const db = uniCloud.database()
- 
+
 	export default {
 		data() {
 			return {
-				show:false,
-				selectlist: [
-							{
-								name: "修改",
-								disabled: true
-							},
-							{
-								name: "删除",
-								disabled: true
-							}
-						],
+				show: false,
+				selectlist: [{
+						name: "修改",
+						disabled: true
+					},
+					{
+						name: "删除",
+						disabled: true
+					}
+				],
 				queryWhere: '',
 				collectionList: [db.collection('secondgoods').field(
 					'category_id,goods_sn,name,keywords,price,goods_desc,picurl,remain_count,contact,checked,add_date,last_modify_date,seller_note'
@@ -151,31 +148,32 @@
 				let uid = uniCloud.getCurrentUserInfo().uid
 				console.log(uid);
 				console.log(this.$refs.udb.dataList);
-				
+
 				//权限校验，普通用户只能修改删除自己的，管理员可以操作全部
-				if (uid == this.$refs.udb.dataList.user_id || this.uniIDHasRole('admin') || this.uniIDHasRole('webadmin')) {
+				if (uid == this.$refs.udb.dataList.user_id || this.uniIDHasRole('admin') || this.uniIDHasRole(
+					'webadmin')) {
 					this.selectlist.forEach(item => {
 						item.disabled = false
-			
+
 					})
 				}
 				this.show = true
-			
+
 			},
-			selectClick(index){
-						console.log(index);
-						let uid = uniCloud.getCurrentUserInfo().uid;
-						if(index.name== "修改"){
-							this.handleUpdate();
-						}
-						if(index.name== "删除"){
-							this.handleDelete();
-						}
-					},
-					//取消弹窗
-					onClose() {
-						this.show = false
-					},
+			selectClick(index) {
+				console.log(index);
+				let uid = uniCloud.getCurrentUserInfo().uid;
+				if (index.name == "修改") {
+					this.handleUpdate();
+				}
+				if (index.name == "删除") {
+					this.handleDelete();
+				}
+			},
+			//取消弹窗
+			onClose() {
+				this.show = false
+			},
 			handleUpdate() {
 				// 打开修改页面
 				uni.navigateTo({
@@ -238,8 +236,8 @@
 	}
 
 	/deep/.info-box {
-		width: 92%;
-		padding: 20upx 4%;
+		width: 100%;
+		padding: 25upx;
 		background-color: #fff;
 		margin-bottom: 20upx;
 	}
@@ -254,6 +252,8 @@
 		.title {
 			font-size: 40upx;
 			margin-bottom: 20px;
+			color: #605454;
+			font-weight: 700;
 		}
 	}
 
@@ -265,9 +265,14 @@
 			margin: 0 0 30upx 0;
 
 			.leftxt {
-				font-size: 24upx;
+				width: 20%;
+				font-size: 15px;
 				color: #a2a2a2;
-				margin-right: 20upx;
+				// margin-right: 20upx;
+			}
+
+			.content {
+				font-size: 18px;
 			}
 		}
 	}
@@ -283,9 +288,11 @@
 			color: #999;
 		}
 	}
+
 	.more {
 		padding: 5rpx;
-	float:right;
+		float: right;
+
 		.iconfont {
 			font-size: 50rpx;
 			color: #888;

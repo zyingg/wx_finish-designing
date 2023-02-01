@@ -11,7 +11,7 @@
               <text>
                 <!-- 此处默认显示为_id，请根据需要自行修改为其他字段 -->
                 <!-- 如果使用了联表查询，请参考生成的 admin 项目中 list.vue 页面 -->
-                {{item.title}}
+                {{item.name}}
               </text>
             </template>
           </uni-list-item>
@@ -28,7 +28,7 @@
   export default {
     data() {
       return {
-        collectionList: "quanzi_article",
+        collectionList: "lost",
         loadMore: {
           contentdown: '',
           contentrefresh: '',
@@ -69,6 +69,8 @@
     }
   }
 </script>
-<!-- field="user_id,title,description,province,content,excerpt,article_status,state,delState,last_comment_user_id,picurls,publish_date,last_modify_date" -->
-<style>
+<!-- field="user_id,title,description,province,content,excerpt,article_status,state,delState,last_comment_user_id,picurls,publish_date,last_modify_date" 
+ --><style>
+	text{font-weight: 650;
+	color: #545454 }
 </style>

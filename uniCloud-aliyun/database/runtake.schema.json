@@ -19,11 +19,11 @@
 		},
 		"user_id": {
 			"bsonType": "string",
-			"description": "文章作者ID， 参考`uni-id-users` 表",
-			"foreignKey": "uni-id-users._id",
-			"defaultValue": {
+			"description": "评论者ID，参考`uni-id-users` 表",
+			"forceDefaultValue": {
 				"$env": "uid"
-			}
+			},
+			"foreignKey": "uni-id-users._id"
 		},
 		"category_id": {
 			"bsonType": "string",

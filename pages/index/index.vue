@@ -422,6 +422,12 @@
 		  }
 		},
 		methods: {
+			left() {
+						console.log('left');
+					},
+					right() {
+						console.log('right');
+					},
 			// 跳转
 			tn(e) {
 				uni.navigateTo({

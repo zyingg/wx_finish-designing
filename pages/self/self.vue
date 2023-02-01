@@ -67,7 +67,18 @@
 						<view class="right"><text class="iconfont icon-a-10-you"></text></view>
 					</view>
 					<view class="item" @click="mySecond">
-						<view class="left"><text class="iconfont icon-a-21-xiugai"></text><text class="text">我发布的商品</text></view>
+						<view class="left"> <uni-icons type="cart" size="20" ></uni-icons>
+<text class="text">我发布的商品</text></view>
+						<view class="right"><text class="iconfont icon-a-10-you"></text></view>
+					</view>
+					
+					<view class="item" @click="myRuntake">
+						<view class="left"><text class="iconfont icon-a-21-xiugai"></text><text class="text">我的跑腿需求</text></view>
+						<view class="right"><text class="iconfont icon-a-10-you"></text></view>
+					</view>
+				
+					<view class="item" @click="myLost">
+						<view class="left"><text class="iconfont icon-a-21-xiugai"></text><text class="text">我的失物招领</text></view>
 						<view class="right"><text class="iconfont icon-a-10-you"></text></view>
 					</view>
 				</view>
@@ -181,10 +192,24 @@
 			mySecond(){
 				if(this.goLoginPage()) return;	
 				uni.navigateTo({
-					url:"/pages/secondgoods/list"
+					url:"/pages/secondgoods/my"
 				})
 			},
-			
+			myRuntake(){
+				 
+				if(this.goLoginPage()) return;	
+				uni.navigateTo({
+					url:"/pages/runtake/my"
+				})
+			},
+			myLost(){
+				 
+				if(this.goLoginPage()) return;	
+				uni.navigateTo({
+					url:"/pages/lost/my"
+				})
+			},
+	 
 			
 			//编辑个人资料
 			toUserInfo(){

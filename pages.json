@@ -405,6 +405,34 @@
    
         }
 		
+         
+        ,{
+            "path" : "pages/secondgoods/my",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我发布的二手商品",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/lost/my",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的失物招领",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/runtake/my",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "我的跑腿需求",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"tabBar": {
 		"color": "#888",

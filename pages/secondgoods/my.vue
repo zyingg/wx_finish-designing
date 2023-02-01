@@ -16,7 +16,7 @@
 				page-data="replace" :collection="collectionList" :where="where" @load="load" :getcount="true"
 				:page-size="options.pageSize" :page-current="options.pageCurrent">
 				<!-- field="category_id,goods_sn,good_name,keywords,price,goods_desc,picurl,remain_count,contact,checked,add_date,last_modify_date,seller_note"
-				:where="where" @load="load"> -->
+				:where= @load="load"> -->
 				<text v-if="error" class="list-info">{{error.message}}</text>
 				<!-- 基于 uni-list 的页面布局 -->
 				<uni-list :class="{ 'uni-list--waterfall': options.formData.waterfall }">
@@ -91,9 +91,9 @@
 		data() {
 			return {
 				collectionList: [
-					db.collection('secondgoods').where('checked == true')
+					db.collection('secondgoods').where('user_id==$cloudEnv_uid')
 					.field(
-						'category_id,goods_sn,name,keywords,price,goods_desc,picurl,remain_count,contact,checked,add_date,last_modify_date,seller_note'
+						'user_id,category_id,goods_sn,name,keywords,price,goods_desc,picurl,remain_count,contact,checked,add_date,last_modify_date,seller_note'
 					)
 					.getTemp(),
 					db.collection('secondgoods-categories').field('_id, classname as text').getTemp()

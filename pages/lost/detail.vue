@@ -57,7 +57,9 @@
         
         
         				<view class="more" @click="clickMore">
-        					<text class="iconfont icon-ellipsis"></text>
+        				<!-- 	<text class="iconfont icon-ellipsis"></text> -->
+						<uni-icons type="more-filled" size="30"></uni-icons>
+
         				</view>
         
         			</view>
@@ -66,10 +68,7 @@
         			<!-- 详情 -->
         			<!-- <view class="description">
         				<view class="title">———— 详情 ————</view>
-        
-        				<div id="div1">
-        					<div v-html="data.run_desc"></div>
-        				</div>
+         
         
         			</view> -->
         		</view>
@@ -222,8 +221,8 @@
 	}
 
 	/deep/.info-box {
-		width: 92%;
-		padding: 20upx 4%;
+		width: 100%;
+		padding: 20upx ;
 		background-color: #fff;
 		margin-bottom: 20upx;
 	}
@@ -238,6 +237,8 @@
 		.title {
 			font-size: 40upx;
 			margin-bottom: 20px;
+			color: #605454;
+			font-weight: 700;
 		}
 	}
 
@@ -249,9 +250,13 @@
 			margin: 0 0 30upx 0;
 
 			.leftxt {
-				font-size: 24upx;
+				width: 30%;
+				font-size: 15px;
 				color: #a2a2a2;
-				margin-right: 20upx;
+				// margin-right: 20upx;
+			}
+			.content{
+				font-size: 18px;
 			}
 		}
 	}
@@ -269,7 +274,7 @@
 	}
 
 	.more {
-		padding: 5rpx;
+		// padding: 5rpx;
 		float: right;
 
 		.iconfont {
