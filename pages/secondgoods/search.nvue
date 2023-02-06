@@ -78,7 +78,7 @@
 	const searchLogDbName = 'opendb-search-log'; // 搜索记录数据库
 	const mallGoodsDbName = 'secondgoods'; // 商品数据库
 	const associativeSearchField = 'name'; // 联想时，搜索框值检索数据库字段名
-	const associativeField = 'name,content,goods_desc,goods_sn'; // 联想列表每一项携带的字段
+	const associativeField = 'name,content,goods_desc,categories_id'; // 联想列表每一项携带的字段
 	const localSearchListKey = '__local_search_history'; //	本地历史存储字段名
 
 	// 数组去重
@@ -231,6 +231,7 @@
 			},
 			searchHotRefresh() {
 				this.$refs.udb.refresh();
+				console.log("searchHotRefresh")
 			},
 			speech() {
 				// #ifdef APP-PLUS
@@ -288,6 +289,7 @@
 			loadList(text = '') {
 				getApp().globalData.searchText = text;
 				uni.navigateBack()
+				console.log("loadList")
 			}
 		},
 		computed: {
@@ -306,6 +308,7 @@
 				} else {
 					this.associativeList.length = 0;
 					getApp().globalData.searchText = '';
+					 
 				}
 			}, 100)
 		}

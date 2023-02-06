@@ -20,7 +20,7 @@
 		"create": true,
 		"update": true, //本人及管理员可修改
 		"delete": true
-		// "read": "doc.user_id == auth.uid && doc.article_status == 0 || doc.article_status == 1",
+	 
 		// "create": "auth.uid != null",
 		// "update": "doc.user_id == auth.uid || 'webadmin'in auth.role", //本人及管理员可修改
 		// "delete": "doc.user_id == auth.uid"
@@ -88,10 +88,10 @@
 		// 	"pattern": "^(http://|https://|/|./|@/)\\S",
 		// 	"trim": "both"
 		// },
-		// "goods_banner_imgs": {
-		// 	"bsonType": "array",
-		// 	"description": "商品详情页的banner图地址"
-		// },
+		"goods_banner_imgs": {
+			"bsonType": "array",
+			"description": "商品详情页的banner图"
+		},
 		"remain_count": {
 			"bsonType": "int",
 			"description": "库存数量",
@@ -144,15 +144,15 @@
 		// },
 		"checked":{
 					"title": "状态",
-					"bsonType": "bool",
-					"defaultValue":true,
+					"bsonType": "int",
+					"defaultValue":0,
 					"description": "显示状态 默认true展示 false不展示",
 					"enum":[
 						{
-							"value":true,
+							"value":0,
 							"text":"显示"
 						},{
-							"value":false,
+							"value":1,
 							"text":"隐藏"
 						}
 					]

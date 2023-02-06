@@ -53,7 +53,7 @@
 			</view>
 			
 			<view class="list">
-				<view class="group">					
+				<!-- <view class="group">					
 					<view class="item" @click="myArticle">
 						<view class="left"><text class="iconfont icon-a-24-bianji"></text><text class="text">我的长文</text></view>
 						<view class="right"><text class="iconfont icon-a-10-you"></text></view>
@@ -81,7 +81,82 @@
 						<view class="left"><text class="iconfont icon-a-21-xiugai"></text><text class="text">我的失物招领</text></view>
 						<view class="right"><text class="iconfont icon-a-10-you"></text></view>
 					</view>
+				</view> -->
+				<!-- 更多信息-->
+				<view class="about-shadow tn-margin-top-sm tn-padding-top-sm tn-padding-bottom-sm tn-bg-white">
+				  <!-- 方式12 start-->
+				  <view class="tn-flex tn-flex-row-around  tn-radius tn-padding-top">
+				    <view class="tn-padding-sm tn-margin-xs tn-radius" @click="myArticle">
+				      <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
+				        <view class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-bg-orange">
+				          <view class="tn-icon-caring" style="color: #080808;"></view>
+				        </view>
+				        <view class="tn-text-center">
+				          <text class="tn-text-ellipsis">我的长文</text>
+				        </view>
+				      </view>
+				    </view>
+				    <view class="tn-padding-sm tn-margin-xs tn-radius" @click="myLike">
+				      <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
+				        <view class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-bg-orange">
+				          <view class="tn-icon-message" style="color: #080808;"></view>
+				        </view>
+				        <view class="tn-text-center">
+				          <text class="tn-text-ellipsis">我的点赞</text>
+				        </view>
+				      </view>
+				    </view>
+				    <view class="tn-padding-sm tn-margin-xs tn-radius" @click="myComment">
+				      <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
+				        <view class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-bg-orange">
+				          <view class="tn-icon-ticket" style="color: #080808;"></view>
+				        </view>
+				        <view class="tn-text-center">
+				          <text class="tn-text-ellipsis">评论过的</text>
+				        </view>
+				      </view>
+				    </view>
+				    
+				  </view>
+				  <view class="tn-flex tn-flex-row-around tn-radius tn-padding-top">
+				     
+				    <view class="tn-padding-sm tn-margin-xs tn-radius"  @click="myRuntake">
+				      <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
+				        <view class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-bg-orange">
+				          <view class="tn-icon-star" style="color: #080808;"></view>
+				        </view>
+				        <view class="tn-text-center">
+				          <text class="tn-text-ellipsis">我的跑腿需求</text>
+				        </view>
+				      </view>
+				    </view>
+				    <view class="tn-padding-sm tn-margin-xs tn-radius" @click="myLost">
+				      <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
+				        <view class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-bg-orange">
+				          <view class="tn-icon-map" style="color: #080808;"></view>
+				        </view>
+				        <view class="tn-text-center">
+				          <text class="tn-text-ellipsis">我的失物招领</text>
+				        </view>
+				      </view>
+				    </view>
+				    <view class="tn-padding-sm tn-margin-xs tn-radius"  @click="mySecond">
+				      <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
+				        <view class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-bg-orange">
+				          <view class="tn-icon-calendar" style="color: #080808;"></view>
+				        </view>
+				        <view class="tn-text-center">
+				          <text class="tn-text-ellipsis">我发布的商品</text>
+				        </view>
+				      </view>
+				    </view>
+				  </view>
+				  <!-- 方式12 end-->
 				</view>
+				
+				
+				
+				
 				
 				<view class="group">
 					<view class="item">
@@ -257,8 +332,63 @@
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+	/* 页面 start*/
+	.about-shadow {
+	  border-radius: 15rpx;
+	  box-shadow: 0rpx 0rpx 50rpx 0rpx rgba(0, 0, 0, 0.07);
+	}
+	
+	.about {
+	
+	  &__wrap {
+	    position: relative;
+	    z-index: 1;
+	    margin: 20rpx 30rpx;
+	    margin-top: -230rpx;
+	  }
+	}
+ /* 图标容器12 start */
+  .icon12 {
+    &__item {
+      width: 30%;
+      background-color: #FFFFFF;
+      border-radius: 10rpx;
+      padding: 30rpx;
+      margin: 20rpx 10rpx;
+      transform: scale(1);
+      transition: transform 0.3s linear;
+      transform-origin: center center;
+
+      &--icon {
+        width: 15rpx;
+        height: 15rpx;
+        font-size: 50rpx;
+        border-radius: 50%;
+        margin-bottom: 38rpx;
+        position: relative;
+        z-index: 1;
+        
+        &::after {
+          content: " ";
+          position: absolute;
+          z-index: -1;
+          width: 100%;
+          height: 100%;
+          left: 0;
+          bottom: 0;
+          border-radius: inherit;
+          opacity: 1;
+          transform: scale(1, 1);
+          background-size: 100% 100%;
+            
+        }
+      }
+    }
+  }
 .user{
+	
+	/* 图标容器1 start */
 	
 	.top{
 		height: 300rpx;

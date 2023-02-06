@@ -15,7 +15,7 @@
 		},
 		"parent_id": {
 			"bsonType": "string",
-			"description": "父ID，用于多级分类"
+			"description": "父ID，用于多级分类" 
 		},
 		"orderid":{
 					"title": "排序",
@@ -40,11 +40,11 @@
 		// 			"bsonType": "file",
 		// 			"title": "图标"
 		// 		},
-		"sort": {
-			"bsonType": "int",
-			"description": "类别排序，越大越靠后",
-			"title": "排序"
-		},
+		// "sort": {
+		// 	"bsonType": "int",
+		// 	"description": "类别排序，越大越靠后",
+		// 	"title": "排序"
+		// },
 		"description": {
 			"bsonType": "string",
 			"description": "类别描述",

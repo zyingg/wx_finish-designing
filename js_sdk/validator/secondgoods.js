@@ -2,6 +2,16 @@
 
 
 const validator = {
+  "user_id": {
+    "rules": [
+      {
+        "format": "string"
+      }
+    ],
+    "defaultValue": {
+      "$env": "uid"
+    }
+  },
   "category_id": {
     "rules": [
       {
@@ -20,6 +30,9 @@ const validator = {
   },
   "name": {
     "rules": [
+      {
+        "required": true
+      },
       {
         "format": "string"
       }
@@ -63,6 +76,13 @@ const validator = {
     "title": "商品图",
     "label": "商品图"
   },
+  "goods_banner_imgs": {
+    "rules": [
+      {
+        "format": "array"
+      }
+    ]
+  },
   "remain_count": {
     "rules": [
       {
@@ -84,23 +104,23 @@ const validator = {
   "checked": {
     "rules": [
       {
-        "format": "bool"
+        "format": "int"
       },
       {
         "range": [
           {
-            "value": true,
+            "value": 0,
             "text": "显示"
           },
           {
-            "value": false,
+            "value": 1,
             "text": "隐藏"
           }
         ]
       }
     ],
     "title": "状态",
-    "defaultValue": true,
+    "defaultValue": 0,
     "label": "状态"
   },
   "add_date": {
@@ -133,16 +153,10 @@ const validator = {
 }
 
 const enumConverter = {
-  "checked_valuetotext": [
-    {
-      "value": true,
-      "text": "显示"
-    },
-    {
-      "value": false,
-      "text": "隐藏"
-    }
-  ]
+  "checked_valuetotext": {
+    "0": "显示",
+    "1": "隐藏"
+  }
 }
 
 function filterToWhere(filter, command) {

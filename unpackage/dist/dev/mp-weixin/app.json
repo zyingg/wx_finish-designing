@@ -1,7 +1,7 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/edit/edit",
+    "pages/add/add",
     "pages/self/self",
     "uni_modules/uni-id-pages/pages/userinfo/deactivate/deactivate",
     "uni_modules/uni-id-pages/pages/userinfo/userinfo",
@@ -33,8 +33,7 @@
     "pages/reply/reply",
     "pages/heart/list",
     "pages/heart/add",
-    "pages/secondhand/secondhand",
-    "pages/secondhand/edit",
+    "pages/secondgoods/add",
     "pages/secondgoods/edit",
     "pages/secondgoods/list",
     "pages/secondgoods/detail",
@@ -53,7 +52,20 @@
     "pages/lost/add",
     "pages/lost/edit",
     "pages/lost/list",
-    "pages/lost/detail"
+    "pages/lost/detail",
+    "pages/quanzi_comment/add",
+    "pages/quanzi_comment/edit",
+    "pages/quanzi_comment/list",
+    "pages/quanzi_comment/detail",
+    "pages/question/add",
+    "pages/question/question",
+    "pages/secondgoods/my",
+    "pages/lost/my",
+    "pages/runtake/my",
+    "pages/opendb-mall-goods/add",
+    "pages/opendb-mall-goods/edit",
+    "pages/opendb-mall-goods/list",
+    "pages/opendb-mall-goods/detail"
   ],
   "subPackages": [],
   "window": {

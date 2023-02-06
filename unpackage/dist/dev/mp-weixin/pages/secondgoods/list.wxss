@@ -240,11 +240,12 @@ page.data-v-f7497bb8 {
 }
 .shop-price.data-v-f7497bb8 {
   margin-top: 5px;
-  font-size: 12px;
-  color: #ff5a5f;
+  font-size: 13px;
+  color: #ff3c3f;
 }
 .shop-price-text.data-v-f7497bb8 {
   font-size: 16px;
+  margin-left: 3px;
 }
 .hot-tag.data-v-f7497bb8 {
   background: #ff5a5f;
@@ -277,9 +278,6 @@ page.data-v-f7497bb8 {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
-.list.data-v-f7497bb8 {
-  margin-top: 52px;
-}
 .list .uni-list--waterfall.data-v-f7497bb8  .uni-list {
   display: flex;
   flex-direction: row;
@@ -303,7 +301,6 @@ page.data-v-f7497bb8 {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  position: fixed;
   left: 0;
   right: 0;
   z-index: 10;
@@ -322,5 +319,28 @@ page.data-v-f7497bb8 {
   font-size: 26rpx;
   color: #808080;
   margin-top: 20rpx;
+}
+.navscroll.data-v-f7497bb8 {
+  height: 100rpx;
+  background: #F7F8FA;
+  white-space: nowrap;
+}
+.navscroll.data-v-f7497bb8 ::-webkit-scrollbar {
+  width: 4px !important;
+  height: 1px !important;
+  overflow: auto !important;
+  background: transparent !important;
+  -webkit-appearance: auto !important;
+  display: block;
+}
+.navscroll .item.data-v-f7497bb8 {
+  font-size: 40rpx;
+  display: inline-block;
+  line-height: 100rpx;
+  padding: 0 30rpx;
+  color: #333;
+}
+.navscroll .item.active.data-v-f7497bb8 {
+  color: #31C27C;
 }
 

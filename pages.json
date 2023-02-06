@@ -433,7 +433,31 @@
             }
             
         }
-    ],
+    ,{
+    "path": "pages/opendb-mall-goods/add",
+    "style": {
+        "navigationBarTitleText": "新增"
+    }
+}
+,{
+    "path": "pages/opendb-mall-goods/edit",
+    "style": {
+        "navigationBarTitleText": "编辑"
+    }
+}
+,{
+    "path": "pages/opendb-mall-goods/list",
+    "style": {
+        "navigationBarTitleText": "列表"
+    }
+}
+,{
+    "path": "pages/opendb-mall-goods/detail",
+    "style": {
+        "navigationBarTitleText": "详情"
+    }
+}
+],
 	"tabBar": {
 		"color": "#888",
 		"selectedColor": "",

@@ -16,7 +16,7 @@
 				page-data="replace" :collection="collectionList" :where="where" @load="load" :getcount="true"
 				:page-size="options.pageSize" :page-current="options.pageCurrent">
 				<!-- field="category_id,goods_sn,good_name,keywords,price,goods_desc,picurl,remain_count,contact,checked,add_date,last_modify_date,seller_note"
-				:where= @load="load"> -->
+				:where="where" @load="load"> -->
 				<text v-if="error" class="list-info">{{error.message}}</text>
 				<!-- 基于 uni-list 的页面布局 -->
 				<uni-list :class="{ 'uni-list--waterfall': options.formData.waterfall }">
@@ -29,14 +29,17 @@
 						<template #header>
 							<view class="uni-thumb shop-picture"
 								:class="{ 'shop-picture-column': options.formData.waterfall }">
-								<image :src="item.picurl.url" mode="aspectFill"></image>
-							
+								<!-- <image :src="item.picurl.url mode="aspectFill"></image> -->
+								<!-- <image :src="item.goods_banner_imgs[0]" mode="aspectFill"></image> -->
+								<image v-if="item.goods_banner_imgs && item.goods_banner_imgs.length" mode="aspectFill"
+									:src="item.goods_banner_imgs[0]"></image>
+								<image v-else mode="aspectFill" src="../../static/icon/second.png"></image>
 							</view>
 						</template>
 						<!-- 通过body插槽定义商品布局 -->
 						<template #body>
 							<view class="shop">
-								<view> 
+								<view>
 									<view class="uni-title">
 										<text class="uni-ellipsis-2">{{ item.name }} </text>
 									</view>
@@ -91,11 +94,13 @@
 		data() {
 			return {
 				collectionList: [
-					db.collection('secondgoods').where('user_id==$cloudEnv_uid')
+					// .where('user_id==$cloudEnv_uid')
+					db.collection('secondgoods').where('user_id==$cloudEnv_uid') 
 					.field(
-						'user_id,category_id,goods_sn,name,keywords,price,goods_desc,picurl,remain_count,contact,checked,add_date,last_modify_date,seller_note'
+						'user_id,category_id,goods_sn,goods_banner_imgs,name,keywords,price,goods_desc,picurl,remain_count,contact,checked,add_date,last_modify_date,seller_note'
 					)
 					.getTemp(),
+					db.collection('uni-id-users').field('_id, user_id as userid').getTemp(),
 					db.collection('secondgoods-categories').field('_id, classname as text').getTemp()
 				],
 				searchText: '',
@@ -136,8 +141,8 @@
 				// this.selectedIndexs.length = 0
 				// this.$refs.table.clearSelection()
 				this.$refs.udb.loadData({
-			 	current: e.current
-			 })
+					current: e.current
+				})
 			},
 			/**
 			 * 切换商品列表布局方向
@@ -165,7 +170,7 @@
 				this.$refs.udb.loadMore()
 			},
 			load() {
-// load(data, ended) {
+				// load(data, ended) {
 				// if (ended) {
 				// 	this.formData.status = 'noMore'
 				// }

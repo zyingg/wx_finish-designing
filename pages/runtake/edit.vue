@@ -22,9 +22,9 @@
      <uni-forms-item name="contact" label="联系方式">
        <uni-easyinput placeholder="联系方式" v-model="formData.contact" trim="both"></uni-easyinput>
      </uni-forms-item>
-     <uni-forms-item name="run_thumb" label="封面图">
+    <!-- <uni-forms-item name="run_thumb" label="封面图">
        <uni-file-picker return-type="object" v-model="formData.run_thumb"></uni-file-picker>
-     </uni-forms-item>
+     </uni-forms-item> -->
      <uni-forms-item name="run_price" label="出价">
        <uni-easyinput placeholder="出价" type="number" v-model="formData.run_price"></uni-easyinput>
      </uni-forms-item>

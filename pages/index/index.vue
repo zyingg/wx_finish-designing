@@ -24,8 +24,8 @@
 		<!-- 轮播图end -->
 		
 		<!-- 轮播图start -->
-		  <u-swiper
-		                 :list="swiperList"
+		  <!-- <u-swiper
+		                 :list="SwiperList"
 		                 @change="e => current = e.current"
 		                 :autoplay="true"
 						 :circular = "true"
@@ -37,14 +37,43 @@
 		             >
 		                 <view
 		                         class="indicator__dot"
-		                         v-for="(item, index) in swiperList"
+		                         v-for="(item, index) in SwiperList"
 		                         :key="index"
 		                         :class="[index === current && 'indicator__dot--active']"
 		                 >
 		                 </view>
 		             </view>
-		         </u-swiper>
+		         </u-swiper> -->
 		 <!-- 轮播图end -->
+		 
+		 <swiper class="card-swiper" :circular="true" :autoplay="true" duration="500" interval="5000"
+		 	@change="cardSwiper">
+		 	<swiper-item v-for="(item,index) in SwiperList" :key="index" :class="cardCur==index?'cur':''">
+		 		<view class="swiper-item image-banner tn-shadow"  >
+		 			<image :src="item.url" mode="aspectFill" v-if="item.type=='image'"></image>
+		 		</view>
+		 		<view class="swiper-item-text">
+		 			<view class="tn-text-xxl tn-text-bold tn-color-white">{{item.title}}</view>
+		 			<view class="tn-text-bold tn-color-white tn-padding-top-xs" style="font-size: 60rpx;">{{item.name}}
+		 			</view>
+		 			<view class="tn-text-sm tn-text-bold tn-color-white tn-padding-top-sm tn-padding-bottom-sm">
+		 				{{item.text}}
+		 			</view>
+		 		</view>
+		 	</swiper-item>
+		 </swiper>
+		 <view class="indication">
+		 	<block v-for="(item,index) in SwiperList" :key="index">
+		 		<view class="spot" :class="cardCur==index?'active':''"></view>
+		 	</block>
+		 </view>
+		 
+		 
+		 
+		 
+		 
+		 
+		 
 		 
 		 
 <!-- 		<view class="swiperbox">
@@ -232,7 +261,7 @@
 			     <text class="tn-icon-topics"></text>
 			   </view>
 			 </view>
-		<view class="topnav">
+		<!-- <view class="topnav">
 			<u-tabs :list="navlist" :activeStyle="{
 				color: '#333',
 				fontWeight: 'bold',
@@ -242,7 +271,7 @@
 				transform: 'scale(1)'
 			}" @click="clickNav"></u-tabs>
 			
-		</view>
+		</view> -->
 <!-- <u-tabs :list="listtab" :is-scroll="true" :current="currentTabIndex" @change="change"></u-tabs> 
 
 		<view class="loadingState" v-show="loadState">
@@ -253,7 +282,7 @@
 
 		<!-- "P_delEvent"父级里面定义的方法 -->
 		<view class="content">
-			<view class="item" v-for="(item,index) in dataList.slice(0,3)"   :key='index'>
+			<view class="item" v-for="(item,index) in dataList.slice(0,4)"   :key='index'>
 
 				<blog-item @delEvent="P_delEvent" :item="item" :isLike.sync="item.isLike"
 					:like_count.sync="item.like_count"></blog-item>
@@ -286,7 +315,7 @@
 	export default {
 		data() {
 
-			return {
+			return {SwiperList: [],
 				Swiperlists:[],
 				list: [
 									'关于组织申报2023年度青年科技人才培育计划的通知',
@@ -404,7 +433,8 @@
 			}
 		},
 		onLoad() {
-			this.getSwiper();
+			// this.getSwiper();
+			this.getBanner();
 			this.getData();
 		},
 		//触底加载更多
@@ -422,6 +452,10 @@
 		  }
 		},
 		methods: {
+			// cardSwiper
+			cardSwiper(e) {
+				this.cardCur = e.detail.current
+			},
 			left() {
 						console.log('left');
 					},
@@ -585,7 +619,34 @@
 				console.log(2)
 				 },
 			
-			
+			// 获取默认轮播图
+			async getBanner() {
+				let bannerList = await uniCloud.database().collection("opendb-banner").where({status: true})
+				.get().then((res) => {
+						// 设置默认轮播图
+						let imageList = res.result.data
+						imageList.forEach(item => {
+							if (item.status == true) {
+								this.SwiperList.unshift({
+									id: item.sort,
+									type: 'image',
+									title: item.title,
+									// name: item.name,
+									// text: item.description,
+									// open_url: item.open_url,
+									url: item.bannerfile.url,
+								})
+							}
+						})
+						console.log(this.SwiperList)
+					}).catch((err) => {
+						uni.hideLoading()
+						uni.showModal({
+							content: err,
+							showCancel: false
+						})
+					})
+			},
 			
 			
 			
@@ -603,8 +664,10 @@
 				console.log(artTemp)
 				let userTemp = db.collection("uni-id-users").field("_id,username,nickname,avatar_file").getTemp();
 
-				db.collection(artTemp, userTemp).orderBy(this.navlist[this.navAction].type, "desc").skip(this.dataList
-						.length).limit(5).get()
+				// db.collection(artTemp, userTemp).orderBy(this.navlist[this.navAction].type, "desc").skip(this.dataList
+				// 		.length).limit(5).get()
+						db.collection(artTemp, userTemp).orderBy("publish_date", "desc").skip(this.dataList
+								.length).limit(5).get()
 					.then(async res => {
 						let idArr = []
 						let oldArr = this.dataList;
@@ -663,6 +726,91 @@
 	.wrap {
 		 margin-top: 20px;
 		// ......
+	}
+	/* 轮播视觉差 start */
+	.card-swiper {
+		height: 440rpx !important;
+	}
+	
+	.card-swiper swiper-item {
+		width: 750rpx !important;
+		left: 0rpx;
+		box-sizing: border-box;
+		// padding: 0rpx 30rpx 30rpx 30rpx;
+		overflow: initial;
+	}
+	
+	.card-swiper swiper-item .swiper-item {
+		width: 100%;
+		display: block;
+		height: 100%;
+		// border-radius: 30rpx;
+		transform: scale(1);
+		transition: all 0.2s ease-in 0s;
+		overflow: hidden;
+	}
+	
+	.card-swiper swiper-item.cur .swiper-item {
+		transform: none;
+		transition: all 0.2s ease-in 0s;
+	}
+	
+	.card-swiper swiper-item .swiper-item-text {
+		margin-top: -220rpx;
+		width: 100%;
+		display: block;
+		height: 50%;
+		border-radius: 10rpx;
+		transform: translate(100rpx, -60rpx) scale(0.9, 0.9);
+		transition: all 0.6s ease 0s;
+		overflow: hidden;
+	}
+	
+	.card-swiper swiper-item.cur .swiper-item-text {
+		margin-top: -280rpx;
+		width: 100%;
+		transform: translate(0rpx, 0rpx) scale(0.9, 0.9);
+		transition: all 0.6s ease 0s;
+	}
+	
+	.image-banner {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.image-banner image {
+		width: 100%;
+		height: 100%;
+	}
+	
+	/* 轮播指示点 start*/
+	.indication {
+		z-index: 998;
+		width: 100%;
+		height: 36rpx;
+		position: absolute;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.spot {
+		background-color: #FFFFFF;
+		opacity: 0.6;
+		width: 10rpx;
+		height: 10rpx;
+		border-radius: 20rpx;
+		top: -90rpx;
+		margin: 0 8rpx !important;
+		position: relative;
+	}
+	
+	.spot.active {
+		opacity: 1;
+		width: 30rpx;
+		background-color: #FFFFFF;
 	}
 	// .swiperbox{
 	// 	.swiper {

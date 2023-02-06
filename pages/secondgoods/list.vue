@@ -7,11 +7,13 @@
 		</view>
 		<view class="list">
 			<!-- 刷新页面后的顶部提示框 -->
-			<!-- 当前弹出内容没有实际逻辑 ，可根据当前业务修改弹出提示 -->
-			<view class="tips" :class="{ 'tips-ani': tipShow }">为您更新了10条内容</view>
+			<scroll-view  scroll-x class="navscroll">
+				<view class="item" :class="index==navIndex ? 'active' : ''" v-for="(item,index) in navArr"
+					@click="clickNav(index,item.id)" :key="item.id">{{item.classname}}</view>
+			</scroll-view>
 			<!-- 页面分类标题 -->
-			<uni-section style="margin:0;" :title="listTitle" type="line"><button class="button-box"
-					@click="select">切换视图</button></uni-section>
+			<!-- <uni-section style="margin:0;" :title="listTitle" type="line"><button class="button-box"
+					@click="select">切换视图</button></uni-section> -->
 			<unicloud-db ref="udb" v-slot:default="{data, pagination, error, options}" :options="options"
 				page-data="replace" :collection="collectionList" :where="where" @load="load" :getcount="true"
 				:page-size="options.pageSize" :page-current="options.pageCurrent">
@@ -19,7 +21,7 @@
 				:where="where" @load="load"> -->
 				<text v-if="error" class="list-info">{{error.message}}</text>
 				<!-- 基于 uni-list 的页面布局 -->
-				<uni-list :class="{ 'uni-list--waterfall': options.formData.waterfall }">
+				<uni-list :class="{ 'uni-list--waterfall': !options.formData.waterfall }">
 					<!-- 通过 uni-list--waterfall 类决定页面布局方向 -->
 					<!-- to 属性携带参数跳转详情页面，当前只为参考 -->
 					<uni-list-item :border="!options.formData.waterfall" class="uni-list-item--waterfall"
@@ -28,15 +30,18 @@
 						<!-- 通过header插槽定义列表左侧图片 -->
 						<template #header>
 							<view class="uni-thumb shop-picture"
-								:class="{ 'shop-picture-column': options.formData.waterfall }">
-								<image :src="item.picurl.url" mode="aspectFill"></image>
-							
+								:class="{ 'shop-picture-column': !options.formData.waterfall }">
+								<!-- <image :src="item.picurl.url mode="aspectFill"></image> -->
+								<!-- <image :src="item.goods_banner_imgs[0]" mode="aspectFill"></image> -->
+								<image v-if="item.goods_banner_imgs && item.goods_banner_imgs.length" mode="aspectFill"
+									:src="item.goods_banner_imgs[0]"></image>
+								<image v-else mode="aspectFill" src="../../static/icon/second.png"></image>
 							</view>
 						</template>
 						<!-- 通过body插槽定义商品布局 -->
 						<template #body>
 							<view class="shop">
-								<view> 
+								<view>
 									<view class="uni-title">
 										<text class="uni-ellipsis-2">{{ item.name }} </text>
 									</view>
@@ -91,15 +96,24 @@
 		data() {
 			return {
 				collectionList: [
-					db.collection('secondgoods').where('checked == true')
+					// .where('user_id==$cloudEnv_uid')
+					db.collection('secondgoods').where('checked == 0')
 					.field(
-						'category_id,goods_sn,name,keywords,price,goods_desc,picurl,remain_count,contact,checked,add_date,last_modify_date,seller_note'
+						'user_id,category_id,goods_sn,goods_banner_imgs,name,keywords,price,goods_desc,picurl,remain_count,contact,checked,add_date,last_modify_date,seller_note'
 					)
 					.getTemp(),
+					// db.collection('uni-id-users').field('_id, user_id as userid').getTemp(),
 					db.collection('secondgoods-categories').field('_id, classname as text').getTemp()
+				
 				],
 				searchText: '',
 				selectedIndexs: [],
+				navIndex: 0,
+				sort: 0,
+				index:0,
+				navArr: [],
+				good:[],
+				goods:[],
 				options: {
 					pageSize,
 					pageCurrent,
@@ -108,14 +122,103 @@
 						// status: 'loading', // 加载状态
 					}
 				},
-				where: '',
-				tipShow: false // 是否显示顶部提示框
+				where: "category_id._id=='63c02ebb819ce855b16def5d'",
+				// where: 'category_id._id=="63c02efdf5cf3a165a49c396"',
+// `username=='${tempstr}'`
+
 			};
 		},
 		onShow(options) {
 			this.searchText = getApp().globalData.searchText;
 		},
+		onLoad() {
+			// uni.startPullDownRefresh()
+			
+			this.getNavData();
+			// this.where = "category_id._id=='" + this.navArr[0]._id + "'";
+		// this.getNewsData();
+			
+			
+			
+ 
+		},
 		methods: {
+			//点击导航切换
+			clickNav(index, id) {
+				this.navIndex = index;
+				console.log("index:" + index)
+				// this.sort = index + 1;
+				// this.sort = index  ;
+				// console.log("点击时sort:" + this.sort)
+				this.sort = this.navArr[index]._id
+				console.log("let id :" + this.sort)
+				// console.log("点击时sort:" + this.sort)
+	this.where = "category_id._id=='" + this.sort + "'"
+				console.log(this.navIndex)
+// this.getNewsData(index);
+			},
+			//获取导航列表数据
+			async getNavData() {
+				// let tabs = 
+				 let tabs = await db.collection("secondgoods-categories").get();
+	// 			.then((res)=>{
+ //    this.navArr = res.result.data;// res 为数据库查询结果
+	// this.where = "category_id._id=='" + this.navArr[0]._id + "'"
+	// })
+				// console.log(tabs)
+				this.navArr = tabs.result.data;
+				this.where = "category_id._id=='" + this.navArr[0]._id + "'";
+				// let list = [];
+				// this.navArr.forEach((item, index) => {
+				// 	list.push({
+				// 		sort:item.orderid-1,
+				// 		name: item.classname
+				// 	})
+				// })
+				// this.navArr = list
+				
+				// console.log(res.result.data)
+				console.log(this.navArr)
+				// this.getNewsData(index);
+				// this.sort= this.navArr[0]._id
+				// console.log("let id :" + this.sort)
+			},
+			  async getNewsData() {
+				// console.log("获取时的navarr:" + this.navArr[index]._id)
+				// this.sort = this.navArr[index]._id
+				// let id = this.navArr[index]._id
+				// this.where = "category_id._id=='" + this.navArr[0]._id + "'"
+				console.log("let id :" + id)
+				console.log("getNewsData :" + index)
+				console.log("getNewsData :" + this.sort)
+				// let good = await uniCloud.database().collection('secondgoods').where({
+				// 		category_id:id
+				// 	})
+				// 	.field(
+				// 		'user_id,category_id,goods_banner_imgs,name,keywords,price,goods_desc,picurl,remain_count,contact'
+				// 	)
+				// 	.get();
+                 
+				// 	// let goods =await uniCloud.database().collection('secondgoods-categories').field('_id, classname as text').getTemp();
+				// 	// let all = uniCloud.database().collection(good, goods) // 注意collection方法内需要传入所有用到的表名，用逗号分隔，主表需要放在第一位
+				// 	// 	// .where('category_id._id == this.sort')  
+				// 	// 	.where('checked == 0')
+				// 	// 	.get();
+				// 	this.collectionList = good.result.data;
+					// console.log(good.result.data)
+				// let id = this.navArr[index]._id
+				// console.log("let id :" + id)
+				 
+				// let res = await db.collection("runtake").where({
+				// 		category_id: id
+				// 	})
+				// 	.get();
+				// this.newsArr = res.result.data;
+				// console.log(res)
+				// this.loading = 2
+				 
+			},
+
 			fabClick() {
 				console.log(1)
 				uni.navigateTo({
@@ -136,25 +239,25 @@
 				// this.selectedIndexs.length = 0
 				// this.$refs.table.clearSelection()
 				this.$refs.udb.loadData({
-			 	current: e.current
-			 })
+					current: e.current
+				})
 			},
 			/**
 			 * 切换商品列表布局方向
 			 */
-			select() {
-				this.options.formData.waterfall = !this.options.formData.waterfall;
-			},
+			// select() {
+			// 	this.options.formData.waterfall = !this.options.formData.waterfall;
+			// },
 			/**
 			 * 下拉刷新回调函数
 			 */
 			onPullDownRefresh() {
-				this.tipShow = true
+				// this.tipShow = true
 				// this.formData.status = 'more'
 				this.$refs.udb.loadData({
 					clear: true
 				}, () => {
-					this.tipShow = false
+					// this.tipShow = false
 					uni.stopPullDownRefresh()
 				})
 			},
@@ -165,7 +268,7 @@
 				this.$refs.udb.loadMore()
 			},
 			load() {
-// load(data, ended) {
+				// load(data, ended) {
 				// if (ended) {
 				// 	this.formData.status = 'noMore'
 				// }
@@ -174,7 +277,9 @@
 				this.where = text ? `${new RegExp(text, 'gi')}.test(name)` : '';
 			},
 			clear() {
+				
 				getApp().globalData.searchText = '';
+				console.log("clear")
 			},
 			searchClick() {
 				uni.hideKeyboard();
@@ -187,6 +292,7 @@
 		watch: {
 			searchText(value) {
 				this.search(value);
+				console.log("searchText")
 			}
 		},
 		computed: {
@@ -296,7 +402,7 @@
 
 	// 默认加入 scoped ，所以外面加一层提升权重
 	.list {
-		margin-top: 52px;
+		// margin-top: 52px;
 
 		.uni-list--waterfall {
 
@@ -343,7 +449,7 @@
 		flex-direction: row;
 		justify-content: center;
 		align-items: center;
-		position: fixed;
+		// position: fixed;
 		left: 0;
 		right: 0;
 		z-index: 10;
@@ -375,5 +481,36 @@
 		font-size: 26rpx;
 		color: #808080;
 		margin-top: 20rpx;
+	}
+
+	.navscroll {
+		height: 100rpx;
+		background: #F7F8FA;
+		white-space: nowrap;
+		// position: fixed;
+		// top: var(--window-top);
+		// left: 0;
+		// z-index: 10;
+
+		/deep/ ::-webkit-scrollbar {
+			width: 4px !important;
+			height: 1px !important;
+			overflow: auto !important;
+			background: transparent !important;
+			-webkit-appearance: auto !important;
+			display: block;
+		}
+
+		.item {
+			font-size: 40rpx;
+			display: inline-block;
+			line-height: 100rpx;
+			padding: 0 30rpx;
+			color: #333;
+
+			&.active {
+				color: #31C27C;
+			}
+		}
 	}
 </style>

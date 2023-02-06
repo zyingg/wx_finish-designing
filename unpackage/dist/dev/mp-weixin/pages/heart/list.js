@@ -102,16 +102,19 @@ var components
 try {
   components = {
     uTabs: function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui_2.0.34/components/u-tabs/u-tabs */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui_2.0.34/components/u-tabs/u-tabs")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui_2.0.34/components/u-tabs/u-tabs.vue */ 688))
+      return Promise.all(/*! import() | uni_modules/uview-ui_2.0.34/components/u-tabs/u-tabs */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui_2.0.34/components/u-tabs/u-tabs")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui_2.0.34/components/u-tabs/u-tabs.vue */ 998))
     },
     uSkeleton: function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui_2.0.34/components/u-skeleton/u-skeleton */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui_2.0.34/components/u-skeleton/u-skeleton")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui_2.0.34/components/u-skeleton/u-skeleton.vue */ 859))
+      return Promise.all(/*! import() | uni_modules/uview-ui_2.0.34/components/u-skeleton/u-skeleton */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui_2.0.34/components/u-skeleton/u-skeleton")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui_2.0.34/components/u-skeleton/u-skeleton.vue */ 924))
     },
     blogItem: function () {
-      return Promise.all(/*! import() | components/blog-item/blog-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/blog-item/blog-item")]).then(__webpack_require__.bind(null, /*! @/components/blog-item/blog-item.vue */ 696))
+      return Promise.all(/*! import() | components/blog-item/blog-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/blog-item/blog-item")]).then(__webpack_require__.bind(null, /*! @/components/blog-item/blog-item.vue */ 770))
+    },
+    uBackTop: function () {
+      return Promise.all(/*! import() | uni_modules/uview-ui_2.0.34/components/u-back-top/u-back-top */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui_2.0.34/components/u-back-top/u-back-top")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui_2.0.34/components/u-back-top/u-back-top.vue */ 1006))
     },
     uniLoadMore: function () {
-      return Promise.all(/*! import() | uni_modules/uni-load-more/components/uni-load-more/uni-load-more */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-load-more/components/uni-load-more/uni-load-more")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-load-more/components/uni-load-more/uni-load-more.vue */ 703))
+      return Promise.all(/*! import() | uni_modules/uni-load-more/components/uni-load-more/uni-load-more */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-load-more/components/uni-load-more/uni-load-more")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-load-more/components/uni-load-more/uni-load-more.vue */ 777))
     },
   }
 } catch (e) {
@@ -225,6 +228,11 @@ var dbCmd = db.command;
 var _default = {
   data: function data() {
     return {
+      scrollTop: 0,
+      iconStyle: {
+        fontSize: '32rpx',
+        color: '#000000'
+      },
       uniLoad: "more",
       noMore: false,
       navlist: [{
@@ -249,6 +257,9 @@ var _default = {
       navAction: 0,
       loadState: true
     };
+  },
+  onPageScroll: function onPageScroll(e) {
+    this.scrollTop = e.scrollTop;
   },
   onLoad: function onLoad() {
     this.getData();

@@ -7,20 +7,24 @@
 				<uni-load-more :contentText="loadMore" status="loading"></uni-load-more>
 			</view>
 			<view v-else-if="data">
-				<view class="pic-box">
+				<!-- <view class="pic-box">
 
 					<image :src="data.run_thumb.url" mode="aspectFill"></image>
-				</view>
+				</view> -->
 				<view class="info-box goods-info">
 
 
 					<view class="info-box text-info">
-						<view class="price">￥{{data.run_price}}</view>
+
 						<view class="title">
 							{{data.name}}
 						</view>
-
-
+						
+						<view class="row">
+							<view class="leftxt">跑腿报酬</view>
+							<view class="content"><view class="price">￥{{data.run_price}}</view>
+</view>
+						</view>
 						<view class="row">
 							<view class="leftxt">需求分类</view>
 							<view class="content"><text>{{data.category_id[0].text}}</text></view>
@@ -59,7 +63,7 @@
 
 						<view class="more" @click="clickMore">
 							<uni-icons type="more-filled" size="30"></uni-icons>
-							
+
 						</view>
 
 					</view>
@@ -185,7 +189,7 @@
 					success: (res) => {
 						// 删除数据成功后跳转到list页面
 						uni.navigateTo({
-							url: './list'
+							url: '/pages/runtake/list'
 						})
 					}
 				})
@@ -196,7 +200,12 @@
 
 <style lang="scss">
 	.container {
-		display: block;
+		// display: block;
+		 display: flex;
+		    justify-content: center;
+		    align-items: center;
+			width: 100%;
+			   
 	}
 
 
@@ -223,14 +232,16 @@
 		margin-left: 10px;
 	}
 
-/deep/.info-box {
+	/deep/.info-box {
+		  // border: 1px solid;   
 		width: 100%;
-		padding: 25upx;
-		background-color: #fff;
+		margin-top: 40px;
+		background-color: #ffffff;
 		margin-bottom: 20upx;
 	}
 
 	/deep/.goods-info {
+		 
 		.price {
 			font-size: 46upx;
 			font-weight: 600;
@@ -239,9 +250,13 @@
 
 		.title {
 			font-size: 40upx;
+			
+			 
 			margin-bottom: 20px;
 			color: #605454;
 			font-weight: 700;
+			// padding-bottom: 15px;
+			//  border-bottom: 7px dotted #888; 
 		}
 	}
 
@@ -253,10 +268,10 @@
 			margin: 0 0 30upx 0;
 
 			.leftxt {
-				width: 20%;
+				width: 25%;
 				font-size: 15px;
 				color: #a2a2a2;
-				margin-right: 20upx;
+				margin-right: 30upx;
 			}
 
 			.content {
@@ -286,6 +301,4 @@
 			color: #888;
 		}
 	}
-
-	 
 </style>

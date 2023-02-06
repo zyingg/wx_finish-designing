@@ -16,7 +16,11 @@
 						<!-- 通过header插槽定义列表左侧图片 -->
 						<template #header>
 							<view class="uni-thumb shop-picture" :class="{ 'shop-picture-column': waterfall }">
-								<image :src="item.run_thumb.url" mode="aspectFill"></image>
+								<!-- <image :src="item.run_thumb.url" mode="aspectFill"></image> -->
+								<!-- <image v-if="item.run_thumb.url" mode="aspectFill"
+									:src="item.run_thumb.url"></image>
+								<image v-else mode="aspectFill" src="../../static/icon/kd.png"></image> -->
+								<image  mode="aspectFill" src="../../static/icon/kd.png"></image> 
 							</view>
 						</template>
 						<!-- 通过body插槽定义商品布局 -->

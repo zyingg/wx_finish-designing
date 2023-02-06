@@ -24,7 +24,59 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.user .top {
+/* 页面 start*/
+.about-shadow.data-v-6cbfa486 {
+  border-radius: 15rpx;
+  box-shadow: 0rpx 0rpx 50rpx 0rpx rgba(0, 0, 0, 0.07);
+}
+.about__wrap.data-v-6cbfa486 {
+  position: relative;
+  z-index: 1;
+  margin: 20rpx 30rpx;
+  margin-top: -230rpx;
+}
+/* 图标容器12 start */
+.icon12__item.data-v-6cbfa486 {
+  width: 30%;
+  background-color: #FFFFFF;
+  border-radius: 10rpx;
+  padding: 30rpx;
+  margin: 20rpx 10rpx;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  transition: -webkit-transform 0.3s linear;
+  transition: transform 0.3s linear;
+  transition: transform 0.3s linear, -webkit-transform 0.3s linear;
+  -webkit-transform-origin: center center;
+          transform-origin: center center;
+}
+.icon12__item--icon.data-v-6cbfa486 {
+  width: 15rpx;
+  height: 15rpx;
+  font-size: 50rpx;
+  border-radius: 50%;
+  margin-bottom: 38rpx;
+  position: relative;
+  z-index: 1;
+}
+.icon12__item--icon.data-v-6cbfa486::after {
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  border-radius: inherit;
+  opacity: 1;
+  -webkit-transform: scale(1, 1);
+          transform: scale(1, 1);
+  background-size: 100% 100%;
+}
+.user.data-v-6cbfa486 {
+  /* 图标容器1 start */
+}
+.user .top.data-v-6cbfa486 {
   height: 300rpx;
   background: #bbb;
   padding: 0 30rpx;
@@ -33,7 +85,7 @@
   display: flex;
   align-items: center;
 }
-.user .top .group {
+.user .top .group.data-v-6cbfa486 {
   position: relative;
   z-index: 10;
   display: flex;
@@ -42,38 +94,38 @@
   width: 100%;
   color: #fff;
 }
-.user .top .group .userinfo {
+.user .top .group .userinfo.data-v-6cbfa486 {
   display: flex;
   width: 100%;
   align-items: center;
 }
-.user .top .group .userinfo .pic {
+.user .top .group .userinfo .pic.data-v-6cbfa486 {
   width: 120rpx;
   height: 120rpx;
   border-radius: 50%;
   overflow: hidden;
   border: 2px solid #fff;
 }
-.user .top .group .userinfo .pic image {
+.user .top .group .userinfo .pic image.data-v-6cbfa486 {
   width: 100%;
   height: 100%;
 }
-.user .top .group .userinfo .text {
+.user .top .group .userinfo .text.data-v-6cbfa486 {
   padding-left: 20rpx;
 }
-.user .top .group .userinfo .text .nickname {
+.user .top .group .userinfo .text .nickname.data-v-6cbfa486 {
   font-size: 44rpx;
   font-weight: 600;
 }
-.user .top .group .userinfo .text .year {
+.user .top .group .userinfo .text .year.data-v-6cbfa486 {
   font-size: 26rpx;
   opacity: 0.6;
   padding-top: 5rpx;
 }
-.user .top .group .more .iconfont {
+.user .top .group .more .iconfont.data-v-6cbfa486 {
   font-size: 40rpx;
 }
-.user .top .bg {
+.user .top .bg.data-v-6cbfa486 {
   position: absolute;
   top: 0;
   left: 0;
@@ -81,7 +133,7 @@
   height: 100%;
   overflow: hidden;
 }
-.user .top .bg image {
+.user .top .bg image.data-v-6cbfa486 {
   width: 100%;
   height: 100%;
   -webkit-filter: blur(20px);
@@ -90,7 +142,7 @@
           transform: scale(2);
   opacity: 0.5;
 }
-.user .main {
+.user .main.data-v-6cbfa486 {
   width: 100%;
   min-height: 200rpx;
   background: #fff;
@@ -99,24 +151,24 @@
           transform: translateY(-30rpx);
   padding: 30rpx 0;
 }
-.user .main .info {
+.user .main .info.data-v-6cbfa486 {
   padding: 10rpx 30rpx;
   display: flex;
   font-size: 30rpx;
 }
-.user .main .info .item {
+.user .main .info .item.data-v-6cbfa486 {
   padding-right: 20rpx;
   color: #888;
 }
-.user .main .info .item text {
+.user .main .info .item text.data-v-6cbfa486 {
   font-weight: 600;
   color: #333;
 }
-.user .main .list .group {
+.user .main .list .group.data-v-6cbfa486 {
   padding: 15rpx 30rpx;
   border-bottom: 15rpx solid #f4f4f4;
 }
-.user .main .list .group .item {
+.user .main .list .group .item.data-v-6cbfa486 {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -125,21 +177,21 @@
   color: #555;
   border-bottom: 1rpx solid #f8f8f8;
 }
-.user .main .list .group .item .left {
+.user .main .list .group .item .left.data-v-6cbfa486 {
   display: flex;
   align-items: center;
 }
-.user .main .list .group .item .left .iconfont {
+.user .main .list .group .item .left .iconfont.data-v-6cbfa486 {
   font-size: 38rpx;
   margin-right: 10rpx;
 }
-.user .main .list .group .item .right .iconfont {
+.user .main .list .group .item .right .iconfont.data-v-6cbfa486 {
   font-size: 26rpx;
 }
-.user .main .list .group .item:last-child {
+.user .main .list .group .item.data-v-6cbfa486:last-child {
   border: none;
 }
-.user .main .list .group:last-child {
+.user .main .list .group.data-v-6cbfa486:last-child {
   border: none;
 }
 

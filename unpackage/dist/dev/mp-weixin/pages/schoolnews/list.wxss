@@ -130,7 +130,7 @@
   padding: 30rpx;
   border-bottom: #F7F7F7 15rpx solid;
 }
-.edit.data-v-0786e206 {
+.add.data-v-0786e206 {
   width: 120rpx;
   height: 120rpx;
   background: #0199FE;
@@ -145,7 +145,7 @@
   align-items: center;
   box-shadow: 0 0 20rpx rgba(1, 153, 254, 0.8);
 }
-.edit .iconfont.data-v-0786e206 {
+.add .iconfont.data-v-0786e206 {
   font-size: 50rpx;
 }
 
