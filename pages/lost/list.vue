@@ -17,7 +17,10 @@
 							<!-- 通过header插槽定义列表左侧图片 -->
 							<template #header>
 								<view class="uni-thumb shop-picture" :class="{ 'shop-picture-column': waterfall }">
-									<image :src="item.lost_thumb.url" mode="aspectFill"></image>
+									<!-- <image :src="item.lost_thumb.url" mode="aspectFill"></image> -->
+									<image v-if="item.lost_thumb && item.lost_thumb.length" mode="aspectFill"
+										:src="item.lost_thumb[0].url"></image>
+									<image v-else mode="aspectFill" src="../../static/icon/lost.png"></image>
 								</view>
 							</template>
 							<!-- 通过body插槽定义商品布局 -->
@@ -28,6 +31,7 @@
 											<text class="uni-ellipsis-2">{{ item.name }} </text>
 										</view>
 									</view>
+									<!-- <view class="u-body-item-title u-line-2">{{item.lost_desc}}</view> -->
 									<view>
 										<view class="shop-price">
 											 <view class="uni-card__content">{{ $u.timeFormat(item.add_date)}} 发布</view >

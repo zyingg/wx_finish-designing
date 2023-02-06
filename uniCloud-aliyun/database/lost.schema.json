@@ -28,7 +28,11 @@
 		"category_id": {
 			"bsonType": "string",
 			"description": "需求分类 id，参考`opendb-mall-categories`表",
-			"foreignKey": "lost-categories._id"
+			"foreignKey": "lost-categories._id",
+			"enum": {
+				"collection": "lost-categories",
+				"field": "_id as value, name as text"
+			}
 		},
 		// "goods_sn": {
 		// 	"bsonType": "string",
@@ -60,7 +64,7 @@
 			"title": "拾/失物地址",
 			"trim": "both"
 		},
-		 
+
 		"contact": {
 			"bsonType": "string",
 			"description": "联系方式",
@@ -68,11 +72,14 @@
 			"trim": "both"
 		},
 		"lost_thumb": {
-			"bsonType": "file",
-			// "description": "快递商品缩略图，用于在列表或搜索结果中预览显示",
-			"title": "商品封面图"
-			// "pattern": "^(http://|https://|/|./|@/)\\S",
-			// "trim": "both"
+			"bsonType": "array",
+			"arrayType": "file",
+			"description": "商品详情页的banner图地址",
+			"title": "照片",
+			"multiple": true, // 允许选择多张图片，schema2code生效
+			"fileMediaType": "image", // 可选值 all|image|video 默认值为all,表示所有文件，image表示图片类型文件，video表示视频类型文件
+			"fileExtName": "jpg,png", // 扩展名过滤，多个用 , 分割
+			"maxLength": 9 // 限制最大数量
 		},
 		// "goods_banner_imgs": {
 		// 	"bsonType": "array",
@@ -97,8 +104,8 @@
 			"description": "最后修改时间",
 			"defaultValue": {
 				"$env": "now"
-	}
 			}
-		},
-		"version": "0.0.1"
-	}
+		}
+	},
+	"version": "0.0.1"
+}

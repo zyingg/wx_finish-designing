@@ -161,12 +161,12 @@
 		//     }
 		// }
 		  
-		  , {
-		  	"path": "pages/index/edit",
-		  	"style": {
-		  		"navigationBarTitleText": "发布校园动态"
-		  	}
-		  }
+		  // , {
+		  // 	"path": "pages/index/edit",
+		  // 	"style": {
+		  // 		"navigationBarTitleText": "发布校园动态"
+		  // 	}
+		  // }
 		  , {
 		  	"path": "pages/index/detail",
 		  	"style": {
@@ -269,14 +269,14 @@
     }
 }
 
-    ,{
-            "path" : "pages/good/good",
-            "style" : {
-                "enablePullDownRefresh": true,
-                "navigationBarTitleText": "商品列表"
-            }
+    // ,{
+    //         "path" : "pages/good/good",
+    //         "style" : {
+    //             "enablePullDownRefresh": true,
+    //             "navigationBarTitleText": "商品列表"
+    //         }
             
-        }
+    //     }
     ,{
     "path": "pages/runtake/add",
     "style": {

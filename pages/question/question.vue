@@ -164,8 +164,8 @@
 			async getData() {
 				// type=this.current;
 				// .where(`delState != true` && `state== 0`)
-				let artTemp = db.collection("quanzi_article").where(`delState != true` && `state== 9`).field(
-						"title,user_id,description,picurls,comment_count,like_count,view_count,publish_date,state")
+				let artTemp = db.collection("quanzi_article").where(`delState != true` && `category_id== "63e10989f43e606dd8068d4e"`).field(
+						"title,user_id,category_id,description,picurls,comment_count,like_count,view_count,publish_date,state")
 					.getTemp();
 				console.log(artTemp)
 				let userTemp = db.collection("uni-id-users").field("_id,username,nickname,avatar_file").getTemp();

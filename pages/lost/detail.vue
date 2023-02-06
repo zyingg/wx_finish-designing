@@ -8,7 +8,9 @@
       <view v-else-if="data">
         <view class="pic-box">
         
-        			<image :src="data.lost_thumb.url" mode="aspectFill"></image>
+        			<image v-if="data.lost_thumb && data.lost_thumb.length" mode="aspectFill"
+        				:src="data.lost_thumb[0].url"></image>
+        			<image v-else mode="aspectFill" src="../../static/icon/lost.png"></image>
         		</view>
         		<view class="info-box goods-info">
         
@@ -28,10 +30,7 @@
         					<view class="leftxt">拾/失物地址</view>
         					<view class="content"> <text>{{data.lost_place}}</text> </view>
         				</view>
-        				<!-- <view class="row">
-        					<view class="leftxt">送货地址</view>
-        					<view class="content"> <text>{{data.run_place}}</text> </view>
-        				</view> -->
+        			 
         
         				<view class="row">
         					<view class="leftxt">联系方式</view>
@@ -66,11 +65,14 @@
         
         
         			<!-- 详情 -->
-        			<!-- <view class="description">
+        			 <view class="description">
         				<view class="title">———— 详情 ————</view>
-         
-        
-        			</view> -->
+              <view class="picurls"><template v-for="(file, j) in data.lost_thumb">
+            <uni-file-picker v-if="file.fileType == 'image'" :value="file" :file-mediatype="file.fileType" return-type="object" readonly></uni-file-picker>
+            <uni-link v-else :href="file.url" :text="file.url"></uni-link>
+          </template>
+        </view>
+        			</view>  
         		</view>
         		<u-action-sheet :actions="selectlist" cancelText="取消" :show="show" :closeOnClickOverlay="true"
         			:closeOnClickAction="true" @select="selectClick" @close="onClose"></u-action-sheet>
@@ -282,6 +284,13 @@
 			color: #888;
 		}
 	}
-
+.picurls{
+		padding-top: 50rpx;
+		image{
+			width: 100%;
+			display: block;
+			margin-bottom:30rpx;
+		}
+	}
 	 
 </style>

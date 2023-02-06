@@ -50,9 +50,10 @@
 					title:"",
 					content:"",
 					description:"",
-					picurls:"",
+					picurls:[],
 					province:"",
-					state:0,
+					// state:0,
+					category_id:"63e1093b28064aae268da89b"
 				}
 			};
 		},		
@@ -71,6 +72,7 @@
 						this.artObj.description=res.text.slice(0,80);
 						this.artObj.content=res.html;
 						this.artObj.picurls=getImgSrc(res.html)
+						console.log(this.artObj.picurls)
 						uni.showLoading({
 							title:"发布中..."
 						})						

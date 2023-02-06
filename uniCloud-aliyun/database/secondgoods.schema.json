@@ -37,6 +37,12 @@
 				"$env": "uid"
 			}
 		},
+		// "username": {
+		// 	"bsonType": "string",
+		// 	"description": "文章作者username， 参考`uni-id-users` 表",
+		// 	"foreignKey": "uni-id-users.username"
+			 
+		// },
 		"category_id": {
 			"bsonType": "string",
 			"description": "分类 id，参考`opendb-mall-categories`表",
@@ -46,12 +52,7 @@
 				"field": "_id as value, classname as text"
 			}
 		},
-		"goods_sn": {
-			"bsonType": "string",
-			"description": "商品的唯一货号",
-			"title": "货号",
-			"trim": "both"
-		},
+		
 		"name": {
 			"bsonType": "string",
 			"description": "商品名称",
@@ -76,11 +77,11 @@
 			"title": "详细描述",
 			"trim": "right"
 		},
-		"picurl": {
-			"title": "商品图",
-			"bsonType": "file"
-			// "bsonType": "string"
-		},
+		// "picurl": {
+		// 	"title": "商品图",
+		// 	"bsonType": "file"
+		// 	// "bsonType": "string"
+		// },
 		// "goods_thumb": {
 		// 	"bsonType": "string",
 		// 	"description": "商品缩略图，用于在列表或搜索结果中预览显示",
@@ -90,7 +91,13 @@
 		// },
 		"goods_banner_imgs": {
 			"bsonType": "array",
-			"description": "商品详情页的banner图"
+			 "arrayType": "file",
+			"description": "商品详情页的banner图地址",
+ "title": "照片",
+					"multiple": true, // 允许选择多张图片，schema2code生效
+			        "fileMediaType": "image", // 可选值 all|image|video 默认值为all,表示所有文件，image表示图片类型文件，video表示视频类型文件
+			        "fileExtName": "jpg,png", // 扩展名过滤，多个用 , 分割
+			        "maxLength": 9 // 限制最大数量
 		},
 		"remain_count": {
 			"bsonType": "int",
@@ -170,15 +177,8 @@
 			"defaultValue": {
 				"$env": "now"
 			}
-		},
-		"seller_note": {
-			"bsonType": "string",
-			"description": "商家备注，仅商家可见",
-			"trim": "both",
-			"permission": {
-				"read": false
-			}
 		}
+		 
 	},
 	"version": "0.0.1"
 }

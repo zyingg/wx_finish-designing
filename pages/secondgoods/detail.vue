@@ -12,11 +12,8 @@
 					<!--  <uni-file-picker v-if="data.picurl && data.picurl.fileType == 'image'" :value="data.picurl" :file-mediatype="data.picurl && data.picurl.fileType" return-type="object" readonly></uni-file-picker>
 		    <uni-link v-else-if="data.picurl" :href="data.picurl.url" :text="data.picurl.url"></uni-link>
 		    <text v-else></text> -->
-					<!-- <image :src="data.picurl.url" mode="aspectFill"></image> -->
-					<image v-if="data.goods_banner_imgs && data.goods_banner_imgs.length" mode="aspectFill"
-						:src="data.goods_banner_imgs[0]"></image>
-					<image v-else mode="aspectFill" src="../../static/icon/second.png"></image>
-					<!-- <image :src="data.goods_banner_imgs[0].url" mode="aspectFill"></image> -->
+				<!-- 	<image :src="data.picurl.url" mode="aspectFill"></image> -->
+					<image :src="data.goods_banner_imgs[0].url" mode="aspectFill"></image>
 				</view>
 				<view class="info-box goods-info">
 
@@ -86,9 +83,13 @@
 						<!-- <view class="content"><rich-text :nodes="data.goods_desc"></rich-text></view> -->
 
 						{{data.goods_desc}}
-						<view class="picurls" v-if="data.goods_banner_imgs && data.goods_banner_imgs.length">
-					 	 
-										<image v-for="item in data.goods_banner_imgs" :src="item" mode="widthFix"></image>
+						<view class="picurls">
+					 	 <!-- 	<view class="picurls" v-if="data.goods_banner_imgs && data.goods_banner_imgs.length"> -->
+										<!-- <image v-for="item in data.goods_banner_imgs" :src="item.url" mode="widthFix"></image> -->
+  <template v-for="(file, j) in data.goods_banner_imgs">
+            <uni-file-picker v-if="file.fileType == 'image'" :value="file" :file-mediatype="file.fileType" return-type="object" readonly></uni-file-picker>
+            <uni-link v-else :href="file.url" :text="file.url"></uni-link>
+          </template>
 									</view>
 						
 					</view>
@@ -126,9 +127,9 @@
 				],
 				queryWhere: '',
 				collectionList: [db.collection('secondgoods').field(
-					'category_id,goods_sn,name,keywords,price,goods_banner_imgs,goods_desc,picurl,remain_count,contact,checked,add_date,last_modify_date,seller_note'
+					'category_id,name,keywords,price,goods_banner_imgs,goods_desc,remain_count,contact,checked,add_date,last_modify_date'
 				).getTemp(), 
-				db.collection('uni-id-users').field('_id, user_id as userid').getTemp(),
+			 
 				db.collection('secondgoods-categories').field('_id, classname as text').getTemp()],
 				loadMore: {
 					contentdown: '',
@@ -151,7 +152,7 @@
 		onReady() {
 			if (this._id) {
 				this.collectionList = [db.collection('secondgoods').where('_id=="' + this._id + '"').field(
-					'category_id,name,keywords,goods_banner_imgs,price,goods_desc,picurl,remain_count,contact,checked,add_date,last_modify_date,seller_note'
+					'category_id,name,keywords,goods_banner_imgs,price,goods_desc,remain_count,contact,checked,add_date,last_modify_date'
 				).getTemp(), db.collection('secondgoods-categories').field('_id, classname as text').getTemp()]
 			}
 		},

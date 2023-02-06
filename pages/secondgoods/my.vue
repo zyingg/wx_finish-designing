@@ -31,9 +31,9 @@
 								:class="{ 'shop-picture-column': options.formData.waterfall }">
 								<!-- <image :src="item.picurl.url mode="aspectFill"></image> -->
 								<!-- <image :src="item.goods_banner_imgs[0]" mode="aspectFill"></image> -->
-								<image v-if="item.goods_banner_imgs && item.goods_banner_imgs.length" mode="aspectFill"
-									:src="item.goods_banner_imgs[0]"></image>
-								<image v-else mode="aspectFill" src="../../static/icon/second.png"></image>
+							<image v-if="item.goods_banner_imgs && item.goods_banner_imgs.length" mode="aspectFill"
+								:src="item.goods_banner_imgs[0].url"></image>
+							<image v-else mode="aspectFill" src="../../static/icon/second.png"></image>
 							</view>
 						</template>
 						<!-- 通过body插槽定义商品布局 -->

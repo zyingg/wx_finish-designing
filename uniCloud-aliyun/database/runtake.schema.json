@@ -20,7 +20,7 @@
 		"user_id": {
 			"bsonType": "string",
 			"description": "评论者ID，参考`uni-id-users` 表",
-			"forceDefaultValue": {
+			"defaultValue": {
 				"$env": "uid"
 			},
 			"foreignKey": "uni-id-users._id"
@@ -28,7 +28,11 @@
 		"category_id": {
 			"bsonType": "string",
 			"description": "需求分类 id，参考`opendb-mall-categories`表",
-			"foreignKey": "runtake-categories._id"
+			"foreignKey": "runtake-categories._id",
+			"enum": {
+				"collection": "runtake-categories",
+				"field": "_id as value, name as text"
+			}
 		},
 		// "goods_sn": {
 		// 	"bsonType": "string",
@@ -72,13 +76,13 @@
 			"title": "联系方式",
 			"trim": "both"
 		},
-		"run_thumb": {
-			"bsonType": "file",
-			// "description": "快递商品缩略图，用于在列表或搜索结果中预览显示",
-			"title": "商品封面图"
-			// "pattern": "^(http://|https://|/|./|@/)\\S",
-			// "trim": "both"
-		},
+		// "run_thumb": {
+		// 	"bsonType": "file",
+		// 	// "description": "快递商品缩略图，用于在列表或搜索结果中预览显示",
+		// 	"title": "商品封面图"
+		// 	// "pattern": "^(http://|https://|/|./|@/)\\S",
+		// 	// "trim": "both"
+		// },
 		// "goods_banner_imgs": {
 		// 	"bsonType": "array",
 		// 	"description": "商品详情页的banner图地址"

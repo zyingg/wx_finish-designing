@@ -2,6 +2,16 @@
 
 
 const validator = {
+  "user_id": {
+    "rules": [
+      {
+        "format": "string"
+      }
+    ],
+    "defaultValue": {
+      "$env": "uid"
+    }
+  },
   "category_id": {
     "rules": [
       {
@@ -60,11 +70,17 @@ const validator = {
   "lost_thumb": {
     "rules": [
       {
-        "format": "file"
+        "format": "array"
+      },
+      {
+        "arrayType": "file"
+      },
+      {
+        "maxLength": 9
       }
     ],
-    "title": "商品封面图",
-    "label": "商品封面图"
+    "title": "照片",
+    "label": "照片"
   },
   "add_date": {
     "rules": [

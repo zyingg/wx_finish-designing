@@ -19,15 +19,6 @@ const validator = {
       }
     ]
   },
-  "goods_sn": {
-    "rules": [
-      {
-        "format": "string"
-      }
-    ],
-    "title": "货号",
-    "label": "货号"
-  },
   "name": {
     "rules": [
       {
@@ -67,21 +58,20 @@ const validator = {
     "title": "详细描述",
     "label": "详细描述"
   },
-  "picurl": {
-    "rules": [
-      {
-        "format": "file"
-      }
-    ],
-    "title": "商品图",
-    "label": "商品图"
-  },
   "goods_banner_imgs": {
     "rules": [
       {
         "format": "array"
+      },
+      {
+        "arrayType": "file"
+      },
+      {
+        "maxLength": 9
       }
-    ]
+    ],
+    "title": "照片",
+    "label": "照片"
   },
   "remain_count": {
     "rules": [
@@ -142,13 +132,6 @@ const validator = {
     "defaultValue": {
       "$env": "now"
     }
-  },
-  "seller_note": {
-    "rules": [
-      {
-        "format": "string"
-      }
-    ]
   }
 }
 
