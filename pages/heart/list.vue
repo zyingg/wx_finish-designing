@@ -239,7 +239,7 @@
 
 
 		.topnav {
-			margin-bottom: 30rpx;
+			margin-bottom: 15rpx;
 		}
 
 		.loadingState {

@@ -179,7 +179,7 @@
 <style lang="scss" scoped>
 	.topnav {
 		margin-top: 10rpx;
-		margin-bottom: 20rpx;
+		margin-bottom:  15rpx;
 		height: 80rpx;
 		// background-color: #ffff7f;
 	}
