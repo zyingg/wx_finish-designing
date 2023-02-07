@@ -63,7 +63,7 @@ function getIp(){
 
 //获取昵称
 export function giveName(item){
-	return  item.user_id[0].username ||  item.user_id[0].nickname || item.user_id[0].mobile || "请设置昵称"	
+	return  item.user_id[0].nickname ||  item.user_id[0].username || item.user_id[0].mobile || "请设置昵称"	
 }
 
 //获取默认头像

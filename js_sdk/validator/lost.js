@@ -8,7 +8,7 @@ const validator = {
         "format": "string"
       }
     ],
-    "defaultValue": {
+    "forceDefaultValue": {
       "$env": "uid"
     }
   },

@@ -82,7 +82,7 @@ const validator = {
       }
     ],
     "title": "文章状态",
-    "defaultValue": 0,
+    "defaultValue": 1,
     "label": "文章状态"
   },
   "state": {

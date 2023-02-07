@@ -1,7 +1,7 @@
 <template>
 	<view class="home">
-		
-		
+
+
 		<!-- 轮播图start -->
 		<!-- <swiper class="card-swiper"  :circular="true"
 		  :autoplay="true" duration="500" interval="8000" @change="cardSwiper"> 
@@ -22,9 +22,9 @@
 		    </block>
 		</view> -->
 		<!-- 轮播图end -->
-		
+
 		<!-- 轮播图start -->
-		  <!-- <u-swiper
+		<!-- <u-swiper
 		                 :list="SwiperList"
 		                 @change="e => current = e.current"
 		                 :autoplay="true"
@@ -44,39 +44,39 @@
 		                 </view>
 		             </view>
 		         </u-swiper> -->
-		 <!-- 轮播图end -->
-		 
-		 <swiper class="card-swiper" :circular="true" :autoplay="true" duration="500" interval="5000"
-		 	@change="cardSwiper">
-		 	<swiper-item v-for="(item,index) in SwiperList" :key="index" :class="cardCur==index?'cur':''">
-		 		<view class="swiper-item image-banner tn-shadow"  >
-		 			<image :src="item.url" mode="aspectFill" v-if="item.type=='image'"></image>
-		 		</view>
-		 		<view class="swiper-item-text">
-		 			<view class="tn-text-xxl tn-text-bold tn-color-white">{{item.title}}</view>
-		 			<view class="tn-text-bold tn-color-white tn-padding-top-xs" style="font-size: 60rpx;">{{item.name}}
-		 			</view>
-		 			<view class="tn-text-sm tn-text-bold tn-color-white tn-padding-top-sm tn-padding-bottom-sm">
-		 				{{item.text}}
-		 			</view>
-		 		</view>
-		 	</swiper-item>
-		 </swiper>
-		 <view class="indication">
-		 	<block v-for="(item,index) in SwiperList" :key="index">
-		 		<view class="spot" :class="cardCur==index?'active':''"></view>
-		 	</block>
-		 </view>
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-<!-- 		<view class="swiperbox">
+		<!-- 轮播图end -->
+
+		<swiper class="card-swiper" :circular="true" :autoplay="true" duration="500" interval="5000"
+			@change="cardSwiper">
+			<swiper-item v-for="(item,index) in SwiperList" :key="index" :class="cardCur==index?'cur':''">
+				<view class="swiper-item image-banner tn-shadow">
+					<image :src="item.url" mode="aspectFill" v-if="item.type=='image'"></image>
+				</view>
+				<view class="swiper-item-text">
+					<view class="tn-text-xxl tn-text-bold tn-color-white">{{item.title}}</view>
+					<view class="tn-text-bold tn-color-white tn-padding-top-xs" style="font-size: 60rpx;">{{item.name}}
+					</view>
+					<view class="tn-text-sm tn-text-bold tn-color-white tn-padding-top-sm tn-padding-bottom-sm">
+						{{item.text}}
+					</view>
+				</view>
+			</swiper-item>
+		</swiper>
+		<view class="indication">
+			<block v-for="(item,index) in SwiperList" :key="index">
+				<view class="spot" :class="cardCur==index?'active':''"></view>
+			</block>
+		</view>
+
+
+
+
+
+
+
+
+
+		<!-- 		<view class="swiperbox">
 			<u-swiper
 			:list="swiperList"
 			keyName='url'
@@ -91,7 +91,7 @@
 			 
 			bgColor="#bdf77f"></u-swiper>																					
 		</view> -->
-	<!-- 	<view>
+		<!-- 	<view>
 			<swiper class="swiper" acceleration="true" :autoplay="autoplay"   :interval="interval" :duration="duration">
 				<swiper-item  class="swiper-item" v-for="(item,index) of swiperList" :key="item.id"  @click="lemonWX(index)">
 					<view class="">
@@ -112,10 +112,10 @@
 					</view>
 				</swiper-item>
 			</swiper>
-		</view> --> 
-		
-		
-	
+		</view> -->
+
+
+
 		<!-- 功能模块start-->
 		<!-- <view v-if="isAndroid" class="tn-flex tn-margin-xs tn-padding-top-sm">
 		 <view class="tn-flex-1 tn-padding-sm tn-margin-xs tn-radius" @click="tn('/pages/heart/heart')">
@@ -225,42 +225,40 @@
 				   </view>
 				 </view>
 				</view> -->
-				<!-- 功能模块12 end-->
+		<!-- 功能模块12 end-->
 
 		<view class="scroll">
-		  <u-scroll-list @right="right" @left="left">
-		         <view class="scroll-list" style="flex-direction: row;">
-		             <view
-		                     class="scroll-list__goods-item"
-		                     v-for="(item, index) in Glist"
-		                     :key="index"
-		                     :class="[(index === 9) && 'scroll-list__goods-item--no-margin-right']"
-							 @click="change(item.id)"
-		             >
-		                 <image class="scroll-list__goods-item__image" :src="item.img"></image>
-		                 <view class="scroll-list__goods-item__text"> {{ item.title  }}</view>
-		             </view>
-		           <!-- <view class="scroll-list__show-more">
+			<u-scroll-list @right="right" @left="left">
+				<view class="scroll-list" style="flex-direction: row;">
+					<view class="scroll-list__goods-item" v-for="(item, index) in Glist" :key="index"
+						:class="[(index === 9) && 'scroll-list__goods-item--no-margin-right']" @click="change(item.id)">
+						<image class="scroll-list__goods-item__image" :src="item.img"></image>
+						<view class="scroll-list__goods-item__text"> {{ item.title  }}</view>
+					</view>
+					<!-- <view class="scroll-list__show-more">
 		                 <text class="scroll-list__show-more__text">查看更多</text>
 		                 <u-icon name="arrow-leftward" color="#f56c6c" size="12"></u-icon>
 		             </view> -->
-		         </view>
-		     </u-scroll-list>
-		
+				</view>
+			</u-scroll-list>
+
 		</view>
-		
-		
-	 
-			 <view class="wrap"><tn-notice-bar :list="list" mode="vertical" :speed="140" backgroundColor="#fffee6" fontColor="#000000"></tn-notice-bar></view>
-			 <view class="tn-flex tn-flex-row-between">
-			   <view class="justify-content-item tn-margin tn-text-bold tn-text-xxl">
-			   校园动态
-			   </view>
-			   <view class="justify-content-item tn-margin tn-text-lg tn-color-grey">
-			     <text class="tn-padding-xs"  @click="tn('/pages/schoolnews/list')">全部</text>
-			     <text class="tn-icon-topics"></text>
-			   </view>
-			 </view>
+
+
+
+		<view class="wrap">
+			<tn-notice-bar :list="list" mode="vertical" :speed="140" backgroundColor="#fffee6" fontColor="#000000">
+			</tn-notice-bar>
+		</view>
+		<view class="tn-flex tn-flex-row-between">
+			<view class="justify-content-item tn-margin tn-text-bold tn-text-xxl">
+			 校园动态
+			</view>
+			<view class="justify-content-item tn-margin tn-text-lg tn-color-grey">
+				<text class="tn-padding-xs" @click="tn('/pages/schoolnews/list')">全部</text>
+				<text class="tn-icon-topics"></text>
+			</view>
+		</view>
 		<!-- <view class="topnav">
 			<u-tabs :list="navlist" :activeStyle="{
 				color: '#333',
@@ -272,7 +270,7 @@
 			}" @click="clickNav"></u-tabs>
 			
 		</view> -->
-<!-- <u-tabs :list="listtab" :is-scroll="true" :current="currentTabIndex" @change="change"></u-tabs> 
+		<!-- <u-tabs :list="listtab" :is-scroll="true" :current="currentTabIndex" @change="change"></u-tabs> 
 
 		<view class="loadingState" v-show="loadState">
 			<u-skeleton rows="4" title loading></u-skeleton>
@@ -280,18 +278,18 @@
 
 
 
-		<!-- "P_delEvent"父级里面定义的方法 -->
+		<!-- "P_delEvent"父级里面定义的方法 .slice(0,5)-->
 		<view class="content">
-			<view class="item" v-for="(item,index) in dataList.slice(0,4)"   :key='index'>
+			<view class="item" v-for="(item,index) in dataList" :key='index'>
 
 				<blog-item @delEvent="P_delEvent" :item="item" :isLike.sync="item.isLike"
 					:like_count.sync="item.like_count"></blog-item>
 			</view>
 		</view>
 
-		<view>
+		<!-- <view>
 			<uni-load-more :status="uniLoad"></uni-load-more>
-		</view>
+		</view> -->
 
 		<view v-if="uniIDHasRole('webadmin') || uniIDHasRole('admin')" class="add" @click="goAdd">
 			<text class="iconfont icon-a-21-xiugai"></text>
@@ -315,68 +313,26 @@
 	export default {
 		data() {
 
-			return {SwiperList: [],
-				Swiperlists:[],
+			return {
+				SwiperList: [],
+				 
 				list: [
-									'关于组织申报2023年度青年科技人才培育计划的通知',
-									'关于2023年度国家自然科学基金项目申请与结题等有关事项的通知',
-									'关于2023年寒假餐厅供餐调整的通知',
-									'停水通知'
-								],
+					'关于组织申报2023年度青年科技人才培育计划的通知',
+					'关于2023年度国家自然科学基金项目申请与结题等有关事项的通知',
+					'关于2023年寒假餐厅供餐调整的通知',
+					'停水通知'
+				],
 				current: 0,
-				 isAndroid: true,
-				 col: 3,
-				 computed: {
-				           // 兼容小程序
-				           gridItemWidth() {
-				             return 100 / this.col + '%'
-				           }
-				         },
-				 cardCur: 0,
-				swiperList: [{
-				  id: 0,
-				  type: 'image',
-				  title: '',
-				  name: '',
-				  text: '',
-				  url: '../../static/78e.png',
-				  
-				}, {
-				  id: 1,
-				  type: 'image',
-				  title: '合作勾搭',
-				  name: '作者微信 tnkewo',
-				  text: '',
-				  url: '../../static/12222.jpg',
-				}, {
-				  id: 2,
-				  type: 'image',
-				  title: '海量分享',
-				  name: '总有你想不到的创意',
-				  text: '',
-				  url: '../../static/78e.png',
-				}, {
-				  id: 3,
-				  type: 'image',
-				  title: '酷炫多彩',
-				  name: '更多彩蛋等你探索',
-				  text: '',
-				  url: '../../static/12222.jpg',
-				}, {
-				  id: 4,
-				  type: 'image',
-				  title: '适配多端',
-				  name: 'APP、微信小程序、H5、Finclip',
-				  text: '',
-				  url: '../../static/52c.jpg',
-				},{
-				  id: 5,
-				  type: 'image',
-				  title: '',
-				  name: '',
-				  text: '',
-				  url: '../../static/78e.png',
-				}],
+				isAndroid: true,
+				col: 3,
+				computed: {
+					// 兼容小程序
+					gridItemWidth() {
+						return 100 / this.col + '%'
+					}
+				},
+				cardCur: 0,
+		
 				Glist: [{
 						id: 1,
 						img: '../../static/icon/heart.png',
@@ -403,8 +359,8 @@
 						img: '../../static/icon/question.png',
 						title: '你问我答'
 					},
-					
-					
+
+
 					{
 						id: 6,
 						img: '../../static/icon/school.png',
@@ -423,7 +379,7 @@
 						name: "热门",
 						type: "view_count"
 					}
-					 
+
 				],
 				dataList: [],
 				navAction: 0,
@@ -444,12 +400,12 @@
 			this.getData();
 		},
 		created() {
-		  const systemInfo = uni.getSystemInfoSync()
-		  if (systemInfo.system.toLocaleLowerCase().includes('ios')) {
-		    this.isAndroid = false
-		  } else {
-		    this.isAndroid = true
-		  }
+			const systemInfo = uni.getSystemInfoSync()
+			if (systemInfo.system.toLocaleLowerCase().includes('ios')) {
+				this.isAndroid = false
+			} else {
+				this.isAndroid = true
+			}
 		},
 		methods: {
 			// cardSwiper
@@ -457,11 +413,11 @@
 				this.cardCur = e.detail.current
 			},
 			left() {
-						console.log('left');
-					},
-					right() {
-						console.log('right');
-					},
+				console.log('left');
+			},
+			right() {
+				console.log('right');
+			},
 			// 跳转
 			tn(e) {
 				uni.navigateTo({
@@ -473,14 +429,10 @@
 				// let {
 				// 	index
 				// } = e.detail
-				
+
 				// console.log(index)
 				console.log(id)
-				// if (id == 0) {
-				// 	uni.navigateTo({
-				// 		url: "/pages/heart/heart"
-				// 	})
-				// };
+			 
 				if (id == 1) {
 					uni.navigateTo({
 						url: "/pages/heart/list"
@@ -513,36 +465,7 @@
 				};
 			},
 
-
-  // // cardSwiper
-  //     cardSwiper(e) {
-  //       this.cardCur = e.detail.current
-  //     },
-  //     // resume
-  //     resume(e) {
-  //       this.cardCur2 = e.detail.current
-  //     },
-      // 跳转
-      // tn(e) {
-      // 	uni.navigateTo({
-      // 		url: e,
-      // 	});
-      // },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
 
 			P_delEvent() {
 				this.dataList = []; //清空数据
@@ -595,21 +518,21 @@
 			// 			this.loadState = false
 			// 		})
 			// },
-			
+
 			async getSwiper() {
 				let res = await uniCloud.database().collection("opendb-banner").where({
-					 
+
 					status: true
 				}).get();
-				 
+
 				let data = res.result.data;
-				 // console.log(data)
+				// console.log(data)
 				let list = [];
 				data.forEach((item, index) => {
 					list.push({
 						image: item.bannerfile.url,
-						 
-						 title: item.title
+
+						title: item.title
 					})
 				})
 				this.Swiperlists = list
@@ -617,12 +540,14 @@
 				console.log(this.Swiperlists)
 				this.getData();
 				console.log(2)
-				 },
-			
+			},
+
 			// 获取默认轮播图
 			async getBanner() {
-				let bannerList = await uniCloud.database().collection("opendb-banner").where({status: true})
-				.get().then((res) => {
+				let bannerList = await uniCloud.database().collection("opendb-banner").where({
+						status: true
+					})
+					.get().then((res) => {
 						// 设置默认轮播图
 						let imageList = res.result.data
 						imageList.forEach(item => {
@@ -647,36 +572,37 @@
 						})
 					})
 			},
-			
-			
-			
-			
-			
-			
-			
+
+
+
+
+
+
+
 			//获取网络列表
 			async getData() {
 				// type=this.current;
-				// .where(`delState != true` && `state== 1`)
-				let artTemp = db.collection("quanzi_article").where(`delState != true`&& `category_id== "63e1099709e2987cee2a23c3"`).field(
-						"title,user_id,category_id,description,picurls,comment_count,like_count,view_count,publish_date,state")
+				// .where(`delState != true` && `state== 1`) `delState != true``article_status == 1`
+				let artTemp =await db.collection("quanzi_article").where(`delState != true&&
+						category_id== "63e1099709e2987cee2a23c3"`).field(
+						"title,user_id,category_id,delState,description,picurls,comment_count,like_count,view_count,publish_date,article_status"
+						)
 					.getTemp();
 				console.log(artTemp)
 				let userTemp = db.collection("uni-id-users").field("_id,username,nickname,avatar_file").getTemp();
 
 				// db.collection(artTemp, userTemp).orderBy(this.navlist[this.navAction].type, "desc").skip(this.dataList
 				// 		.length).limit(5).get()
-						db.collection(artTemp, userTemp).orderBy("publish_date", "desc").skip(this.dataList
-								.length).limit(5).get()
+				db.collection(artTemp, userTemp).orderBy("publish_date", "desc").limit(5).get()
 					.then(async res => {
 						let idArr = []
-						let oldArr = this.dataList;
-						if (res.result.data.length == 0) {
-							this.noMore = true
-						}
+					 
+						// if (res.result.data.length == 0) {
+						// 	this.noMore = true
+						// }
 						console.log(res.result.data)
-						let resDataArr = [...this.dataList, ...res.result.data]
-
+						let resDataArr =  res.result.data
+                       console.log(resDataArr)
 
 						if (store.hasLogin) {
 							resDataArr.forEach(item => {
@@ -699,8 +625,10 @@
 
 						this.dataList = resDataArr
 						this.loadState = false
+						this.noMore = true
 					})
 			},
+
 
 			clickNav(e) {
 				this.loadState = true;
@@ -724,14 +652,15 @@
 
 <style lang="scss" scoped>
 	.wrap {
-		 margin-top: 20px;
+		margin-top: 20px;
 		// ......
 	}
+
 	/* 轮播视觉差 start */
 	.card-swiper {
 		height: 440rpx !important;
 	}
-	
+
 	.card-swiper swiper-item {
 		width: 750rpx !important;
 		left: 0rpx;
@@ -739,7 +668,7 @@
 		// padding: 0rpx 30rpx 30rpx 30rpx;
 		overflow: initial;
 	}
-	
+
 	.card-swiper swiper-item .swiper-item {
 		width: 100%;
 		display: block;
@@ -749,12 +678,12 @@
 		transition: all 0.2s ease-in 0s;
 		overflow: hidden;
 	}
-	
+
 	.card-swiper swiper-item.cur .swiper-item {
 		transform: none;
 		transition: all 0.2s ease-in 0s;
 	}
-	
+
 	.card-swiper swiper-item .swiper-item-text {
 		margin-top: -220rpx;
 		width: 100%;
@@ -765,25 +694,25 @@
 		transition: all 0.6s ease 0s;
 		overflow: hidden;
 	}
-	
+
 	.card-swiper swiper-item.cur .swiper-item-text {
 		margin-top: -280rpx;
 		width: 100%;
 		transform: translate(0rpx, 0rpx) scale(0.9, 0.9);
 		transition: all 0.6s ease 0s;
 	}
-	
+
 	.image-banner {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 	}
-	
+
 	.image-banner image {
 		width: 100%;
 		height: 100%;
 	}
-	
+
 	/* 轮播指示点 start*/
 	.indication {
 		z-index: 998;
@@ -795,7 +724,7 @@
 		align-items: center;
 		justify-content: center;
 	}
-	
+
 	.spot {
 		background-color: #FFFFFF;
 		opacity: 0.6;
@@ -806,12 +735,13 @@
 		margin: 0 8rpx !important;
 		position: relative;
 	}
-	
+
 	.spot.active {
 		opacity: 1;
 		width: 30rpx;
 		background-color: #FFFFFF;
 	}
+
 	// .swiperbox{
 	// 	.swiper {
 	// 	    height: 120rpx;
@@ -828,7 +758,7 @@
 	// 		box-shadow: 0 -3px 3px rgba(0,0,0,0.1);
 	// 		display: flex;
 	// 		flex-direction: column;
-			
+
 	// 	}
 	// 	.cont{
 	// 		color: #828282;
@@ -842,99 +772,102 @@
 	// 		bottom: 10px; */
 	// 		color: #828282;
 	// 		font-size: 24rpx;
-			
+
 	// 	}
 	// }
-	 .scroll{
-		 	display: block;
-			height: 100px;
-			// background-color: #00ffff;
-			.scroll-list {
-				@include flex(column);
-			margin-top:10px ;
+	.scroll {
+		display: block;
+		height: 100px;
+
+		// background-color: #00ffff;
+		.scroll-list {
+			@include flex(column);
+			margin-top: 10px;
 			margin-bottom: 5px;
-			
-				&__goods-item {
-					margin-left: 20px;
-			display: block;
-					&__image {
-						width: 40px;
-						height: 40px;
-						border-radius: 4px;
-					}
-			
-					&__text {
-						color: #000000;
-						text-align: center;
-						font-size: 12px;
-						margin-top: 5px;
-					}
+
+			&__goods-item {
+				margin-left: 20px;
+				display: block;
+
+				&__image {
+					width: 40px;
+					height: 40px;
+					border-radius: 4px;
 				}
-			
-				&__show-more {
-					background-color: #fff0f0;
-					border-radius: 3px;
-					padding: 3px 6px;
-					@include flex(column);
-					align-items: center;
-			
-					&__text {
-						font-size: 12px;
-						width: 12px;
-						color: #000000;
-						line-height: 16px;
-					}
+
+				&__text {
+					color: #000000;
+					text-align: center;
+					font-size: 12px;
+					margin-top: 5px;
 				}
 			}
-			
-			
-			  .indicator {
-			        @include flex(row);
-			        justify-content: center;
-			   
-			        &__dot {
-			             height: 6px;
-			             width: 6px;
-			             border-radius: 100px;
-			             background-color: rgba(255, 255, 255, 0.35);
-			             margin: 0 5px;
-			             transition: background-color 0.3s;
-			    
-			            &--active {
-			                 // background-color: #ffffff;
-							 background-color: rgba(229, 164, 20, 1);
-			             }
-			        }
-			    }
-			
-			    .indicator-num {
-			        padding: 2px 0;
-			        background-color: rgba(0, 0, 0, 0.35);
-			        border-radius: 100px;
-			        width: 35px;
-			        @include flex;
-			        justify-content: center;
-			
-			        &__text {
-			             color: #FFFFFF;
-			             font-size: 12px;
-			         }
-			    }
-			 
-			
-	 }
-	
-	
+
+			&__show-more {
+				background-color: #fff0f0;
+				border-radius: 3px;
+				padding: 3px 6px;
+				@include flex(column);
+				align-items: center;
+
+				&__text {
+					font-size: 12px;
+					width: 12px;
+					color: #000000;
+					line-height: 16px;
+				}
+			}
+		}
+
+
+		.indicator {
+			@include flex(row);
+			justify-content: center;
+
+			&__dot {
+				height: 6px;
+				width: 6px;
+				border-radius: 100px;
+				background-color: rgba(255, 255, 255, 0.35);
+				margin: 0 5px;
+				transition: background-color 0.3s;
+
+				&--active {
+					// background-color: #ffffff;
+					background-color: rgba(229, 164, 20, 1);
+				}
+			}
+		}
+
+		.indicator-num {
+			padding: 2px 0;
+			background-color: rgba(0, 0, 0, 0.35);
+			border-radius: 100px;
+			width: 35px;
+			@include flex;
+			justify-content: center;
+
+			&__text {
+				color: #FFFFFF;
+				font-size: 12px;
+			}
+		}
+
+
+	}
+
+
 	.home {
 		.image {
 			width: 25px;
 			height: 25px;
 		}
+
 		/* 轮播视觉差 start */
 		// .card-swiper {
 		//   height: 540rpx !important;
 		// }
-		  
+
 		// .card-swiper swiper-item {
 		//   width: 750rpx !important;
 		//   left: 0rpx;
@@ -942,7 +875,7 @@
 		//   // padding: 0rpx 30rpx 90rpx 30rpx;
 		//   overflow: initial;
 		// }
-		  
+
 		// .card-swiper swiper-item .swiper-item {
 		//   width: 100%;
 		//   display: block;
@@ -951,12 +884,12 @@
 		//   transition: all 0.2s ease-in 0s;
 		//   overflow: hidden;
 		// }
-		  
+
 		// .card-swiper swiper-item.cur .swiper-item {
 		//   transform: none;
 		//   transition: all 0.2s ease-in 0s;
 		// }
-		  
+
 		// .card-swiper swiper-item .swiper-item-text {
 		//   margin-top: -260rpx;
 		//   text-align: center;
@@ -968,14 +901,14 @@
 		//   transition: all 0.6s ease 0s;
 		//   overflow: hidden;
 		// }
-		  
+
 		// .card-swiper swiper-item.cur .swiper-item-text {
 		//   margin-top: -320rpx;
 		//   width: 100%;
 		//   transform: translate(0rpx, 0rpx) scale(0.9, 0.9);
 		//   transition: all 0.6s ease 0s;
 		// }
-		
+
 		// .image-banner{
 		//   display: flex;
 		//   align-items: center;
@@ -985,7 +918,7 @@
 		//   width: 100%;
 		//   height: 100%;
 		// }
-		
+
 		/* 轮播指示点 start*/
 		// .indication{
 		//   z-index: 9999;
@@ -997,7 +930,7 @@
 		//   align-items:center;
 		//   justify-content:center;
 		// }
-		
+
 		// .spot{
 		//   background-color: #FFFFFF;
 		//   opacity: 0.6;
@@ -1008,13 +941,13 @@
 		//   margin: 0 8rpx !important;
 		//   position: relative;
 		// }
-		
+
 		// .spot.active{
 		//   opacity: 1;
 		//   width: 30rpx;
 		//   background-color: #FFFFFF;
 		// }
-		
+
 		// .grid {
 		// 	.image {
 		// 		width: 25px;
@@ -1095,15 +1028,15 @@
 		// 			}
 		// 		}
 		// 	}
-.u-notice-bar {
-	width: 100%;
-	 
-	align-items: center;
-	justify-content: center;
-	flex-wrap: nowrap;
-	padding: 18rpx 24rpx;
-	overflow: hidden;
-}
+		.u-notice-bar {
+			width: 100%;
+
+			align-items: center;
+			justify-content: center;
+			flex-wrap: nowrap;
+			padding: 18rpx 24rpx;
+			overflow: hidden;
+		}
 
 		.topnav {
 			margin-top: 10rpx;
@@ -1146,8 +1079,8 @@
 		.box.active {
 			color: #9199FE
 		}
-		
-		
-		
+
+
+
 	}
 </style>

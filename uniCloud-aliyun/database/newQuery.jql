@@ -9,9 +9,16 @@
 // 详细JQL语法，请参考：https://uniapp.dcloud.net.cn/uniCloud/jql.html
 
 // 下面示例查询uni-id-users表的所有数据
-const a =db.collection("quanzi_article").where(`delState != true` && `category_id== "63e10989f43e606dd8068d4e"`).field(
-						"title,user_id,category_id,description,picurls,comment_count,like_count,view_count,publish_date,state").get();
+const a = db.collection("quanzi_article").where(`delState != true`).field(
+						"title,user_id,delState,category_id,description,picurls,comment_count,like_count,view_count,publish_date,article_status"
+						).get();
 a
+// db.collection("quanzi_article").doc("63e12d5e09e2987cee313290").update({article_status: 0})
+// &&
+// 						`category_id== "63e1099709e2987cee2a23c3"`
+// db.collection("quanzi_article").where(`delState != true` && `category_id== "63e10989f43e606dd8068d4e"`).field(
+// 						"title,user_id,category_id,description,picurls,comment_count,like_count,view_count,publish_date,state").get();
+ 
 // db.collection('secondgoods,secondgoods-categories').where('category_id._id=="63c02efdf5cf3a165a49c396"').get()
 // "category_id": [
 //             {

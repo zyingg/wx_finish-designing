@@ -20,10 +20,14 @@
 			<!-- <uni-forms-item name="excerpt" label="文章摘录">
         <uni-easyinput placeholder="文章摘录" v-model="formData.excerpt" trim="both"></uni-easyinput>
       </uni-forms-item> -->
-			<!-- <uni-forms-item name="article_status" label="文章状态">
+			
+			<!-- <view class="state"><view class="leftext">文章状态：</view> -->
+		<!-- 	<uni-forms-item name="article_status" label="文章状态">
 				<uni-data-checkbox v-model="formData.article_status" :localdata="formOptions.article_status_localdata">
-				</uni-data-checkbox>
-			</uni-forms-item> -->
+				</uni-data-checkbox>	</uni-forms-item> -->
+			<!-- </view> -->
+				
+		
 
 			<!-- <view class="uni-button-group">
 				<button type="primary" class="uni-button" @click="submit">提交</button>
@@ -80,8 +84,8 @@
 				"description": "",
 				"province": "",
 				"content": "",
-				"excerpt": "",
-				"article_status": 0,
+				 
+				"article_status":0 ,
 				"delState": null,
 				"state": null,
 				"view_count": null,
@@ -348,13 +352,13 @@ this.onEditReady()
 		}
 </script>
 
-<style lang="scss">
+<style lang="scss" >
 /deep/ .ql-blank::before{
 	font-style: normal;
 	color:#e0e0e0;
 }
 	
-	/* /deep/.title{
+	/*scoped /deep/.title{
 		input{
 			height: 120rpx;
 			font-size: 46rpx;
@@ -446,6 +450,25 @@ this.onEditReady()
 				color:#0199FE
 			}
 		}
+	}
+}
+.state{
+	display: flex;
+	flex-direction: row;
+	.leftext{
+		// justify-content: start;
+		width: 25%;
+	}
+}
+// /deep/
+.uni-forms-item__label{
+	width: 100px;
+}
+ .uni-forms-item {
+	/deep/.is-direction-left{
+		margin-bottom: 0px;
+		background-color: #ffaa7f;
+		
 	}
 }
 

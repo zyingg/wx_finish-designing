@@ -53,6 +53,7 @@
 </template>
 
 <script>
+	import pageJson from "@/pages.json"
 	import {
 		store
 	} from '@/uni_modules/uni-id-pages/common/store.js'
@@ -172,26 +173,24 @@
 			},
 			
 			//删除
-			delFun() {
-				uni.showLoading({
-					title: "加载中..."
-				})
-				db.collection("quanzi_article").doc(this.item._id).update({
-					delState: true
-				}).then(res => {
-					console.log(res);
-					uni.hideLoading()
-				}).catch(err => {
-					uni.hideLoading();
-					uni.showLoading({
-						title: "删除成功",
-						icon: "none"
-					})
-					this.$emit("delEvent", true)
-				}).catch(err => {
-					uni.hideLoading()
-				})
-			},
+					delFun(){
+						uni.showLoading({
+							title:"加载中..."
+						})
+						db.collection("quanzi_article").doc(this.item._id).update({
+							delState:true
+						}).then(res=>{					
+							uni.hideLoading();
+							uni.showToast({
+								title:"删除成功",
+								icon:"none"
+							})	
+							this.$emit("delEvent",true)
+						}).catch(err=>{
+							uni.hideLoading()
+						})
+					},
+			
 
 			//取消弹窗
 			onClouse() {
