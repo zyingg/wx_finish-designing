@@ -55,7 +55,7 @@
 					picurls:"",
 					province:"",
 					// state:9,//新增你问我答 9
-						category_id:"63e10989f43e606dd8068d4e"//校园动态类型文章
+						category_id:"63eaa9f409e2987cee04bc2a"//你问我答类型文章
 				}
 			};
 		},		

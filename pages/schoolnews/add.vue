@@ -51,7 +51,7 @@
 				boldShow:false,
 				italicShow:false,
 				artObj:{
-					category_id:"63e1099709e2987cee2a23c3",//校园动态类型文章
+					category_id:"63eaaa01e1a35c8785afb5f1",//校园动态类型文章
 					title:"",
 					content:"",
 					description:"",

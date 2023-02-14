@@ -457,6 +457,49 @@
         "navigationBarTitleText": "详情"
     }
 }
+, {
+			"path": "pages/about/about",
+			"style": {
+				"navigationStyle": "custom" // 隐藏系统导航栏
+					// #ifdef APP-PLUS
+					,
+				"app-plus": {
+					"titleNView": {
+						"buttons": [{
+							"type": "share"
+						}]
+					}
+				}
+				// #endif
+			}
+
+		}
+
+,{
+    "path": "pages/notice/add",
+    "style": {
+        "navigationBarTitleText": "新增"
+    }
+}
+,{
+    "path": "pages/notice/edit",
+    "style": {
+        "navigationBarTitleText": "编辑"
+    }
+}
+,{
+    "path": "pages/notice/list",
+    "style": {
+        "navigationBarTitleText": "通知列表"
+    }
+}
+,{
+    "path": "pages/notice/detail",
+    "style": {
+        "navigationBarTitleText": "详情"
+    }
+}
+    
 ],
 	"tabBar": {
 		"color": "#888",
@@ -466,11 +509,19 @@
 			"text": "圈子",
 			"iconPath": "static/faxian-unsel.png",
 			"selectedIconPath": "static/faxian-select.png"
-		}, {
+		}
+		, {
+			"pagePath": "pages/notice/list",
+			"text": "通知",
+			"iconPath": "static/icon/notice-select.png",
+			"selectedIconPath": "static/icon/notice.png"
+		}
+		
+		, {
 			"pagePath": "pages/self/self",
 			"text": "我的",
-			"iconPath": "static/person.png",
-			"selectedIconPath": "static/person-select.png"
+			"iconPath": "static/icon/person.png",
+			"selectedIconPath": "static/icon/person-select.png"
 		}]
 	},
 	"globalStyle": {

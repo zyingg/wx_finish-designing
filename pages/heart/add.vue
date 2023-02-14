@@ -52,8 +52,9 @@
 					description:"",
 					picurls:[],
 					province:"",
-					// state:0,
-					category_id:"63e1093b28064aae268da89b"
+					// state:0,"63e1093b28064aae268da89b"
+					category_id:"63eaa9e028064aa7a8582d22",
+					
 				}
 			};
 		},		

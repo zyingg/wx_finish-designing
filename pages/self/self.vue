@@ -159,7 +159,7 @@
 				
 				
 				<view class="group">
-					<view class="item">
+					<view class="item" @click="goAbout">
 						<view class="left"><text class="iconfont icon-a-32-wenjian"></text><text class="text">关于</text></view>
 						<view class="right"><text class="iconfont icon-a-10-you"></text></view>
 					</view>		
@@ -228,7 +228,12 @@
 							console.log(this.totalObj);
 							
 						},
-			
+			goAbout(){
+			if(this.goLoginPage()) return;
+			uni.navigateTo({
+				url:"/pages/about/about"
+			})	
+			},
 			
 			
 			//意见反馈

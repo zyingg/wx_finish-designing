@@ -33,7 +33,7 @@
 								</view>
 								<view>
 									<view class="shop-price">
-										<text>¥</text>
+										 <text>¥</text>
 										<text class="shop-price-text">{{ item.run_price }}</text>
 									</view>
 								</view>
@@ -260,13 +260,7 @@
 	.shop-price-text {
 		font-size: 16px;
 	}
-
-	.hot-tag {
-		background: #ff5a5f;
-		border: none;
-		color: #fff;
-	}
-
+ 
 	.button-box {
 		height: 30px;
 		line-height: 30px;

@@ -152,7 +152,7 @@
 		onReady() {
 			if (this._id) {
 				this.collectionList = [db.collection('secondgoods').where('_id=="' + this._id + '"').field(
-					'category_id,name,keywords,goods_banner_imgs,price,goods_desc,remain_count,contact,checked,add_date,last_modify_date'
+					'user_id,category_id,name,keywords,goods_banner_imgs,price,goods_desc,remain_count,contact,checked,add_date,last_modify_date'
 				).getTemp(), db.collection('secondgoods-categories').field('_id, classname as text').getTemp()]
 			}
 		},
@@ -161,6 +161,7 @@
 				let uid = uniCloud.getCurrentUserInfo().uid
 				console.log(uid);
 				console.log(this.$refs.udb.dataList);
+					console.log(this.$refs.udb.dataList.user_id);
 
 				//权限校验，普通用户只能修改删除自己的，管理员可以操作全部
 				if (uid == this.$refs.udb.dataList.user_id || this.uniIDHasRole('admin') || this.uniIDHasRole(
