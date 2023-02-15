@@ -698,7 +698,7 @@ var _default = {
                 data.forEach(function (item, index) {
                   list.push({
                     image: item.bannerfile.url,
-                    title: item.title
+                    title: item.title || ''
                   });
                 });
                 _this.Swiperlists = list;

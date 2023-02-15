@@ -538,7 +538,7 @@
 					list.push({
 						image: item.bannerfile.url,
 
-						title: item.title
+						title: item.title||''
 					})
 				})
 				this.Swiperlists = list

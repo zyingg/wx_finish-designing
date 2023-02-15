@@ -1,7 +1,7 @@
 {
 	"projectname": "yy圈子",
 	"setting": {
-		"compileHotReLoad": false,
+		"compileHotReLoad": true,
 		"preloadBackgroundData": false,
 		"urlCheck": true
 	},
