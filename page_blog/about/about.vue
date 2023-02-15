@@ -28,7 +28,8 @@
 			<view class="tn-flex">
 			  <view class="tn-flex-3 tn-padding tn-margin-xs tn-radius bg-flex-shadow tn-shadow-blur"></view>
 					<text class="tip"> 在这里,你可以了解学校的最新讯息,感受校园文化。在这里,你可以和校友互动,结交很多新校友。在这里,你可以发布闲置和失物招领,资源共享。
-在这里,你可以发任务请求帮助,也可以接任务赚赏金。
+在这里,你可以发布任务寻求校友们的帮助,
+也可以在闲暇时间实时接取他人的任务赚到赏金。
  </text>
 			  <view class="tn-flex-3 tn-padding tn-margin-xs tn-radius bg-flex-shadow tn-shadow-blur"></view>
 			</view>
