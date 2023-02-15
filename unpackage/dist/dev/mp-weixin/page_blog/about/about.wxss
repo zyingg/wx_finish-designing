@@ -42,15 +42,18 @@
 }
 .tip.data-v-39b837b0 {
   text-align: center;
-  font-size: 24rpx;
+  font-size: 26rpx;
+  font-weight: 700;
   margin-top: 10px;
   padding: 10rpx;
+  color: #424242;
 }
 .appName.data-v-39b837b0 {
   margin-top: 20px;
   font-size: 42rpx;
-  font-weight: 500;
-  color: #2285ff;
+  font-weight: 700;
+  color: #000000;
+  letter-spacing: 8px;
 }
 .qrcode.data-v-39b837b0 {
   margin-top: 60rpx;
@@ -74,7 +77,7 @@
 }
 .hint.data-v-39b837b0 {
   text-align: center;
-  color: #999999;
+  color: #747474;
   font-size: 26rpx;
 }
 .tn-custom-nav-bar__back.data-v-39b837b0 {

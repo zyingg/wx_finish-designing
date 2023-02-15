@@ -10,7 +10,7 @@
 		</tn-nav-bar>
 		<view class="top-backgroup">
 			<image
-				src='https://vkceyugu.cdn.bspapp.com/VKCEYUGU-8059ac71-13c5-4a15-bec8-3ac9f98f0840/8fbf8ef2-7bca-4675-9dab-32c5a0647744.jpg'
+				src='https://mp-70bea637-b880-4d22-8bea-1ce8ac441f79.cdn.bspapp.com/cloudstorage/badca334-2c81-4752-a927-acfd848b28e5.jpg'
 				mode='widthFix' class='backgroud-image'></image>
 		</view>
 		
@@ -27,18 +27,23 @@
 			</view>
 			<view class="tn-flex">
 			  <view class="tn-flex-3 tn-padding tn-margin-xs tn-radius bg-flex-shadow tn-shadow-blur"></view>
-					<text class="tip">Version {{version}}</text>
+					<text class="tip"> 在这里,你可以了解学校的最新讯息,感受校园文化。在这里,你可以和校友互动,结交很多新校友。在这里,你可以发布闲置和失物招领,资源共享。
+在这里,你可以发任务请求帮助,也可以接任务赚赏金。
+ </text>
 			  <view class="tn-flex-3 tn-padding tn-margin-xs tn-radius bg-flex-shadow tn-shadow-blur"></view>
 			</view>
 			<view class="tn-flex">
 			  <view class="tn-flex-3 tn-padding tn-margin-xs tn-radius bg-flex-shadow tn-shadow-blur"></view>
+					<text class="tip"> 欢迎大家使用本小程序~
+					发帖时禁止人身攻击,禁止脏话谩骂攻击他人,
+					请大家在合理合情合规范围内文明发帖。</text>
 					<!--Sansnn-uQRCode组件来源，插件市场：https://ext.dcloud.net.cn/plugin?id=1287 微调后-->
 					<!-- <Sansnn-uQRCode :text="about.download" :makeOnLoad="true" class="qrcode"></Sansnn-uQRCode> -->
 			  <view class="tn-flex-3 tn-padding tn-margin-xs tn-radius bg-flex-shadow tn-shadow-blur"></view>
 			</view>
 			<view class="tn-flex">
 			  <view class="tn-flex-3 tn-padding tn-margin-xs tn-radius bg-flex-shadow tn-shadow-blur"></view>
-					<text class="tip">appName</text>
+					<text class="tip">   </text>
 			  <view class="tn-flex-3 tn-padding tn-margin-xs tn-radius bg-flex-shadow tn-shadow-blur"></view>
 			</view>
 
@@ -46,6 +51,9 @@
 		</view>
 		<view class="tn-flex">
 		  <view class="tn-flex-3 tn-padding tn-margin-xs tn-radius bg-flex-shadow tn-shadow-blur"></view>
+				<view class="tn-flex-3 tn-padding tn-margin-xs tn-radius bg-flex-shadow tn-shadow-blur"></view>
+									<text class="hint">Version {{version}}</text>
+				<view class="tn-flex-3 tn-padding tn-margin-xs tn-radius bg-flex-shadow tn-shadow-blur"></view>
 				<!-- <view class="agreement-box" v-for="(agreement,index) in about.agreements" :key="index">
 					<text class="agreement" @click="navigateTo(agreement)">《{{agreement.title}}》</text>
 					<text class="hint" v-if="about.agreements.length-1>index"></text> -->
@@ -59,7 +67,7 @@
 		</view>
 		<view class="tn-flex">
 			  <view class="tn-flex-3 tn-padding tn-margin-xs tn-radius bg-flex-shadow tn-shadow-blur"></view>
-					<text class="hint">  company </text>
+					<text class="hint">  糯可校园 </text>
 			  <view class="tn-flex-3 tn-padding tn-margin-xs tn-radius bg-flex-shadow tn-shadow-blur"></view>
 		</view>
 	</view>
@@ -207,16 +215,19 @@
 
 	.tip {
 		text-align: center;
-		font-size: 24rpx;
+		font-size: 26rpx;
+		font-weight: 700;
 		margin-top: 10px;
 		padding: 10rpx;
+		color: #424242 ;
 	}
 
 	.appName {
 		margin-top: 20px;
 		font-size: 42rpx;
-		font-weight: 500;
-		color: #2285ff;
+		font-weight: 700;
+		color: #000000;
+		letter-spacing:8px;
 	}
 
 	.qrcode {
@@ -245,7 +256,7 @@
 
 	.hint {
 		text-align: center;
-		color: #999999;
+		color: #747474;
 		font-size: 26rpx;
 	}
 	.tn-custom-nav-bar__back {

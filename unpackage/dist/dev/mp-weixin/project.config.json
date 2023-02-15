@@ -1,36 +1,45 @@
 {
-  "description": "项目配置文件。",
-  "packOptions": {
-    "ignore": []
-  },
-  "setting": {
-    "urlCheck": false,
-    "es6": true,
-    "postcss": false,
-    "minified": false,
-    "newFeature": true,
-    "bigPackageSizeSupport": true
-  },
-  "compileType": "miniprogram",
-  "libVersion": "",
-  "appid": "wxe54c00b00c04b082",
-  "projectname": "糯可校园",
-  "condition": {
-    "search": {
-      "current": -1,
-      "list": []
-    },
-    "conversation": {
-      "current": -1,
-      "list": []
-    },
-    "game": {
-      "current": -1,
-      "list": []
-    },
-    "miniprogram": {
-      "current": -1,
-      "list": []
-    }
-  }
+	"description": "项目配置文件，详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
+	"packOptions": {
+		"ignore": [],
+		"include": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": false,
+		"minified": false,
+		"newFeature": true,
+		"bigPackageSizeSupport": true,
+		"coverView": true,
+		"lazyloadPlaceholderEnable": false,
+		"autoAudits": false,
+		"uglifyFileName": false,
+		"uploadWithSourceMap": true,
+		"enhance": true,
+		"showShadowRootInWxmlPanel": true,
+		"packNpmManually": false,
+		"packNpmRelationList": [],
+		"minifyWXSS": true,
+		"disableUseStrict": false,
+		"ignoreUploadUnusedFiles": false,
+		"checkInvalidKey": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"useStaticServer": true,
+		"showES6CompileOption": false,
+		"useCompilerPlugins": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.29.2",
+	"appid": "wxe54c00b00c04b082",
+	"projectname": "糯可校园",
+	"condition": {},
+	"editorSetting": {
+		"tabIndent": "tab",
+		"tabSize": 2
+	}
 }
