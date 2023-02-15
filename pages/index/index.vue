@@ -118,7 +118,7 @@
 
 		<!-- 功能模块start-->
 		<!-- <view v-if="isAndroid" class="tn-flex tn-margin-xs tn-padding-top-sm">
-		 <view class="tn-flex-1 tn-padding-sm tn-margin-xs tn-radius" @click="tn('/pages/heart/heart')">
+		 <view class="tn-flex-1 tn-padding-sm tn-margin-xs tn-radius" @click="tn('/page_blog/heart/heart')">
 		   <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
 		     <view class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur  ">
 		        <image :src="'../../static/icon/heart.png'" class="image" mode="aspectFill" />				     
@@ -128,7 +128,7 @@
 		     </view>
 		   </view>
 		 </view>
-		 <view class="tn-flex-1 tn-padding-sm tn-margin-xs tn-radius" @click="tn('/pages/secondgoods/list')">
+		 <view class="tn-flex-1 tn-padding-sm tn-margin-xs tn-radius" @click="tn('/page_blog/secondgoods/list')">
 		   <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
 		     <view class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur ">
 		       <image :src="'../../static/icon/second.png'" class="image" mode="aspectFill" />
@@ -138,7 +138,7 @@
 		     </view>
 		   </view>
 		 </view>
-		 <view class="tn-flex-1 tn-padding-sm tn-margin-xs tn-radius" @click="tn('/pages/heart/heart')">
+		 <view class="tn-flex-1 tn-padding-sm tn-margin-xs tn-radius" @click="tn('/page_blog/heart/heart')">
 		   <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
 		     <view class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur ">
 		       <image :src="'../../static/icon/kd.png'" class="image" mode="aspectFill" />
@@ -148,7 +148,7 @@
 		     </view>
 		   </view>
 		 </view>
-		 <view class="tn-flex-1 tn-padding-sm tn-margin-xs tn-radius" @click="tn('/pages/heart/heart')">
+		 <view class="tn-flex-1 tn-padding-sm tn-margin-xs tn-radius" @click="tn('/page_blog/heart/heart')">
 		   <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
 		     <view class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur ">
 		        <image :src="'../../static/icon/lost.png'" class="image" mode="aspectFill" />
@@ -158,7 +158,7 @@
 		     </view>
 		   </view>
 		 </view>
-		 <view class="tn-flex-1 tn-padding-sm tn-margin-xs tn-radius" @click="tn('/pages/heart/heart')">
+		 <view class="tn-flex-1 tn-padding-sm tn-margin-xs tn-radius" @click="tn('/page_blog/heart/heart')">
 		   <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
 		     <view class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur ">
 		        <image :src="'../../static/icon/question.png'" class="image" mode="aspectFill" />
@@ -174,7 +174,7 @@
 		
 		 
 				<view v-else class="tn-flex tn-margin-xs tn-padding-top-sm">
-				 <view class="tn-flex-1 tn-padding-sm tn-margin-xs tn-radius" @click="tn('/pages/heart/heart')">
+				 <view class="tn-flex-1 tn-padding-sm tn-margin-xs tn-radius" @click="tn('/page_blog/heart/heart')">
 				   <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
 				     <view class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur  ">
 				        <image :src="'../../static/icon/heart.png'" class="image" mode="aspectFill" />				     
@@ -184,7 +184,7 @@
 				     </view>
 				   </view>
 				 </view>
-				 <view class="tn-flex-1 tn-padding-sm tn-margin-xs tn-radius" @click="tn('/pages/secondgoods/list')">
+				 <view class="tn-flex-1 tn-padding-sm tn-margin-xs tn-radius" @click="tn('/page_blog/secondgoods/list')">
 				   <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
 				     <view class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur ">
 				       <image :src="'../../static/icon/second.png'" class="image" mode="aspectFill" />
@@ -194,7 +194,7 @@
 				     </view>
 				   </view>
 				 </view>
-				 <view class="tn-flex-1 tn-padding-sm tn-margin-xs tn-radius" @click="tn('/pages/heart/heart')">
+				 <view class="tn-flex-1 tn-padding-sm tn-margin-xs tn-radius" @click="tn('/page_blog/heart/heart')">
 				   <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
 				     <view class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur ">
 				       <image :src="'../../static/icon/kd.png'" class="image" mode="aspectFill" />
@@ -204,7 +204,7 @@
 				     </view>
 				   </view>
 				 </view>
-				 <view class="tn-flex-1 tn-padding-sm tn-margin-xs tn-radius" @click="tn('/pages/heart/heart')">
+				 <view class="tn-flex-1 tn-padding-sm tn-margin-xs tn-radius" @click="tn('/page_blog/heart/heart')">
 				   <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
 				     <view class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur ">
 				        <image :src="'../../static/icon/lost.png'" class="image" mode="aspectFill" />
@@ -214,7 +214,7 @@
 				     </view>
 				   </view>
 				 </view>
-				 <view class="tn-flex-1 tn-padding-sm tn-margin-xs tn-radius" @click="tn('/pages/heart/heart')">
+				 <view class="tn-flex-1 tn-padding-sm tn-margin-xs tn-radius" @click="tn('/page_blog/heart/heart')">
 				   <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
 				     <view class="icon12__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-shadow-blur ">
 				        <image :src="'../../static/icon/question.png'" class="image" mode="aspectFill" />
@@ -335,35 +335,41 @@
 		
 				Glist: [{
 						id: 1,
-						img: '../../static/icon/heart.png',
+						img: 'https://mp-70bea637-b880-4d22-8bea-1ce8ac441f79.cdn.bspapp.com/cloudstorage/73731562-095a-454e-868b-ca1b13a70a81.png',
+						// img: '../../static/icon/heart.png',
 						title: '表白墙'
 					},
 					{
 						id: 2,
-						img: '../../static/icon/second.png',
+						img: 'https://mp-70bea637-b880-4d22-8bea-1ce8ac441f79.cdn.bspapp.com/cloudstorage/866a75a8-9d26-4b27-8112-ff3d57b2aca7.png',
+						// img: '../../static/icon/second.png',
 						title: '二手闲置'
 					},
 					{
 						id: 3,
-						img: '../../static/icon/kd.png',
+						img: 'https://mp-70bea637-b880-4d22-8bea-1ce8ac441f79.cdn.bspapp.com/cloudstorage/9b0bbba5-b635-4047-9d98-fc5251171d13.png',
+						// img: '../../static/icon/kd.png',
 						title: '快递代取'
 					},
 					{
 						id: 4,
-						img: '../../static/icon/lost.png',
+						img: 'https://mp-70bea637-b880-4d22-8bea-1ce8ac441f79.cdn.bspapp.com/cloudstorage/59a3cdd7-0009-4eba-a3f2-d98ef4edb188.png',
+						// img: '../../static/icon/lost.png',
 						title: '失物招领'
 					},
 
 					{
 						id: 5,
-						img: '../../static/icon/question.png',
+						img: 'https://mp-70bea637-b880-4d22-8bea-1ce8ac441f79.cdn.bspapp.com/cloudstorage/c9546220-b3b7-41cf-914b-5958dc9acf71.png',
+						// img: '../../static/icon/question.png',
 						title: '你问我答'
 					},
 
 
 					{
 						id: 6,
-						img: '../../static/icon/school.png',
+						 img: 'https://mp-70bea637-b880-4d22-8bea-1ce8ac441f79.cdn.bspapp.com/cloudstorage/18fe3ac5-2d8f-4f2c-ae47-7238bf90f083.png',
+						// img: '../../static/icon/school.png',
 						title: '校园动态'
 					}
 
@@ -435,27 +441,27 @@
 			 
 				if (id == 1) {
 					uni.navigateTo({
-						url: "/pages/heart/list"
+						url: "/page_blog/heart/list"
 					})
 				};
 				if (id == 2) {
 					uni.navigateTo({
-						url: "/pages/secondgoods/list"
+						url: "/page_blog/secondgoods/list"
 					})
 				};
 				if (id == 3) {
 					uni.navigateTo({
-						url: "/pages/runtake/list"
+						url: "/page_blog/runtake/list"
 					})
 				};
 				if (id == 4) {
 					uni.navigateTo({
-						url: "/pages/lost/list"
+						url: "/page_blog/lost/list"
 					})
 				};
 				if (id == 5) {
 					uni.navigateTo({
-						url: "/pages/question/question"
+						url: "/page_blog/question/question"
 					})
 				};
 				if (id == 6) {

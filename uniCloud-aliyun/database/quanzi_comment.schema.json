@@ -10,7 +10,7 @@
 		// "reply_comment_id"
 	],
 	"permission": {
-		"read": true,
+		"read": "auth.uid != null",
 		"create": "auth.uid != null",
 		"update": "doc.user_id == auth.uid || 'webadmin'in auth.role",
 		"delete": "doc.user_id == auth.uid || 'webadmin'in auth.role"

@@ -162,7 +162,7 @@
                 "menu_id": "secondgoods",
                 "name": "二手商品管理",
                 "icon": "",
-                "url": "/pages/secondgoods/list",
+                "url": "/page_blog/secondgoods/list",
                 "sort": 1033,
                 "parent_id": "",
                 "permission": [],

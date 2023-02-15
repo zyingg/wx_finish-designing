@@ -28,7 +28,7 @@
   font-style: normal;
   color: #e0e0e0;
 }
-/* /deep/.title{
+/*scoped /deep/.title{
 		input{
 			height: 120rpx;
 			font-size: 46rpx;
@@ -76,5 +76,19 @@
 }
 .edit .tools .iconfont.active {
   color: #0199FE;
+}
+.state {
+  display: flex;
+  flex-direction: row;
+}
+.state .leftext {
+  width: 25%;
+}
+.uni-forms-item__label {
+  width: 100px;
+}
+.uni-forms-item .is-direction-left {
+  margin-bottom: 0px;
+  background-color: #ffaa7f;
 }
 

@@ -199,7 +199,7 @@
 			//点击跳转到详情
 			goDetail() {
 				uni.navigateTo({
-					url: "/pages/detail/detail?id=" + this.item._id
+					url: "/pages/quanzi_article/detail?id=" + this.item._id
 				})
 			},
 

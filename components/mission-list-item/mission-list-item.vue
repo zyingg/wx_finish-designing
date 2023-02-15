@@ -38,7 +38,7 @@
 			},
 			// clickMissionOrder: () => {
 			// 	uni.navigateTo({
-			// 		url: '/pages/runtake/list'
+			// 		url: '/page_blog/runtake/list'
 			// 	});
 			// },
 			confirmRobOrder: function() {
@@ -50,7 +50,7 @@
 				});
 				setTimeout(() => {
 					uni.navigateTo({
-						url: '/pages/runtake/list'});
+						url: '/page_blog/runtake/list'});
 				}, 1500);
 			}
 		},

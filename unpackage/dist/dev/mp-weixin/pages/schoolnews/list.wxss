@@ -120,7 +120,7 @@
 /* 文章场景相关 */
 .topnav.data-v-0786e206 {
   margin-top: 10rpx;
-  margin-bottom: 20rpx;
+  margin-bottom: 15rpx;
   height: 80rpx;
 }
 .loadingState.data-v-0786e206 {

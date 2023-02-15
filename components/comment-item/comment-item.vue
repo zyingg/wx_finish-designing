@@ -64,7 +64,7 @@
 				if(this.childState) return;
 				uni.setStorageSync("replyItem",this.item)
 				uni.navigateTo({
-					url:"/pages/reply/reply"
+					url:"/page_blog/reply/reply"
 				})
 			},
 			

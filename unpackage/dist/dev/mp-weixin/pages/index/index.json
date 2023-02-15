@@ -2,7 +2,6 @@
   "usingComponents": {
     "u-scroll-list": "/uni_modules/uview-ui_2.0.34/components/u-scroll-list/u-scroll-list",
     "tn-notice-bar": "/tuniao-ui/components/tn-notice-bar/tn-notice-bar",
-    "blog-item": "/components/blog-item/blog-item",
-    "uni-load-more": "/uni_modules/uni-load-more/components/uni-load-more/uni-load-more"
+    "blog-item": "/components/blog-item/blog-item"
   }
 }

@@ -4,7 +4,7 @@
 		"classname","orderid"
 	],
 	"permission": {
-		"read": true,
+		"read": "auth.uid != null",
 		"create": true,
 		"update": true,
 		"delete": true

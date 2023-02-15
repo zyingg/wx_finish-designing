@@ -11,9 +11,9 @@
 						:src="userInfo.avatar_file.url" 
 						mode="aspectFill"></image>
 					<!-- 	 hasLogin -->
-						<image v-else src="../../static/person.png" mode="aspectFill"></image>
+						<image v-else src="https://mp-70bea637-b880-4d22-8bea-1ce8ac441f79.cdn.bspapp.com/cloudstorage/b35a3329-deae-40b4-b090-d720d1f7dfb5.png" mode="aspectFill"></image>
 					</view>
-					<!-- 如果登陆过则显示昵称 v-if="hasLogin" 否则显示点击登录 -->
+					<!-- ../../static/person.png如果登陆过则显示昵称 v-if="hasLogin" 否则显示点击登录 -->
 					<view class="text" v-if="hasLogin">
 						<view class="nickname">{{userInfo.nickname||userInfo.username||userInfo.mobile}}</view>
 						
@@ -39,7 +39,7 @@
 				<image v-if="hasLogin&&userInfo.avatar_file&&userInfo.avatar_file.url"
 				:src="userInfo.avatar_file.url" 
 				mode="aspectFill"></image>
-				<image v-else src="../../static/person.png" mode="aspectFill"></image>
+				<image v-else src="https://mp-70bea637-b880-4d22-8bea-1ce8ac441f79.cdn.bspapp.com/cloudstorage/b35a3329-deae-40b4-b090-d720d1f7dfb5.png" mode="aspectFill"></image>
 			</view>
 		</view>
 		
@@ -231,7 +231,7 @@
 			goAbout(){
 			if(this.goLoginPage()) return;
 			uni.navigateTo({
-				url:"/pages/about/about"
+				url:"/page_blog/about/about"
 			})	
 			},
 			
@@ -247,7 +247,7 @@
 			myLike(){
 				if(this.goLoginPage()) return;	
 				uni.navigateTo({
-					url:"/pages/quanzi_like/list"
+					url:"/page_my/page_my/mylike"
 				})
 			},
 			
@@ -256,7 +256,7 @@
 			myArticle(){
 				if(this.goLoginPage()) return;	
 				uni.navigateTo({
-					url:"/pages/quanzi_article/list"
+					url:"/page_my/page_my/myarticle"
 				})
 			},
 			
@@ -265,28 +265,28 @@
 			myComment(){
 				if(this.goLoginPage()) return;	
 				uni.navigateTo({
-					url:"/pages/quanzi_comment/list"
+					url:"/page_my/page_my/mycomment"
 				})
 			},
 			
 			mySecond(){
 				if(this.goLoginPage()) return;	
 				uni.navigateTo({
-					url:"/pages/secondgoods/my"
+					url:"/page_my/page_my/mysecondgoods"
 				})
 			},
 			myRuntake(){
 				 
 				if(this.goLoginPage()) return;	
 				uni.navigateTo({
-					url:"/pages/runtake/my"
+					url:"/page_my/page_my/myruntake"
 				})
 			},
 			myLost(){
 				 
 				if(this.goLoginPage()) return;	
 				uni.navigateTo({
-					url:"/pages/lost/my"
+					url:"/page_my/page_my/mylost"
 				})
 			},
 	 

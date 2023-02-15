@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/add/add",
     "pages/self/self",
     "uni_modules/uni-id-pages/pages/userinfo/deactivate/deactivate",
     "uni_modules/uni-id-pages/pages/userinfo/userinfo",
@@ -18,56 +17,57 @@
     "uni_modules/uni-id-pages/pages/userinfo/change_pwd/change_pwd",
     "uni_modules/uni-id-pages/pages/register/register-admin",
     "uni_modules/uni-id-pages/pages/userinfo/set-pwd/set-pwd",
-    "pages/detail/detail",
     "pages/schoolnews/add",
-    "pages/schoolnews/edit",
     "pages/schoolnews/list",
-    "pages/schoolnews/detail",
-    "pages/quanzi_like/list",
-    "pages/index/edit",
-    "pages/index/detail",
     "uni_modules/uni-feedback/pages/opendb-feedback/opendb-feedback",
     "uni_modules/uni-feedback/pages/opendb-feedback/edit",
     "uni_modules/uni-feedback/pages/opendb-feedback/list",
     "uni_modules/uni-feedback/pages/opendb-feedback/detail",
-    "pages/reply/reply",
-    "pages/heart/list",
-    "pages/heart/add",
-    "pages/secondgoods/add",
-    "pages/secondgoods/edit",
-    "pages/secondgoods/list",
-    "pages/secondgoods/detail",
-    "pages/secondgoods/search",
-    "pages/good/good",
-    "pages/runtake/add",
-    "pages/runtake/edit",
-    "pages/runtake/list",
-    "pages/runtake/detail",
-    "pages/runtake/search",
-    "pages/quanzi_article/add",
     "pages/quanzi_article/edit",
-    "pages/quanzi_article/list",
     "pages/quanzi_article/detail",
-    "pages/search/search",
-    "pages/lost/add",
-    "pages/lost/edit",
-    "pages/lost/list",
-    "pages/lost/detail",
-    "pages/quanzi_comment/add",
-    "pages/quanzi_comment/edit",
-    "pages/quanzi_comment/list",
-    "pages/quanzi_comment/detail",
-    "pages/question/add",
-    "pages/question/question",
-    "pages/secondgoods/my",
-    "pages/lost/my",
-    "pages/runtake/my",
-    "pages/opendb-mall-goods/add",
-    "pages/opendb-mall-goods/edit",
-    "pages/opendb-mall-goods/list",
-    "pages/opendb-mall-goods/detail"
+    "pages/notice/add",
+    "pages/notice/edit",
+    "pages/notice/list",
+    "pages/notice/detail"
   ],
-  "subPackages": [],
+  "subPackages": [
+    {
+      "root": "page_my",
+      "pages": [
+        "page_my/myruntake",
+        "page_my/mylike",
+        "page_my/mysecondgoods",
+        "page_my/mylost",
+        "page_my/myarticle",
+        "page_my/mycomment"
+      ]
+    },
+    {
+      "root": "page_blog",
+      "pages": [
+        "lost/add",
+        "lost/edit",
+        "lost/list",
+        "lost/detail",
+        "heart/list",
+        "heart/add",
+        "secondgoods/add",
+        "secondgoods/edit",
+        "secondgoods/list",
+        "secondgoods/detail",
+        "secondgoods/search",
+        "runtake/add",
+        "runtake/edit",
+        "runtake/list",
+        "runtake/detail",
+        "runtake/search",
+        "reply/reply",
+        "question/add",
+        "question/question",
+        "about/about"
+      ]
+    }
+  ],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "yy的圈子",
@@ -85,10 +85,16 @@
         "selectedIconPath": "static/faxian-select.png"
       },
       {
+        "pagePath": "pages/notice/list",
+        "text": "通知",
+        "iconPath": "static/icon/notice-select.png",
+        "selectedIconPath": "static/icon/notice.png"
+      },
+      {
         "pagePath": "pages/self/self",
         "text": "我的",
-        "iconPath": "static/person.png",
-        "selectedIconPath": "static/person-select.png"
+        "iconPath": "static/icon/person.png",
+        "selectedIconPath": "static/icon/person-select.png"
       }
     ]
   },

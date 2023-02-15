@@ -1,0 +1,39 @@
+
+.container {
+		padding: 10px;
+}
+.btns {
+		margin-top: 10px;
+
+		display: flex;
+
+		flex-direction: row;
+}
+.btns button {
+		flex: 1;
+}
+.btn-delete {
+		margin-left: 10px;
+}
+.title {
+		font-size: 46rpx;
+		color: #333;
+		line-height: 1.4em;
+		font-weight: 600;
+		margin-bottom: 15rpx;
+}
+.small {
+		font-size: 20rpx;
+		color: #999;
+		justify-content: space-between;
+		margin-bottom: 25rpx;
+}
+.content {
+margin-top: 15rpx;
+		font-size: 26rpx;
+		color: #000000;
+}
+.pic-box{
+		margin-top:15rpx ;
+}
+

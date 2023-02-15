@@ -1,7 +1,7 @@
 {
-  "easycom": {
-    "^tn-(.*)": "@/tuniao-ui/components/tn-$1/tn-$1.vue"
-  },
+	"easycom": {
+		"^tn-(.*)": "@/tuniao-ui/components/tn-$1/tn-$1.vue"
+	},
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
 			"path": "pages/index/index",
@@ -9,14 +9,9 @@
 
 			}
 		},
-		{
-			"path": "pages/add/add",
-			"style": {
-				"navigationBarTitleText": "发布长文",
-				"enablePullDownRefresh": false
-			}
 
-		}, {
+
+		{
 			"path": "pages/self/self",
 			"style": {
 				"navigationBarTitleText": "个人中心",
@@ -25,504 +20,477 @@
 
 
 
-		}, {
+		},
+		{
 			"path": "uni_modules/uni-id-pages/pages/userinfo/deactivate/deactivate",
 			"style": {
 				"navigationBarTitleText": "注销账号"
 			}
-		}, {
+		},
+		{
 			"path": "uni_modules/uni-id-pages/pages/userinfo/userinfo",
 			"style": {
 				"navigationBarTitleText": "个人资料"
 			}
-		}, {
+		},
+		{
 			"path": "uni_modules/uni-id-pages/pages/userinfo/bind-mobile/bind-mobile",
 			"style": {
 				"navigationBarTitleText": "绑定手机号码"
 			}
-		}, {
+		},
+		{
 			"path": "uni_modules/uni-id-pages/pages/userinfo/cropImage/cropImage",
 			"style": {
 				"navigationBarTitleText": ""
 			}
-		}, {
+		},
+		{
 			"path": "uni_modules/uni-id-pages/pages/login/login-withoutpwd",
 			"style": {
 				"navigationBarTitleText": ""
 			}
-		}, {
+		},
+		{
 			"path": "uni_modules/uni-id-pages/pages/login/login-withpwd",
 			"style": {
 				"navigationBarTitleText": "密码登录"
 			}
-		}, {
+		},
+		{
 			"path": "uni_modules/uni-id-pages/pages/login/login-smscode",
 			"style": {
 				"navigationBarTitleText": "手机验证码登录"
 			}
-		}, {
+		},
+		{
 			"path": "uni_modules/uni-id-pages/pages/register/register",
 			"style": {
 				"navigationBarTitleText": "注册"
 			}
-		}, {
+		},
+		{
 			"path": "uni_modules/uni-id-pages/pages/register/register-by-email",
 			"style": {
 				"navigationBarTitleText": "邮箱验证码注册"
 			}
-		}, {
+		},
+		{
 			"path": "uni_modules/uni-id-pages/pages/retrieve/retrieve",
 			"style": {
 				"navigationBarTitleText": "重置密码"
 			}
-		}, {
+		},
+		{
 			"path": "uni_modules/uni-id-pages/pages/retrieve/retrieve-by-email",
 			"style": {
 				"navigationBarTitleText": "通过邮箱重置密码"
 			}
-		}, {
+		},
+		{
 			"path": "uni_modules/uni-id-pages/pages/common/webview/webview",
 			"style": {
 				"enablePullDownRefresh": false,
 				"navigationBarTitleText": ""
 			}
-		}, {
+		},
+		{
 			"path": "uni_modules/uni-id-pages/pages/userinfo/change_pwd/change_pwd",
 			"style": {
 				"enablePullDownRefresh": false,
 				"navigationBarTitleText": "修改密码"
 			}
-		}, {
+		},
+		{
 			"path": "uni_modules/uni-id-pages/pages/register/register-admin",
 			"style": {
 				"enablePullDownRefresh": false,
 				"navigationBarTitleText": "注册管理员账号"
 			}
-		}, {
+		},
+		{
 			"path": "uni_modules/uni-id-pages/pages/userinfo/set-pwd/set-pwd",
 			"style": {
 				"enablePullDownRefresh": false,
 				"navigationBarTitleText": "设置密码"
 			}
-		}, {
-			"path": "pages/detail/detail",
-			"style": {
-				"navigationBarTitleText": "详情页",
-				"enablePullDownRefresh": false
-			}
+		}
 
+		,
+		{
+			"path": "pages/schoolnews/add",
+			"style": {
+				"navigationBarTitleText": "新增校园动态"
+			}
 		}
-		    ,{
-		    "path": "pages/schoolnews/add",
-		    "style": {
-		        "navigationBarTitleText": "新增校园动态"
-		    }
-		}
-		,{
-		    "path": "pages/schoolnews/edit",
-		    "style": {
-		        "navigationBarTitleText": "校园动态编辑"
-		    }
-		}
-		, {
+
+		,
+		{
 			"path": "pages/schoolnews/list",
 			"style": {
 				"navigationBarTitleText": "校园动态"
 			}
 		}
-		,{
-		    "path": "pages/schoolnews/detail",
-		    "style": {
-		        "navigationBarTitleText": "校园动态详情"
-		    }
-		}
-		// ,{
-		//     "path": "pages/quanzi_like/add",
-		//     "style": {
-		//         "navigationBarTitleText": "新增"
-		//     }
-		// }
-		// ,{
-		//     "path": "pages/quanzi_like/edit",
-		//     "style": {
-		//         "navigationBarTitleText": "编辑"
-		//     }
-		// }
-		, {
-			"path": "pages/quanzi_like/list",
-			"style": {
-				"navigationBarTitleText": "列表"
-			}
-		}
-		// ,{
-		//     "path": "pages/quanzi_like/detail",
-		//     "style": {
-		//         "navigationBarTitleText": "详情"
-		//     }
-		// }
-		  
-		  // , {
-		  // 	"path": "pages/index/edit",
-		  // 	"style": {
-		  // 		"navigationBarTitleText": "发布校园动态"
-		  // 	}
-		  // }
-		  , {
-		  	"path": "pages/index/detail",
-		  	"style": {
-		  		"navigationBarTitleText": "校园动态详情"
-		  	}
-		  }
-		, {
+
+		,
+		{
 			"path": "uni_modules/uni-feedback/pages/opendb-feedback/opendb-feedback",
 			"style": {
 				"navigationBarTitleText": "新增反馈"
 			}
-		}, {
+		},
+		{
 			"path": "uni_modules/uni-feedback/pages/opendb-feedback/edit",
 			"style": {
 				"navigationBarTitleText": "编辑反馈"
 			}
-		}, {
+		},
+		{
 			"path": "uni_modules/uni-feedback/pages/opendb-feedback/list",
 			"style": {
 				"navigationBarTitleText": "反馈列表"
 			}
-		}, {
+		},
+		{
 			"path": "uni_modules/uni-feedback/pages/opendb-feedback/detail",
 			"style": {
 				"navigationBarTitleText": "反馈详情"
 			}
 		}
 
-		, {
-			"path": "pages/reply/reply",
-			"style": {
-				"navigationBarTitleText": "评论",
-				"enablePullDownRefresh": false
-			}
 
-		}, {
-			"path": "pages/heart/list",
-			"style": {
-				"navigationBarTitleText": "表白墙",
-				"enablePullDownRefresh": false
-			}
 
-		},
-		 {
-			"path": "pages/heart/add",
-			"style": {
-				"navigationBarTitleText": "发布表白墙",
-				"enablePullDownRefresh": false
-			}
-		
-		}
-	 //    ,{
-  //           "path" : "pages/secondhand/secondhand",
-  //           "style" :                                                                                    
-  //           {
-  //               "navigationBarTitleText": "二手闲置",
-  //               "enablePullDownRefresh": false
-  //           }
-            
-  //       },
-		
-		//  {
-		// 	"path": "pages/secondhand/edit",
-		// 	"style": {
-		// 		"navigationBarTitleText": "发布二手闲置",
-		// 		"enablePullDownRefresh": false
-		// 	}
-		
+
+		// ,{
+		//     "path": "pages/quanzi_article/add",
+		//     "style": {
+		//         "navigationBarTitleText": "新增"
+		//     }
 		// }
-    ,{
-    "path": "pages/secondgoods/add",
-    "style": {
-        "navigationBarTitleText": "新增二手商品"
-    }
-}
-,{
-    "path": "pages/secondgoods/edit",
-    "style": {
-        "navigationBarTitleText": "编辑二手商品"
-    }
-}
-,{
-    "path": "pages/secondgoods/list",
-    "style": {
-        "navigationBarTitleText": "二手商品列表"
-    }
-}
-,{
-    "path": "pages/secondgoods/detail",
-    "style": {
-        "navigationBarTitleText": "二手商品详情"
-    }
-}
-
- 
-,{
-    "path": "pages/secondgoods/search",
-    "style": {
-        "navigationBarTitleText": "搜索二手商品"
-    }
-}
-
-    // ,{
-    //         "path" : "pages/good/good",
-    //         "style" : {
-    //             "enablePullDownRefresh": true,
-    //             "navigationBarTitleText": "商品列表"
-    //         }
-            
-    //     }
-    ,{
-    "path": "pages/runtake/add",
-    "style": {
-        "navigationBarTitleText": "新增跑腿"
-    }
-}
-,{
-    "path": "pages/runtake/edit",
-    "style": {
-        "navigationBarTitleText": "编辑跑腿"
-    }
-}
-,{
-    "path": "pages/runtake/list",
-    "style": {
-		// "enablePullDownRefresh": true,
-        "navigationBarTitleText": "跑腿列表"
-    }
-}
-,{
-    "path": "pages/runtake/detail",
-    "style": {
-        "navigationBarTitleText": "跑腿详情"
-    }
-}
-
- 
-,{
-    "path": "pages/runtake/search",
-    "style": {
-        "navigationBarTitleText": "搜索跑腿"
-    }
-}
-
-,{
-    "path": "pages/quanzi_article/add",
-    "style": {
-        "navigationBarTitleText": "新增"
-    }
-}
-,{
-    "path": "pages/quanzi_article/edit",
-    "style": {
-        "navigationBarTitleText": "编辑"
-    }
-}
-,{
-    "path": "pages/quanzi_article/list",
-    "style": {
-        "navigationBarTitleText": "列表"
-    }
-}
-,{
-    "path": "pages/quanzi_article/detail",
-    "style": {
-        "navigationBarTitleText": "详情"
-    }
-},
-  {
-		"path": "pages/search/search",
-		"style": {
-			"navigationBarTitleText": "搜索"
-		}
-	}
-,{
-    "path": "pages/lost/add",
-    "style": {
-        "navigationBarTitleText": "新增"
-    }
-}
-,{
-    "path": "pages/lost/edit",
-    "style": {
-        "navigationBarTitleText": "编辑"
-    }
-}
-,{
-    "path": "pages/lost/list",
-    "style": {
-        "navigationBarTitleText": "列表"
-    }
-}
-,{
-    "path": "pages/lost/detail",
-    "style": {
-        "navigationBarTitleText": "详情"
-    }
-}
-,{
-    "path": "pages/quanzi_comment/add",
-    "style": {
-        "navigationBarTitleText": "新增"
-    }
-}
-,{
-    "path": "pages/quanzi_comment/edit",
-    "style": {
-        "navigationBarTitleText": "编辑"
-    }
-}
-,{
-    "path": "pages/quanzi_comment/list",
-    "style": {
-        "navigationBarTitleText": "列表"
-    }
-}
-,{
-    "path": "pages/quanzi_comment/detail",
-    "style": {
-        "navigationBarTitleText": "详情"
-    }
-}
-,{
-    "path": "pages/question/add",
-    "style": {
-        "navigationBarTitleText": "新增你问我答"
-    }
-}
-    ,{
-            "path" : "pages/question/question",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "你问我答"
-                // "enablePullDownRefresh": false
-            }
-   
-        }
-		
-         
-        ,{
-            "path" : "pages/secondgoods/my",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "我发布的二手商品",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/lost/my",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "我的失物招领",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/runtake/my",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "我的跑腿需求",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-    ,{
-    "path": "pages/opendb-mall-goods/add",
-    "style": {
-        "navigationBarTitleText": "新增"
-    }
-}
-,{
-    "path": "pages/opendb-mall-goods/edit",
-    "style": {
-        "navigationBarTitleText": "编辑"
-    }
-}
-,{
-    "path": "pages/opendb-mall-goods/list",
-    "style": {
-        "navigationBarTitleText": "列表"
-    }
-}
-,{
-    "path": "pages/opendb-mall-goods/detail",
-    "style": {
-        "navigationBarTitleText": "详情"
-    }
-}
-, {
-			"path": "pages/about/about",
+		,
+		{
+			"path": "pages/quanzi_article/edit",
 			"style": {
-				"navigationStyle": "custom" // 隐藏系统导航栏
-					// #ifdef APP-PLUS
-					,
-				"app-plus": {
-					"titleNView": {
-						"buttons": [{
-							"type": "share"
-						}]
-					}
-				}
-				// #endif
+				"navigationBarTitleText": "编辑"
 			}
+		},
+		{
+			"path": "pages/quanzi_article/detail",
+			"style": {
+				"navigationBarTitleText": "详情"
+			}
+		}
+		// ,
+		//   {
+		// 		"path": "pages/search/search",
+		// 		"style": {
+		// 			"navigationBarTitleText": "搜索"
+		// 		}
+		// 	}
 
+		// ,{
+		//     "path": "pages/quanzi_comment/add",
+		//     "style": {
+		//         "navigationBarTitleText": "新增"
+		//     }
+		// }
+		// ,{
+		//     "path": "pages/quanzi_comment/edit",
+		//     "style": {
+		//         "navigationBarTitleText": "编辑"
+		//     }
+		// }
+
+		// ,{
+		//     "path": "pages/quanzi_comment/detail",
+		//     "style": {
+		//         "navigationBarTitleText": "详情"
+		//     }
+		// }
+
+
+		,
+		{
+			"path": "pages/notice/add",
+			"style": {
+				"navigationBarTitleText": "新增"
+			}
+		},
+		{
+			"path": "pages/notice/edit",
+			"style": {
+				"navigationBarTitleText": "编辑"
+			}
+		},
+		{
+			"path": "pages/notice/list",
+			"style": {
+				"navigationBarTitleText": "通知列表"
+			}
+		},
+		{
+			"path": "pages/notice/detail",
+			"style": {
+				"navigationBarTitleText": "详情"
+			}
 		}
 
-,{
-    "path": "pages/notice/add",
-    "style": {
-        "navigationBarTitleText": "新增"
-    }
-}
-,{
-    "path": "pages/notice/edit",
-    "style": {
-        "navigationBarTitleText": "编辑"
-    }
-}
-,{
-    "path": "pages/notice/list",
-    "style": {
-        "navigationBarTitleText": "通知列表"
-    }
-}
-,{
-    "path": "pages/notice/detail",
-    "style": {
-        "navigationBarTitleText": "详情"
-    }
-}
-    
-],
+	],
+
+	"subPackages": [{
+				"root": "page_my",
+				"pages": [{
+						"path": "page_my/myruntake",
+						"style": {
+							"navigationBarTitleText": "我的跑腿需求",
+							"enablePullDownRefresh": false
+						}
+					},
+					{
+						"path": "page_my/mylike",
+						"style": {
+							"navigationBarTitleText": "我的点赞",
+							"enablePullDownRefresh": false
+						}
+					},
+					{
+						"path": "page_my/mysecondgoods",
+						"style": {
+							"navigationBarTitleText": "我发布的二手商品",
+							"enablePullDownRefresh": false
+						}
+
+					},
+					{
+						"path": "page_my/mylost",
+						"style": {
+							"navigationBarTitleText": "我的失物招领",
+							"enablePullDownRefresh": false
+						}
+
+					},
+					{
+						"path": "page_my/myarticle",
+						"style": {
+							"navigationBarTitleText": "我的长文"
+						}
+					},
+					{
+						"path": "page_my/mycomment",
+						"style": {
+							"navigationBarTitleText": "我的评论"
+						}
+					}
+
+				]
+			},
+			{
+				"root": "page_blog",
+				"pages": [
+
+					{
+						"path": "lost/add",
+						"style": {
+							"navigationBarTitleText": "新增"
+						}
+					},
+					{
+						"path": "lost/edit",
+						"style": {
+							"navigationBarTitleText": "编辑"
+						}
+					},
+					{
+						"path": "lost/list",
+						"style": {
+							"navigationBarTitleText": "列表",
+        		"enablePullDownRefresh": true
+						}
+					},
+					{
+						"path": "lost/detail",
+						"style": {
+							"navigationBarTitleText": "详情"
+						}
+					},
+					{
+						"path": "heart/list",
+						"style": {
+							"navigationBarTitleText": "表白墙",
+							"enablePullDownRefresh": false
+						}
+
+					},
+					{
+						"path": "heart/add",
+						"style": {
+							"navigationBarTitleText": "发布表白墙",
+							"enablePullDownRefresh": false
+						}
+
+					}
+
+					,
+					{
+						"path": "secondgoods/add",
+						"style": {
+							"navigationBarTitleText": "新增二手商品"
+						}
+					},
+					{
+						"path": "secondgoods/edit",
+						"style": {
+							"navigationBarTitleText": "编辑二手商品"
+						}
+					},
+					{
+						"path": "secondgoods/list",
+						"style": {
+							"navigationBarTitleText": "二手商品列表"
+						}
+					},
+					{
+						"path": "secondgoods/detail",
+						"style": {
+							"navigationBarTitleText": "二手商品详情"
+						}
+					}
+
+
+					,
+					{
+						"path": "secondgoods/search",
+						"style": {
+							"navigationBarTitleText": "搜索二手商品"
+						}
+					}
+
+
+					,
+					{
+						"path": "runtake/add",
+						"style": {
+							"navigationBarTitleText": "新增跑腿"
+						}
+					},
+					{
+						"path": "runtake/edit",
+						"style": {
+							"navigationBarTitleText": "编辑跑腿"
+						}
+					},
+					{
+						"path": "runtake/list",
+						"style": {
+							// "enablePullDownRefresh": true,
+							"navigationBarTitleText": "跑腿列表"
+						}
+					},
+					{
+						"path": "runtake/detail",
+						"style": {
+							"navigationBarTitleText": "跑腿详情"
+						}
+					},
+					{
+						"path": "runtake/search",
+						"style": {
+							"navigationBarTitleText": "搜索跑腿"
+						}
+					},
+
+					{
+						"path": "reply/reply",
+						"style": {
+							"navigationBarTitleText": "评论",
+							"enablePullDownRefresh": false
+						}
+
+					},
+					{
+						"path": "question/add",
+						"style": {
+							"navigationBarTitleText": "新增你问我答"
+						}
+					},
+					{
+						"path": "question/question",
+						"style": {
+							"navigationBarTitleText": "你问我答"
+							// "enablePullDownRefresh": false
+						}
+
+					}
+
+					,
+					{
+						"path": "about/about",
+						"style": {
+							"navigationStyle": "custom" // 隐藏系统导航栏
+								// #ifdef APP-PLUS
+								,
+							"app-plus": {
+								"titleNView": {
+									"buttons": [{
+										"type": "share"
+									}]
+								}
+							}
+							// #endif
+						}
+
+					}
+
+
+
+				]
+			}
+		]
+
+		,
+
 	"tabBar": {
 		"color": "#888",
 		"selectedColor": "",
+		// 	"list": [{
+		// 		"pagePath": "pages/index/index",
+		// 		"text": "圈子",
+		// 		"iconPath": "https://mp-70bea637-b880-4d22-8bea-1ce8ac441f79.cdn.bspapp.com/cloudstorage/7fa29e51-38b5-4052-aeb7-5c7a6b273ab6.png",
+		// 		"selectedIconPath": "https://mp-70bea637-b880-4d22-8bea-1ce8ac441f79.cdn.bspapp.com/cloudstorage/1c9e5c39-f39a-4793-96e8-43ace5f0a1df.png"
+		// 	}
+		// 	, {
+		// 		"pagePath": "pages/notice/list",
+		// 		"text": "通知",
+		// 		"iconPath": "https://mp-70bea637-b880-4d22-8bea-1ce8ac441f79.cdn.bspapp.com/cloudstorage/6bfac625-5ef6-40d6-92e6-9b9102ff5cf4.png",
+		// 		"selectedIconPath": "https://mp-70bea637-b880-4d22-8bea-1ce8ac441f79.cdn.bspapp.com/cloudstorage/2432392e-983a-47cb-b82d-054f244ba137.png"
+		// 	}
+
+		// 	, {
+		// 		"pagePath": "pages/self/self",
+		// 		"text": "我的",
+		// 		"iconPath": "https://mp-70bea637-b880-4d22-8bea-1ce8ac441f79.cdn.bspapp.com/cloudstorage/c7cb8eb6-d38e-4ec8-a11f-b8aa9354f8f8.png",
+		// 		"selectedIconPath": "https://mp-70bea637-b880-4d22-8bea-1ce8ac441f79.cdn.bspapp.com/cloudstorage/69ec9af6-7128-488a-abc1-6dd3f732614d.png"
+		// 	}]
+		// },
 		"list": [{
-			"pagePath": "pages/index/index",
-			"text": "圈子",
-			"iconPath": "static/faxian-unsel.png",
-			"selectedIconPath": "static/faxian-select.png"
-		}
-		, {
-			"pagePath": "pages/notice/list",
-			"text": "通知",
-			"iconPath": "static/icon/notice-select.png",
-			"selectedIconPath": "static/icon/notice.png"
-		}
-		
-		, {
-			"pagePath": "pages/self/self",
-			"text": "我的",
-			"iconPath": "static/icon/person.png",
-			"selectedIconPath": "static/icon/person-select.png"
-		}]
+				"pagePath": "pages/index/index",
+				"text": "圈子",
+				"iconPath": "static/faxian-unsel.png",
+				"selectedIconPath": "static/faxian-select.png"
+			}, {
+				"pagePath": "pages/notice/list",
+				"text": "通知",
+				"iconPath": "static/icon/notice-select.png",
+				"selectedIconPath": "static/icon/notice.png"
+			}
+
+			, {
+				"pagePath": "pages/self/self",
+				"text": "我的",
+				"iconPath": "static/icon/person.png",
+				"selectedIconPath": "static/icon/person-select.png"
+			}
+		]
 	},
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

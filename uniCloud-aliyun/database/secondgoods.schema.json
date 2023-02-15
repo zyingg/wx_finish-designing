@@ -16,7 +16,7 @@
 	],
 	"permission": {
 		// "read": "doc.is_on_sale == true",
-		"read": true,
+		"read": "auth.uid != null",
 		"create": true,
 		"update": true, //本人及管理员可修改
 		"delete": true

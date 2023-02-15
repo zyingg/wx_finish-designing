@@ -29,7 +29,7 @@
 					:like_count.sync="item.like_count"></blog-item>
 			</view>
 		</view>
-		<u-back-top :scroll-top="scrollTop" icon="arrow-up" right="300" :iconStyle="iconStyle"></u-back-top>
+		<u-back-top :scroll-top="scrollTop" icon="arrow-up" right="325" :iconStyle="iconStyle"></u-back-top>
 		<view>
 			<uni-load-more :status="uniLoad"></uni-load-more>
 		</view>

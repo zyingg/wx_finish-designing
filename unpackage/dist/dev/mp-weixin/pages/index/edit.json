@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "发布校园动态",
-  "usingComponents": {
-    "u-button": "/uni_modules/uview-ui_2.0.34/components/u-button/u-button"
-  }
-}

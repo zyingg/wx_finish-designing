@@ -6,7 +6,7 @@
 		// "content"
 	],
 	"permission": {
-		"read": true,
+		"read": "auth.uid != null",
 		// "read": "doc.user_id == auth.uid && doc.article_status == 0 || doc.article_status == 1",
 		"create": "auth.uid != null",
 		"update": true,//本人及管理员可修改

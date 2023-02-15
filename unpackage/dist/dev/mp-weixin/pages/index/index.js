@@ -102,16 +102,13 @@ var components
 try {
   components = {
     uScrollList: function () {
-      return Promise.all(/*! import() | uni_modules/uview-ui_2.0.34/components/u-scroll-list/u-scroll-list */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui_2.0.34/components/u-scroll-list/u-scroll-list")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui_2.0.34/components/u-scroll-list/u-scroll-list.vue */ 752))
+      return Promise.all(/*! import() | uni_modules/uview-ui_2.0.34/components/u-scroll-list/u-scroll-list */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uview-ui_2.0.34/components/u-scroll-list/u-scroll-list")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uview-ui_2.0.34/components/u-scroll-list/u-scroll-list.vue */ 660))
     },
     tnNoticeBar: function () {
-      return Promise.all(/*! import() | tuniao-ui/components/tn-notice-bar/tn-notice-bar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-notice-bar/tn-notice-bar")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-notice-bar/tn-notice-bar.vue */ 762))
+      return Promise.all(/*! import() | tuniao-ui/components/tn-notice-bar/tn-notice-bar */[__webpack_require__.e("common/vendor"), __webpack_require__.e("tuniao-ui/components/tn-notice-bar/tn-notice-bar")]).then(__webpack_require__.bind(null, /*! @/tuniao-ui/components/tn-notice-bar/tn-notice-bar.vue */ 670))
     },
     blogItem: function () {
-      return Promise.all(/*! import() | components/blog-item/blog-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/blog-item/blog-item")]).then(__webpack_require__.bind(null, /*! @/components/blog-item/blog-item.vue */ 770))
-    },
-    uniLoadMore: function () {
-      return Promise.all(/*! import() | uni_modules/uni-load-more/components/uni-load-more/uni-load-more */[__webpack_require__.e("common/vendor"), __webpack_require__.e("uni_modules/uni-load-more/components/uni-load-more/uni-load-more")]).then(__webpack_require__.bind(null, /*! @/uni_modules/uni-load-more/components/uni-load-more/uni-load-more.vue */ 777))
+      return Promise.all(/*! import() | components/blog-item/blog-item */[__webpack_require__.e("common/vendor"), __webpack_require__.e("components/blog-item/blog-item")]).then(__webpack_require__.bind(null, /*! @/components/blog-item/blog-item.vue */ 678))
     },
   }
 } catch (e) {
@@ -135,36 +132,11 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  var l0 = _vm.dataList.slice(0, 4)
   var m0 = _vm.uniIDHasRole("webadmin") || _vm.uniIDHasRole("admin")
-  if (!_vm._isMounted) {
-    _vm.e0 = function ($event, item) {
-      var _temp = arguments[arguments.length - 1].currentTarget.dataset,
-        _temp2 = _temp.eventParams || _temp["event-params"],
-        item = _temp2.item
-      var _temp, _temp2
-      return _vm.$set(item, "isLike", $event)
-    }
-    _vm.e1 = function ($event, item) {
-      var _temp3 = arguments[arguments.length - 1].currentTarget.dataset,
-        _temp4 = _temp3.eventParams || _temp3["event-params"],
-        item = _temp4.item
-      var _temp3, _temp4
-      return _vm.$set(item, "isLike", $event)
-    }
-    _vm.e2 = function ($event, item) {
-      var _temp5 = arguments[arguments.length - 1].currentTarget.dataset,
-        _temp6 = _temp5.eventParams || _temp5["event-params"],
-        item = _temp6.item
-      var _temp5, _temp6
-      return _vm.$set(item, "like_count", $event)
-    }
-  }
   _vm.$mp.data = Object.assign(
     {},
     {
       $root: {
-        l0: l0,
         m0: m0,
       },
     }
@@ -210,13 +182,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var _regenerator = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/regenerator */ 27));
-var _toConsumableArray2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ 17));
 var _asyncToGenerator2 = _interopRequireDefault(__webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ 29));
 var _uniGrid = _interopRequireDefault(__webpack_require__(/*! @/uni_modules/uni-grid/components/uni-grid/uni-grid.vue */ 189));
 var _uniGridItem = _interopRequireDefault(__webpack_require__(/*! @/uni_modules/uni-grid/components/uni-grid-item/uni-grid-item.vue */ 196));
 var _store = __webpack_require__(/*! @/uni_modules/uni-id-pages/common/store.js */ 203);
-//
-//
 //
 //
 //
@@ -526,7 +495,6 @@ var _default = {
   data: function data() {
     return {
       SwiperList: [],
-      Swiperlists: [],
       list: ['关于组织申报2023年度青年科技人才培育计划的通知', '关于2023年度国家自然科学基金项目申请与结题等有关事项的通知', '关于2023年寒假餐厅供餐调整的通知', '停水通知'],
       current: 0,
       isAndroid: true,
@@ -538,72 +506,35 @@ var _default = {
         }
       },
       cardCur: 0,
-      swiperList: [{
-        id: 0,
-        type: 'image',
-        title: '',
-        name: '',
-        text: '',
-        url: '../../static/78e.png'
-      }, {
-        id: 1,
-        type: 'image',
-        title: '合作勾搭',
-        name: '作者微信 tnkewo',
-        text: '',
-        url: '../../static/12222.jpg'
-      }, {
-        id: 2,
-        type: 'image',
-        title: '海量分享',
-        name: '总有你想不到的创意',
-        text: '',
-        url: '../../static/78e.png'
-      }, {
-        id: 3,
-        type: 'image',
-        title: '酷炫多彩',
-        name: '更多彩蛋等你探索',
-        text: '',
-        url: '../../static/12222.jpg'
-      }, {
-        id: 4,
-        type: 'image',
-        title: '适配多端',
-        name: 'APP、微信小程序、H5、Finclip',
-        text: '',
-        url: '../../static/52c.jpg'
-      }, {
-        id: 5,
-        type: 'image',
-        title: '',
-        name: '',
-        text: '',
-        url: '../../static/78e.png'
-      }],
       Glist: [{
         id: 1,
-        img: '../../static/icon/heart.png',
+        img: 'https://mp-70bea637-b880-4d22-8bea-1ce8ac441f79.cdn.bspapp.com/cloudstorage/73731562-095a-454e-868b-ca1b13a70a81.png',
+        // img: '../../static/icon/heart.png',
         title: '表白墙'
       }, {
         id: 2,
-        img: '../../static/icon/second.png',
+        img: 'https://mp-70bea637-b880-4d22-8bea-1ce8ac441f79.cdn.bspapp.com/cloudstorage/866a75a8-9d26-4b27-8112-ff3d57b2aca7.png',
+        // img: '../../static/icon/second.png',
         title: '二手闲置'
       }, {
         id: 3,
-        img: '../../static/icon/kd.png',
+        img: 'https://mp-70bea637-b880-4d22-8bea-1ce8ac441f79.cdn.bspapp.com/cloudstorage/9b0bbba5-b635-4047-9d98-fc5251171d13.png',
+        // img: '../../static/icon/kd.png',
         title: '快递代取'
       }, {
         id: 4,
-        img: '../../static/icon/lost.png',
+        img: 'https://mp-70bea637-b880-4d22-8bea-1ce8ac441f79.cdn.bspapp.com/cloudstorage/59a3cdd7-0009-4eba-a3f2-d98ef4edb188.png',
+        // img: '../../static/icon/lost.png',
         title: '失物招领'
       }, {
         id: 5,
-        img: '../../static/icon/question.png',
+        img: 'https://mp-70bea637-b880-4d22-8bea-1ce8ac441f79.cdn.bspapp.com/cloudstorage/c9546220-b3b7-41cf-914b-5958dc9acf71.png',
+        // img: '../../static/icon/question.png',
         title: '你问我答'
       }, {
         id: 6,
-        img: '../../static/icon/school.png',
+        img: 'https://mp-70bea637-b880-4d22-8bea-1ce8ac441f79.cdn.bspapp.com/cloudstorage/18fe3ac5-2d8f-4f2c-ae47-7238bf90f083.png',
+        // img: '../../static/icon/school.png',
         title: '校园动态'
       }],
       uniLoad: "more",
@@ -664,38 +595,33 @@ var _default = {
 
       // console.log(index)
       console.log(id);
-      // if (id == 0) {
-      // 	uni.navigateTo({
-      // 		url: "/pages/heart/heart"
-      // 	})
-      // };
       if (id == 1) {
         uni.navigateTo({
-          url: "/pages/heart/list"
+          url: "/page_blog/heart/list"
         });
       }
       ;
       if (id == 2) {
         uni.navigateTo({
-          url: "/pages/secondgoods/list"
+          url: "/page_blog/secondgoods/list"
         });
       }
       ;
       if (id == 3) {
         uni.navigateTo({
-          url: "/pages/runtake/list"
+          url: "/page_blog/runtake/list"
         });
       }
       ;
       if (id == 4) {
         uni.navigateTo({
-          url: "/pages/lost/list"
+          url: "/page_blog/lost/list"
         });
       }
       ;
       if (id == 5) {
         uni.navigateTo({
-          url: "/pages/question/question"
+          url: "/page_blog/question/question"
         });
       }
       ;
@@ -706,20 +632,6 @@ var _default = {
       }
       ;
     },
-    // // cardSwiper
-    //     cardSwiper(e) {
-    //       this.cardCur = e.detail.current
-    //     },
-    //     // resume
-    //     resume(e) {
-    //       this.cardCur2 = e.detail.current
-    //     },
-    // 跳转
-    // tn(e) {
-    // 	uni.navigateTo({
-    // 		url: e,
-    // 	});
-    // },
     P_delEvent: function P_delEvent() {
       this.dataList = []; //清空数据
       this.getData();
@@ -857,39 +769,39 @@ var _default = {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                // type=this.current;
-                // .where(`delState != true` && `state== 1`)
-                artTemp = db.collection("quanzi_article").where( true && "state== 8").field("title,user_id,description,picurls,comment_count,like_count,view_count,publish_date,state").getTemp();
+                _context4.next = 2;
+                return db.collection("quanzi_article").where("delState != true&&\n\t\t\t\t\t\tcategory_id== \"63eaaa01e1a35c8785afb5f1\"").field("title,user_id,category_id,delState,description,picurls,comment_count,like_count,view_count,publish_date,article_status").getTemp();
+              case 2:
+                artTemp = _context4.sent;
                 console.log(artTemp);
                 userTemp = db.collection("uni-id-users").field("_id,username,nickname,avatar_file").getTemp(); // db.collection(artTemp, userTemp).orderBy(this.navlist[this.navAction].type, "desc").skip(this.dataList
                 // 		.length).limit(5).get()
-                db.collection(artTemp, userTemp).orderBy("publish_date", "desc").skip(_this3.dataList.length).limit(5).get().then( /*#__PURE__*/function () {
+                db.collection(artTemp, userTemp).orderBy("publish_date", "desc").limit(5).get().then( /*#__PURE__*/function () {
                   var _ref = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee3(res) {
-                    var idArr, oldArr, resDataArr, likeRes;
+                    var idArr, resDataArr, likeRes;
                     return _regenerator.default.wrap(function _callee3$(_context3) {
                       while (1) {
                         switch (_context3.prev = _context3.next) {
                           case 0:
-                            idArr = [];
-                            oldArr = _this3.dataList;
-                            if (res.result.data.length == 0) {
-                              _this3.noMore = true;
-                            }
+                            idArr = []; // if (res.result.data.length == 0) {
+                            // 	this.noMore = true
+                            // }
                             console.log(res.result.data);
-                            resDataArr = [].concat((0, _toConsumableArray2.default)(_this3.dataList), (0, _toConsumableArray2.default)(res.result.data));
+                            resDataArr = res.result.data;
+                            console.log(resDataArr);
                             if (!_store.store.hasLogin) {
-                              _context3.next = 11;
+                              _context3.next = 10;
                               break;
                             }
                             resDataArr.forEach(function (item) {
                               idArr.push(item._id);
                             });
-                            _context3.next = 9;
+                            _context3.next = 8;
                             return db.collection("quanzi_like").where({
                               article_id: dbCmd.in(idArr),
                               user_id: uniCloud.getCurrentUserInfo().uid
                             }).get();
-                          case 9:
+                          case 8:
                             likeRes = _context3.sent;
                             likeRes.result.data.forEach(function (item) {
                               var findIndex = resDataArr.findIndex(function (find) {
@@ -897,9 +809,10 @@ var _default = {
                               });
                               resDataArr[findIndex].isLike = true;
                             });
-                          case 11:
+                          case 10:
                             _this3.dataList = resDataArr;
                             _this3.loadState = false;
+                            _this3.noMore = true;
                           case 13:
                           case "end":
                             return _context3.stop();
@@ -911,7 +824,7 @@ var _default = {
                     return _ref.apply(this, arguments);
                   };
                 }());
-              case 4:
+              case 6:
               case "end":
                 return _context4.stop();
             }

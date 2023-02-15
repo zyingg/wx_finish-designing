@@ -4,7 +4,7 @@
 		"name"
 	],
 	"permission": {
-		"read": true,
+		"read": "auth.uid != null",
 		"create": true,
 		"update": true, //本人及管理员可修改
 		"delete": true

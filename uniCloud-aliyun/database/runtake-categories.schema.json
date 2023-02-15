@@ -4,7 +4,7 @@
 		"name"
 	],
 	"permission": {
-		"read": true,
+		"read": "auth.uid != null",
 		"create": false,
 		"update": false,
 		"delete": false
