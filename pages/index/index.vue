@@ -525,28 +525,28 @@
 			// 		})
 			// },
 
-			async getSwiper() {
-				let res = await uniCloud.database().collection("opendb-banner").where({
+			// async getSwiper() {
+			// 	let res = await uniCloud.database().collection("opendb-banner").where({
 
-					status: true
-				}).get();
+			// 		status: true
+			// 	}).get();
 
-				let data = res.result.data;
-				// console.log(data)
-				let list = [];
-				data.forEach((item, index) => {
-					list.push({
-						image: item.bannerfile.url,
+			// 	let data = res.result.data;
+			// 	// console.log(data)
+			// 	let list = [];
+			// 	data.forEach((item, index) => {
+			// 		list.push({
+			// 			image: item.bannerfile.url,
 
-						title: item.title||''
-					})
-				})
-				this.Swiperlists = list
-				console.log(1)
-				console.log(this.Swiperlists)
-				this.getData();
-				console.log(2)
-			},
+			// 			title: item.title||''
+			// 		})
+			// 	})
+			// 	this.Swiperlists = list
+			// 	console.log(1)
+			// 	console.log(this.Swiperlists)
+			// 	this.getData();
+			// 	console.log(2)
+			// },
 
 			// 获取默认轮播图
 			async getBanner() {

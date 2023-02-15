@@ -23495,8 +23495,8 @@ var _default = {
   },
   "globalStyle": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "yy的圈子",
-    "navigationBarBackgroundColor": "#baf380",
+    "navigationBarTitleText": "糯可校园",
+    "navigationBarBackgroundColor": "#bff38e",
     "backgroundColor": "#baf380"
   },
   "uniIdRouter": {

@@ -679,10 +679,30 @@ var _default = {
     // 			this.loadState = false
     // 		})
     // },
-    getSwiper: function getSwiper() {
+    // async getSwiper() {
+    // 	let res = await uniCloud.database().collection("opendb-banner").where({
+    // 		status: true
+    // 	}).get();
+    // 	let data = res.result.data;
+    // 	// console.log(data)
+    // 	let list = [];
+    // 	data.forEach((item, index) => {
+    // 		list.push({
+    // 			image: item.bannerfile.url,
+    // 			title: item.title||''
+    // 		})
+    // 	})
+    // 	this.Swiperlists = list
+    // 	console.log(1)
+    // 	console.log(this.Swiperlists)
+    // 	this.getData();
+    // 	console.log(2)
+    // },
+    // 获取默认轮播图
+    getBanner: function getBanner() {
       var _this = this;
       return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee() {
-        var res, data, list;
+        var bannerList;
         return _regenerator.default.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -690,48 +710,12 @@ var _default = {
                 _context.next = 2;
                 return uniCloud.database().collection("opendb-banner").where({
                   status: true
-                }).get();
-              case 2:
-                res = _context.sent;
-                data = res.result.data; // console.log(data)
-                list = [];
-                data.forEach(function (item, index) {
-                  list.push({
-                    image: item.bannerfile.url,
-                    title: item.title || ''
-                  });
-                });
-                _this.Swiperlists = list;
-                console.log(1);
-                console.log(_this.Swiperlists);
-                _this.getData();
-                console.log(2);
-              case 11:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
-    },
-    // 获取默认轮播图
-    getBanner: function getBanner() {
-      var _this2 = this;
-      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2() {
-        var bannerList;
-        return _regenerator.default.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _context2.next = 2;
-                return uniCloud.database().collection("opendb-banner").where({
-                  status: true
                 }).get().then(function (res) {
                   // 设置默认轮播图
                   var imageList = res.result.data;
                   imageList.forEach(function (item) {
                     if (item.status == true) {
-                      _this2.SwiperList.unshift({
+                      _this.SwiperList.unshift({
                         id: item.sort,
                         type: 'image',
                         title: item.title,
@@ -742,7 +726,7 @@ var _default = {
                       });
                     }
                   });
-                  console.log(_this2.SwiperList);
+                  console.log(_this.SwiperList);
                 }).catch(function (err) {
                   uni.hideLoading();
                   uni.showModal({
@@ -751,37 +735,37 @@ var _default = {
                   });
                 });
               case 2:
-                bannerList = _context2.sent;
+                bannerList = _context.sent;
               case 3:
               case "end":
-                return _context2.stop();
+                return _context.stop();
             }
           }
-        }, _callee2);
+        }, _callee);
       }))();
     },
     //获取网络列表
     getData: function getData() {
-      var _this3 = this;
-      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee4() {
+      var _this2 = this;
+      return (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee3() {
         var artTemp, userTemp;
-        return _regenerator.default.wrap(function _callee4$(_context4) {
+        return _regenerator.default.wrap(function _callee3$(_context3) {
           while (1) {
-            switch (_context4.prev = _context4.next) {
+            switch (_context3.prev = _context3.next) {
               case 0:
-                _context4.next = 2;
+                _context3.next = 2;
                 return db.collection("quanzi_article").where("delState != true&&\n\t\t\t\t\t\tcategory_id== \"63eaaa01e1a35c8785afb5f1\"").field("title,user_id,category_id,delState,description,picurls,comment_count,like_count,view_count,publish_date,article_status").getTemp();
               case 2:
-                artTemp = _context4.sent;
+                artTemp = _context3.sent;
                 console.log(artTemp);
                 userTemp = db.collection("uni-id-users").field("_id,username,nickname,avatar_file").getTemp(); // db.collection(artTemp, userTemp).orderBy(this.navlist[this.navAction].type, "desc").skip(this.dataList
                 // 		.length).limit(5).get()
                 db.collection(artTemp, userTemp).orderBy("publish_date", "desc").limit(5).get().then( /*#__PURE__*/function () {
-                  var _ref = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee3(res) {
+                  var _ref = (0, _asyncToGenerator2.default)( /*#__PURE__*/_regenerator.default.mark(function _callee2(res) {
                     var idArr, resDataArr, likeRes;
-                    return _regenerator.default.wrap(function _callee3$(_context3) {
+                    return _regenerator.default.wrap(function _callee2$(_context2) {
                       while (1) {
-                        switch (_context3.prev = _context3.next) {
+                        switch (_context2.prev = _context2.next) {
                           case 0:
                             idArr = []; // if (res.result.data.length == 0) {
                             // 	this.noMore = true
@@ -790,19 +774,19 @@ var _default = {
                             resDataArr = res.result.data;
                             console.log(resDataArr);
                             if (!_store.store.hasLogin) {
-                              _context3.next = 10;
+                              _context2.next = 10;
                               break;
                             }
                             resDataArr.forEach(function (item) {
                               idArr.push(item._id);
                             });
-                            _context3.next = 8;
+                            _context2.next = 8;
                             return db.collection("quanzi_like").where({
                               article_id: dbCmd.in(idArr),
                               user_id: uniCloud.getCurrentUserInfo().uid
                             }).get();
                           case 8:
-                            likeRes = _context3.sent;
+                            likeRes = _context2.sent;
                             likeRes.result.data.forEach(function (item) {
                               var findIndex = resDataArr.findIndex(function (find) {
                                 return item.article_id == find._id;
@@ -810,15 +794,15 @@ var _default = {
                               resDataArr[findIndex].isLike = true;
                             });
                           case 10:
-                            _this3.dataList = resDataArr;
-                            _this3.loadState = false;
-                            _this3.noMore = true;
+                            _this2.dataList = resDataArr;
+                            _this2.loadState = false;
+                            _this2.noMore = true;
                           case 13:
                           case "end":
-                            return _context3.stop();
+                            return _context2.stop();
                         }
                       }
-                    }, _callee3);
+                    }, _callee2);
                   }));
                   return function (_x) {
                     return _ref.apply(this, arguments);
@@ -826,10 +810,10 @@ var _default = {
                 }());
               case 6:
               case "end":
-                return _context4.stop();
+                return _context3.stop();
             }
           }
-        }, _callee4);
+        }, _callee3);
       }))();
     },
     clickNav: function clickNav(e) {
