@@ -1,5 +1,5 @@
 {
-    "name" : "yy圈子",
+    "name" : "糯可校园",
     "appid" : "__UNI__9C47D80",
     "description" : "",
     "versionName" : "1.0.0",
@@ -71,5 +71,15 @@
     "uniStatistics" : {
         "enable" : false
     },
-    "vueVersion" : "2"
+    "vueVersion" : "2",
+    "h5" : {
+        "title" : "糯可校园",
+        "router" : {
+            "mode" : "hash",
+            "base" : "./"
+        },
+        "sdkConfigs" : {
+            "maps" : {}
+        }
+    }
 }
